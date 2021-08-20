@@ -269,7 +269,7 @@
           <a href="https://ziglang.org/documentation/0.8.0/">0.8.0</a> |
           master
         </nav>
-      <nav aria-labelledby="zig-version">table-of-contents">
+        <nav aria-labelledby="table-of-contents">
           <h2 id="table-of-contents">Table of Contents</h2>
           
 
@@ -1977,689 +1977,622 @@ strict = 9.765625e-04</samp></pre></figure>
       <h3 id="Table-of-Operators"><a href="#toc-Table-of-Operators">Table of Operators</a> <a class="hdr" href="#Table-of-Operators">§</a></h3>
 
       <div class="table-wrapper">
-        <table>
-            <caption>Table of Operators</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Syntax</th>
-                    <th scope="col">Relevant Types</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Example</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><pre><code>a + b
-a += b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>Addition.
-                        <ul>
-                            <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                            <li>See also <a href="#addWithOverflow">@addWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">2</span> + <span class="tok-number">5</span> == <span class="tok-number">7</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a +% b
-a +%= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Wrapping Addition.
-                        <ul>
-                            <li>Guaranteed to have twos-complement wrapping behavior.</li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                            <li>See also <a href="#addWithOverflow">@addWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-builtin">@as</span>(<span class="tok-type">u32</span>, std.math.maxInt(<span class="tok-type">u32</span>)) +% <span class="tok-number">1</span> == <span class="tok-number">0</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a - b
-a -= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>Subtraction.
-                        <ul>
-                            <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                            <li>See also <a href="#subWithOverflow">@subWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">2</span> - <span class="tok-number">5</span> == -<span class="tok-number">3</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a -% b
-a -%= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Wrapping Subtraction.
-                        <ul>
-                            <li>Guaranteed to have twos-complement wrapping behavior.</li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                            <li>See also <a href="#subWithOverflow">@subWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-builtin">@as</span>(<span class="tok-type">u32</span>, <span class="tok-number">0</span>) -% <span class="tok-number">1</span> == std.math.maxInt(<span class="tok-type">u32</span>)</code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>-a</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Negation.
-                        <ul>
-                            <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code>-<span class="tok-number">1</span> == <span class="tok-number">0</span> - <span class="tok-number">1</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>-%a</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Wrapping Negation.
-                        <ul>
-                            <li>Guaranteed to have twos-complement wrapping behavior.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code>-%<span class="tok-builtin">@as</span>(<span class="tok-type">i32</span>, std.math.minInt(<span class="tok-type">i32</span>)) == std.math.minInt(<span class="tok-type">i32</span>)</code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a * b
-a *= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>Multiplication.
-                        <ul>
-                            <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                            <li>See also <a href="#mulWithOverflow">@mulWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">2</span> * <span class="tok-number">5</span> == <span class="tok-number">10</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a *% b
-a *%= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Wrapping Multiplication.
-                        <ul>
-                            <li>Guaranteed to have twos-complement wrapping behavior.</li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                            <li>See also <a href="#mulWithOverflow">@mulWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-builtin">@as</span>(<span class="tok-type">u8</span>, <span class="tok-number">200</span>) *% <span class="tok-number">2</span> == <span class="tok-number">144</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a / b
-a /= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>Division.
-                        <ul>
-                            <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
-                            <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for integers.</li>
-                            <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for floats in <a href="#Floating-Point-Operations">FloatMode.Optimized Mode</a>.</li>
-                            <li>Signed integer operands must be comptime-known and positive. In other cases, use
-                                <a href="#divTrunc">@divTrunc</a>,
-                                <a href="#divFloor">@divFloor</a>, or
-                                <a href="#divExact">@divExact</a> instead.
-                            </li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">10</span> / <span class="tok-number">5</span> == <span class="tok-number">2</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a % b
-a %= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>Remainder Division.
-                        <ul>
-                            <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for integers.</li>
-                            <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for floats in <a href="#Floating-Point-Operations">FloatMode.Optimized Mode</a>.</li>
-                            <li>Signed or floating-point operands must be comptime-known and positive. In other cases, use
-                                <a href="#rem">@rem</a> or
-                                <a href="#mod">@mod</a> instead.
-                            </li>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">10</span> % <span class="tok-number">3</span> == <span class="tok-number">1</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &lt;&lt; b
-a &lt;&lt;= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Bit Shift Left.
-                        <ul>
-                            <li><code>b</code> must be <a href="#comptime">comptime-known</a> or have a type with log2 number of bits as <code>a</code>.</li>
-                            <li>See also <a href="#shlExact">@shlExact</a>.</li>
-                            <li>See also <a href="#shlWithOverflow">@shlWithOverflow</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">1</span> &lt;&lt; <span class="tok-number">8</span> == <span class="tok-number">256</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &gt;&gt; b
-a &gt;&gt;= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Bit Shift Right.
-                        <ul>
-                            <li><code>b</code> must be <a href="#comptime">comptime-known</a> or have a type with log2 number of bits as <code>a</code>.</li>
-                            <li>See also <a href="#shrExact">@shrExact</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">10</span> &gt;&gt; <span class="tok-number">1</span> == <span class="tok-number">5</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &amp; b
-a &amp;= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Bitwise AND.
-                        <ul>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">0b011</span> &amp; <span class="tok-number">0b101</span> == <span class="tok-number">0b001</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a | b
-a |= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Bitwise OR.
-                        <ul>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">0b010</span> | <span class="tok-number">0b100</span> == <span class="tok-number">0b110</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a ^ b
-a ^= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>Bitwise XOR.
-                        <ul>
-                            <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-number">0b011</span> ^ <span class="tok-number">0b101</span> == <span class="tok-number">0b110</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>~a</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Bitwise NOT.
-                    </td>
-                    <td>
-                        <pre><code>~<span class="tok-builtin">@as</span>(<span class="tok-type">u8</span>, <span class="tok-number">0b10101111</span>) == <span class="tok-number">0b01010000</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a <span class="tok-kw">orelse</span> b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Optionals">Optionals</a></li>
-                        </ul>
-                    </td>
-                    <td>If <code>a</code> is <code><span class="tok-null">null</span></code>,
-                        returns <code>b</code> ("default value"),
-                        otherwise returns the unwrapped value of <code>a</code>.
-                        Note that <code>b</code> may be a value of type <a href="#noreturn">noreturn</a>.
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> value: ?<span class="tok-type">u32</span> = <span class="tok-null">null</span>;
+      <table>
+        <caption>Table of Operators</caption>
+        <thead>
+        <tr>
+          <th scope="col">Syntax</th>
+          <th scope="col">Relevant Types</th>
+          <th scope="col">Description</th>
+          <th scope="col">Example</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row"><pre><code>a + b
+a += b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>Addition.
+            <ul>
+              <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+              <li>See also <a href="#addWithOverflow">@addWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">2</span> + <span class="tok-number">5</span> == <span class="tok-number">7</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a +% b
+a +%= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Wrapping Addition.
+            <ul>
+              <li>Guaranteed to have twos-complement wrapping behavior.</li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+              <li>See also <a href="#addWithOverflow">@addWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-builtin">@as</span>(<span class="tok-type">u32</span>, std.math.maxInt(<span class="tok-type">u32</span>)) +% <span class="tok-number">1</span> == <span class="tok-number">0</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a - b
+a -= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>Subtraction.
+            <ul>
+              <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+              <li>See also <a href="#subWithOverflow">@subWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">2</span> - <span class="tok-number">5</span> == -<span class="tok-number">3</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a -% b
+a -%= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Wrapping Subtraction.
+            <ul>
+              <li>Guaranteed to have twos-complement wrapping behavior.</li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+              <li>See also <a href="#subWithOverflow">@subWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-builtin">@as</span>(<span class="tok-type">u32</span>, <span class="tok-number">0</span>) -% <span class="tok-number">1</span> == std.math.maxInt(<span class="tok-type">u32</span>)</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>-a</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>
+            Negation.
+            <ul>
+              <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code>-<span class="tok-number">1</span> == <span class="tok-number">0</span> - <span class="tok-number">1</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>-%a</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>
+            Wrapping Negation.
+            <ul>
+              <li>Guaranteed to have twos-complement wrapping behavior.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code>-%<span class="tok-builtin">@as</span>(<span class="tok-type">i32</span>, std.math.minInt(<span class="tok-type">i32</span>)) == std.math.minInt(<span class="tok-type">i32</span>)</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a * b
+a *= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>Multiplication.
+            <ul>
+              <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+              <li>See also <a href="#mulWithOverflow">@mulWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">2</span> * <span class="tok-number">5</span> == <span class="tok-number">10</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a *% b
+a *%= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Wrapping Multiplication.
+            <ul>
+              <li>Guaranteed to have twos-complement wrapping behavior.</li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+              <li>See also <a href="#mulWithOverflow">@mulWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-builtin">@as</span>(<span class="tok-type">u8</span>, <span class="tok-number">200</span>) *% <span class="tok-number">2</span> == <span class="tok-number">144</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a / b
+a /= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>Division.
+            <ul>
+              <li>Can cause <a href="#Default-Operations">overflow</a> for integers.</li>
+              <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for integers.</li>
+              <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for floats in <a href="#Floating-Point-Operations">FloatMode.Optimized Mode</a>.</li>
+              <li>Signed integer operands must be comptime-known and positive. In other cases, use
+                <a href="#divTrunc">@divTrunc</a>,
+                <a href="#divFloor">@divFloor</a>, or
+                <a href="#divExact">@divExact</a> instead.
+              </li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">10</span> / <span class="tok-number">5</span> == <span class="tok-number">2</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a % b
+a %= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>Remainder Division.
+            <ul>
+              <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for integers.</li>
+              <li>Can cause <a href="#Division-by-Zero">Division by Zero</a> for floats in <a href="#Floating-Point-Operations">FloatMode.Optimized Mode</a>.</li>
+              <li>Signed or floating-point operands must be comptime-known and positive. In other cases, use
+                <a href="#rem">@rem</a> or
+                <a href="#mod">@mod</a> instead.
+              </li>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">10</span> % <span class="tok-number">3</span> == <span class="tok-number">1</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &lt;&lt; b
+a &lt;&lt;= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Bit Shift Left.
+            <ul>
+                <li><code>b</code> must be <a href="#comptime">comptime-known</a> or have a type with log2 number of bits as <code>a</code>.</li>
+              <li>See also <a href="#shlExact">@shlExact</a>.</li>
+              <li>See also <a href="#shlWithOverflow">@shlWithOverflow</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">1</span> &lt;&lt; <span class="tok-number">8</span> == <span class="tok-number">256</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &gt;&gt; b
+a &gt;&gt;= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Bit Shift Right.
+            <ul>
+                <li><code>b</code> must be <a href="#comptime">comptime-known</a> or have a type with log2 number of bits as <code>a</code>.</li>
+              <li>See also <a href="#shrExact">@shrExact</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">10</span> &gt;&gt; <span class="tok-number">1</span> == <span class="tok-number">5</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &amp; b
+a &amp;= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Bitwise AND.
+            <ul>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">0b011</span> &amp; <span class="tok-number">0b101</span> == <span class="tok-number">0b001</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a | b
+a |= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Bitwise OR.
+            <ul>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">0b010</span> | <span class="tok-number">0b100</span> == <span class="tok-number">0b110</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a ^ b
+a ^= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>Bitwise XOR.
+            <ul>
+              <li>Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-number">0b011</span> ^ <span class="tok-number">0b101</span> == <span class="tok-number">0b110</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>~a</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+            </ul>
+          </td>
+          <td>
+            Bitwise NOT.
+          </td>
+          <td>
+            <pre><code>~<span class="tok-builtin">@as</span>(<span class="tok-type">u8</span>, <span class="tok-number">0b10101111</span>) == <span class="tok-number">0b01010000</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a <span class="tok-kw">orelse</span> b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Optionals">Optionals</a></li>
+            </ul>
+          </td>
+          <td>If <code>a</code> is <code><span class="tok-null">null</span></code>,
+                      returns <code>b</code> ("default value"),
+                          otherwise returns the unwrapped value of <code>a</code>.
+                              Note that <code>b</code> may be a value of type <a href="#noreturn">noreturn</a>.
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> value: ?<span class="tok-type">u32</span> = <span class="tok-null">null</span>;
 <span class="tok-kw">const</span> unwrapped = value <span class="tok-kw">orelse</span> <span class="tok-number">1234</span>;
 unwrapped == <span class="tok-number">1234</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a.?</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Optionals">Optionals</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Equivalent to:
-                        <pre><code>a <span class="tok-kw">orelse</span> <span class="tok-kw">unreachable</span></code></pre>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> value: ?<span class="tok-type">u32</span> = <span class="tok-number">5678</span>;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a.?</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Optionals">Optionals</a></li>
+            </ul>
+          </td>
+          <td>
+            Equivalent to:
+            <pre><code>a <span class="tok-kw">orelse</span> <span class="tok-kw">unreachable</span></code></pre>
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> value: ?<span class="tok-type">u32</span> = <span class="tok-number">5678</span>;
 value.? == <span class="tok-number">5678</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a <span class="tok-kw">catch</span> b
-a <span class="tok-kw">catch</span> |err| b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Errors">Error Unions</a></li>
-                        </ul>
-                    </td>
-                    <td>If <code>a</code> is an <code><span class="tok-kw">error</span></code>,
-                        returns <code>b</code> ("default value"),
-                        otherwise returns the unwrapped value of <code>a</code>.
-                        Note that <code>b</code> may be a value of type <a href="#noreturn">noreturn</a>.
-                        <code>err</code> is the <code><span class="tok-kw">error</span></code> and is in scope of the expression <code>b</code>.
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> value: <span class="tok-type">anyerror</span>!<span class="tok-type">u32</span> = <span class="tok-kw">error</span>.Broken;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a <span class="tok-kw">catch</span> b
+a <span class="tok-kw">catch</span> |err| b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Errors">Error Unions</a></li>
+            </ul>
+          </td>
+          <td>If <code>a</code> is an <code><span class="tok-kw">error</span></code>,
+                      returns <code>b</code> ("default value"),
+                          otherwise returns the unwrapped value of <code>a</code>.
+                              Note that <code>b</code> may be a value of type <a href="#noreturn">noreturn</a>.
+                                  <code>err</code> is the <code><span class="tok-kw">error</span></code> and is in scope of the expression <code>b</code>.
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> value: <span class="tok-type">anyerror</span>!<span class="tok-type">u32</span> = <span class="tok-kw">error</span>.Broken;
 <span class="tok-kw">const</span> unwrapped = value <span class="tok-kw">catch</span> <span class="tok-number">1234</span>;
 unwrapped == <span class="tok-number">1234</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a <span class="tok-kw">and</span> b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Primitive-Types">bool</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        If <code>a</code> is <code><span class="tok-null">false</span></code>, returns <code><span class="tok-null">false</span></code>
-                        without evaluating <code>b</code>. Otherwise, returns <code>b</code>.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-null">false</span> <span class="tok-kw">and</span> <span class="tok-null">true</span>) == <span class="tok-null">false</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a <span class="tok-kw">or</span> b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Primitive-Types">bool</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        If <code>a</code> is <code><span class="tok-null">true</span></code>, returns <code><span class="tok-null">true</span></code>
-                        without evaluating <code>b</code>. Otherwise, returns <code>b</code>.
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-null">false</span> <span class="tok-kw">or</span> <span class="tok-null">true</span> == <span class="tok-null">true</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>!a</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Primitive-Types">bool</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Boolean NOT.
-                    </td>
-                    <td>
-                        <pre><code>!<span class="tok-null">false</span> == <span class="tok-null">true</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a == b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                            <li><a href="#Primitive-Types">bool</a></li>
-                            <li><a href="#Primitive-Types">type</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">true</span></code> if a and b are equal, otherwise returns <code><span class="tok-null">false</span></code>.
-                        Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-number">1</span> == <span class="tok-number">1</span>) == <span class="tok-null">true</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a == <span class="tok-null">null</span></code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Optionals">Optionals</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">true</span></code> if a is <code><span class="tok-null">null</span></code>, otherwise returns <code><span class="tok-null">false</span></code>.
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> value: ?<span class="tok-type">u32</span> = <span class="tok-null">null</span>;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a <span class="tok-kw">and</span> b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Primitive-Types">bool</a></li>
+            </ul>
+          </td>
+          <td>
+              If <code>a</code> is <code><span class="tok-null">false</span></code>, returns <code><span class="tok-null">false</span></code>
+                          without evaluating <code>b</code>. Otherwise, returns <code>b</code>.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-null">false</span> <span class="tok-kw">and</span> <span class="tok-null">true</span>) == <span class="tok-null">false</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a <span class="tok-kw">or</span> b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Primitive-Types">bool</a></li>
+            </ul>
+          </td>
+          <td>
+              If <code>a</code> is <code><span class="tok-null">true</span></code>, returns <code><span class="tok-null">true</span></code>
+                          without evaluating <code>b</code>. Otherwise, returns <code>b</code>.
+          </td>
+          <td>
+            <pre><code><span class="tok-null">false</span> <span class="tok-kw">or</span> <span class="tok-null">true</span> == <span class="tok-null">true</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>!a</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Primitive-Types">bool</a></li>
+            </ul>
+          </td>
+          <td>
+            Boolean NOT.
+          </td>
+          <td>
+            <pre><code>!<span class="tok-null">false</span> == <span class="tok-null">true</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a == b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+              <li><a href="#Primitive-Types">bool</a></li>
+              <li><a href="#Primitive-Types">type</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">true</span></code> if a and b are equal, otherwise returns <code><span class="tok-null">false</span></code>.
+            Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-number">1</span> == <span class="tok-number">1</span>) == <span class="tok-null">true</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a == <span class="tok-null">null</span></code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Optionals">Optionals</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">true</span></code> if a is <code><span class="tok-null">null</span></code>, otherwise returns <code><span class="tok-null">false</span></code>.
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> value: ?<span class="tok-type">u32</span> = <span class="tok-null">null</span>;
 value == <span class="tok-null">null</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a != b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                            <li><a href="#Primitive-Types">bool</a></li>
-                            <li><a href="#Primitive-Types">type</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">false</span></code> if a and b are equal, otherwise returns <code><span class="tok-null">true</span></code>.
-                        Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-number">1</span> != <span class="tok-number">1</span>) == <span class="tok-null">false</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &gt; b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">true</span></code> if a is greater than b, otherwise returns <code><span class="tok-null">false</span></code>.
-                        Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-number">2</span> &gt; <span class="tok-number">1</span>) == <span class="tok-null">true</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &gt;= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">true</span></code> if a is greater than or equal to b, otherwise returns <code><span class="tok-null">false</span></code>.
-                        Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-number">2</span> &gt;= <span class="tok-number">1</span>) == <span class="tok-null">true</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &lt; b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">true</span></code> if a is less than b, otherwise returns <code><span class="tok-null">false</span></code>.
-                        Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-number">1</span> &lt; <span class="tok-number">2</span>) == <span class="tok-null">true</span></code>></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a &lt;= b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Integers">Integers</a></li>
-                            <li><a href="#Floats">Floats</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Returns <code><span class="tok-null">true</span></code> if a is less than or equal to b, otherwise returns <code><span class="tok-null">false</span></code>.
-                        Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
-                    </td>
-                    <td>
-                        <pre><code>(<span class="tok-number">1</span> &lt;= <span class="tok-number">2</span>) == <span class="tok-null">true</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a ++ b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Arrays">Arrays</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Array concatenation.
-                        <ul>
-                            <li>Only available when <code>a</code> and <code>b</code> are <a href="#comptime">compile-time known</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> mem = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).mem;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a != b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+              <li><a href="#Primitive-Types">bool</a></li>
+              <li><a href="#Primitive-Types">type</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">false</span></code> if a and b are equal, otherwise returns <code><span class="tok-null">true</span></code>.
+            Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-number">1</span> != <span class="tok-number">1</span>) == <span class="tok-null">false</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &gt; b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">true</span></code> if a is greater than b, otherwise returns <code><span class="tok-null">false</span></code>.
+            Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-number">2</span> &gt; <span class="tok-number">1</span>) == <span class="tok-null">true</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &gt;= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">true</span></code> if a is greater than or equal to b, otherwise returns <code><span class="tok-null">false</span></code>.
+            Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-number">2</span> &gt;= <span class="tok-number">1</span>) == <span class="tok-null">true</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &lt; b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">true</span></code> if a is less than b, otherwise returns <code><span class="tok-null">false</span></code>.
+            Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-number">1</span> &lt; <span class="tok-number">2</span>) == <span class="tok-null">true</span></code>></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a &lt;= b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Integers">Integers</a></li>
+              <li><a href="#Floats">Floats</a></li>
+            </ul>
+          </td>
+          <td>
+              Returns <code><span class="tok-null">true</span></code> if a is less than or equal to b, otherwise returns <code><span class="tok-null">false</span></code>.
+            Invokes <a href="#Peer-Type-Resolution">Peer Type Resolution</a> for the operands.
+          </td>
+          <td>
+            <pre><code>(<span class="tok-number">1</span> &lt;= <span class="tok-number">2</span>) == <span class="tok-null">true</span></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a ++ b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Arrays">Arrays</a></li>
+            </ul>
+          </td>
+          <td>
+            Array concatenation.
+            <ul>
+              <li>Only available when <code>a</code> and <code>b</code> are <a href="#comptime">compile-time known</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> mem = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).mem;
 <span class="tok-kw">const</span> array1 = [_]<span class="tok-type">u32</span>{<span class="tok-number">1</span>,<span class="tok-number">2</span>};
 <span class="tok-kw">const</span> array2 = [_]<span class="tok-type">u32</span>{<span class="tok-number">3</span>,<span class="tok-number">4</span>};
 <span class="tok-kw">const</span> together = array1 ++ array2;
 mem.eql(<span class="tok-type">u32</span>, &amp;together, &amp;[_]<span class="tok-type">u32</span>{<span class="tok-number">1</span>,<span class="tok-number">2</span>,<span class="tok-number">3</span>,<span class="tok-number">4</span>})</code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a ** b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Arrays">Arrays</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Array multiplication.
-                        <ul>
-                            <li>Only available when <code>a</code> and <code>b</code> are <a href="#comptime">compile-time known</a>.</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> mem = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).mem;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a ** b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Arrays">Arrays</a></li>
+            </ul>
+          </td>
+          <td>
+            Array multiplication.
+            <ul>
+              <li>Only available when <code>a</code> and <code>b</code> are <a href="#comptime">compile-time known</a>.</li>
+            </ul>
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> mem = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).mem;
 <span class="tok-kw">const</span> pattern = <span class="tok-str">&quot;ab&quot;</span> ** <span class="tok-number">3</span>;
 mem.eql(<span class="tok-type">u8</span>, pattern, <span class="tok-str">&quot;ababab&quot;</span>)</code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a.*</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Pointers">Pointers</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        Pointer dereference.
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> x: <span class="tok-type">u32</span> = <span class="tok-number">1234</span>;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a.*</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Pointers">Pointers</a></li>
+            </ul>
+          </td>
+          <td>
+            Pointer dereference.
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> x: <span class="tok-type">u32</span> = <span class="tok-number">1234</span>;
 <span class="tok-kw">const</span> ptr = &amp;x;
 ptr.* == <span class="tok-number">1234</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>&amp;a</code></pre>
-                    </th>
-                    <td>
-                        All types
-                    </td>
-                    <td>
-                        Address of.
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> x: <span class="tok-type">u32</span> = <span class="tok-number">1234</span>;
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>&amp;a</code></pre></th>
+          <td>
+            All types
+          </td>
+          <td>
+            Address of.
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> x: <span class="tok-type">u32</span> = <span class="tok-number">1234</span>;
 <span class="tok-kw">const</span> ptr = &amp;x;
 ptr.* == <span class="tok-number">1234</span></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <pre><code>a || b</code></pre>
-                    </th>
-                    <td>
-                        <ul>
-                            <li><a href="#Error-Set-Type">Error Set Type</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#Merging-Error-Sets">Merging Error Sets</a>
-                    </td>
-                    <td>
-                        <pre><code><span class="tok-kw">const</span> A = <span class="tok-kw">error</span>{One};
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><pre><code>a || b</code></pre></th>
+          <td>
+            <ul>
+              <li><a href="#Error-Set-Type">Error Set Type</a></li>
+            </ul>
+          </td>
+          <td>
+              <a href="#Merging-Error-Sets">Merging Error Sets</a>
+          </td>
+          <td>
+            <pre><code><span class="tok-kw">const</span> A = <span class="tok-kw">error</span>{One};
 <span class="tok-kw">const</span> B = <span class="tok-kw">error</span>{Two};
 (A || B) == <span class="tok-kw">error</span>{One, Two}</code></pre>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
       </div>
       
       <h3 id="Precedence"><a href="#toc-Precedence">Precedence</a> <a class="hdr" href="#Precedence">§</a></h3>
@@ -3194,7 +3127,7 @@ All 2 tests passed.</samp></pre></figure>
     <span class="tok-kw">const</span> int_slice = std.mem.bytesAsSlice(<span class="tok-type">u32</span>, <span class="tok-builtin">@alignCast</span>(<span class="tok-number">4</span>, slice4));
     <span class="tok-kw">return</span> int_slice[<span class="tok-number">0</span>];
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;pointer alignment safety&quot;... thread 23347 panic: incorrect alignment
+Test [1/1] test &quot;pointer alignment safety&quot;... thread 8698 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:10:63</span>: <span class="t2_0">0x20807c in foo (test)</span>
     const int_slice = std.mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                               <span class="t32_1">^</span>
@@ -3303,7 +3236,7 @@ All 1 tests passed.</samp></pre></figure>
     <span class="tok-comment">// Note that `slice.ptr` does not invoke safety checking, while `&amp;slice[0]`</span>
     <span class="tok-comment">// asserts that the slice has len &gt;= 1.</span>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;basic slices&quot;... thread 23403 panic: index out of bounds
+Test [1/1] test &quot;basic slices&quot;... thread 8758 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:22:10</span>: <span class="t2_0">0x206933 in test &quot;basic slices&quot; (test)</span>
     slice[10] += 1;
          <span class="t32_1">^</span>
@@ -4147,7 +4080,7 @@ All 1 tests passed.</samp></pre></figure>
     <span class="tok-kw">var</span> payload = Payload{ .int = <span class="tok-number">1234</span> };
     payload.float = <span class="tok-number">12.34</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;simple union&quot;... thread 23856 panic: access of inactive union field
+Test [1/1] test &quot;simple union&quot;... thread 9193 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:8:12</span>: <span class="t2_0">0x2066fb in test &quot;simple union&quot; (test)</span>
     payload.float = 12.34;
            <span class="t32_1">^</span>
@@ -5343,7 +5276,7 @@ All 1 tests passed.</samp></pre></figure>
 <span class="tok-kw">test</span> <span class="tok-str">&quot;this will fail&quot;</span> {
     assert(<span class="tok-null">false</span>);
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;this will fail&quot;... thread 24572 panic: reached unreachable code
+Test [1/1] test &quot;this will fail&quot;... thread 9857 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:14</span>: <span class="t2_0">0x207ecb in assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -6097,7 +6030,7 @@ error: PermissionDenied
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 25083 panic: PermissionDenied
+thread 10368 panic: PermissionDenied
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:38:5</span>: <span class="t2_0">0x232286 in bang2 (test)</span>
     @panic(&quot;PermissionDenied&quot;);
     <span class="t32_1">^</span>
@@ -9865,7 +9798,7 @@ All 1 tests passed.</samp></pre></figure>
         }
     }
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig -OReleaseFast</kbd>
-Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 26728 panic: integer overflow
+Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 12018 panic: integer overflow
 error: the following test command crashed:
 docgen_tmp/zig-cache/o/9264bf657f6275ee98061db75408a88e/test /home/paul/Development/zig/build/zig</samp></pre></figure>
       <p>Note: it is <a href="https://github.com/ziglang/zig/issues/978">planned</a> to replace
@@ -10317,7 +10250,7 @@ All 1 tests passed.</samp></pre></figure>
     <span class="tok-kw">var</span> b: <span class="tok-type">u8</span> = <span class="tok-builtin">@intCast</span>(<span class="tok-type">u8</span>, a);
     _ = b;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;integer cast panic&quot;... thread 26911 panic: integer cast truncated bits
+Test [1/1] test &quot;integer cast panic&quot;... thread 12136 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:17</span>: <span class="t2_0">0x2066b5 in test &quot;integer cast panic&quot; (test)</span>
     var b: u8 = @intCast(u8, a);
                 <span class="t32_1">^</span>
@@ -10481,7 +10414,7 @@ All 1 tests passed.</samp></pre></figure>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">test</span> <span class="tok-str">&quot;safety check&quot;</span> {
     <span class="tok-kw">unreachable</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;safety check&quot;... thread 26990 panic: reached unreachable code
+Test [1/1] test &quot;safety check&quot;... thread 12203 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:2:5</span>: <span class="t2_0">0x20668a in test &quot;safety check&quot; (test)</span>
     unreachable;
     <span class="t32_1">^</span>
@@ -10531,7 +10464,7 @@ comptime {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27019 panic: reached unreachable code
+thread 12240 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/build/lib/zig/std/debug.zig:231:14</span>: <span class="t2_0">0x20432b in std.debug.assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -10574,7 +10507,7 @@ thread 27019 panic: reached unreachable code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27056 panic: index out of bounds
+thread 12269 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:7:13</span>: <span class="t2_0">0x230a29 in foo (test)</span>
     return x[5];
             <span class="t32_1">^</span>
@@ -10616,7 +10549,7 @@ thread 27056 panic: index out of bounds
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27085 panic: attempt to cast negative value to unsigned integer
+thread 12306 panic: attempt to cast negative value to unsigned integer
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:20</span>: <span class="t2_0">0x229b47 in main (test)</span>
     var unsigned = @intCast(u32, value);
                    <span class="t32_1">^</span>
@@ -10658,7 +10591,7 @@ thread 27085 panic: attempt to cast negative value to unsigned integer
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27122 panic: integer cast truncated bits
+thread 12335 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:18</span>: <span class="t2_0">0x229b4c in main (test)</span>
     const byte = @intCast(u8, spartan_count);
                  <span class="t32_1">^</span>
@@ -10712,7 +10645,7 @@ thread 27122 panic: integer cast truncated bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27151 panic: integer overflow
+thread 12372 panic: integer overflow
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:10</span>: <span class="t2_0">0x229b2f in main (test)</span>
     byte += 1;
          <span class="t32_1">^</span>
@@ -10843,7 +10776,7 @@ All 1 tests passed.</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27249 panic: left shift overflowed bits
+thread 12469 panic: left shift overflowed bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b6b in main (test)</span>
     var y = @shlExact(x, 2);
             <span class="t32_1">^</span>
@@ -10881,7 +10814,7 @@ thread 27249 panic: left shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27286 panic: right shift overflowed bits
+thread 12498 panic: right shift overflowed bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b6b in main (test)</span>
     var y = @shrExact(x, 2);
             <span class="t32_1">^</span>
@@ -10922,7 +10855,7 @@ thread 27286 panic: right shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27315 panic: division by zero
+thread 12538 panic: division by zero
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229b39 in main (test)</span>
     var c = a / b;
               <span class="t32_1">^</span>
@@ -10963,7 +10896,7 @@ thread 27315 panic: division by zero
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27352 panic: remainder division by zero or negative value
+thread 12567 panic: remainder division by zero or negative value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229b5b in main (test)</span>
     var c = a % b;
               <span class="t32_1">^</span>
@@ -11004,7 +10937,7 @@ thread 27352 panic: remainder division by zero or negative value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27381 panic: exact division produced remainder
+thread 12604 panic: exact division produced remainder
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:13</span>: <span class="t2_0">0x229b7d in main (test)</span>
     var c = @divExact(a, b);
             <span class="t32_1">^</span>
@@ -11043,7 +10976,7 @@ thread 27381 panic: exact division produced remainder
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27418 panic: attempt to use null value
+thread 12633 panic: attempt to use null value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:33</span>: <span class="t2_0">0x229b3c in main (test)</span>
     var number = optional_number.?;
                                 <span class="t32_1">^</span>
@@ -11107,7 +11040,7 @@ it's null</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27467 panic: attempt to unwrap error: UnableToReturnNumber
+thread 12690 panic: attempt to unwrap error: UnableToReturnNumber
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:9:5</span>: <span class="t2_0">0x230b04 in getNumberOrFail (test)</span>
     return error.UnableToReturnNumber;
     <span class="t32_1">^</span>
@@ -11176,7 +11109,7 @@ got error: UnableToReturnNumber</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27525 panic: invalid error code
+thread 12749 panic: invalid error code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:23</span>: <span class="t2_0">0x229ba3 in main (test)</span>
     var invalid_err = @intToError(number);
                       <span class="t32_1">^</span>
@@ -11229,7 +11162,7 @@ const Foo = enum {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27554 panic: invalid enum value
+thread 12778 panic: invalid enum value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:11:13</span>: <span class="t2_0">0x229bc9 in main (test)</span>
     var b = @intToEnum(Foo, a);
             <span class="t32_1">^</span>
@@ -11285,7 +11218,7 @@ thread 27554 panic: invalid enum value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27591 panic: invalid error code
+thread 12807 panic: invalid error code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:15:15</span>: <span class="t2_0">0x230ae6 in foo (test)</span>
     const x = @errSetCast(Set2, set1);
               <span class="t32_1">^</span>
@@ -11335,7 +11268,7 @@ thread 27591 panic: invalid error code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27620 panic: incorrect alignment
+thread 12847 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:9:59</span>: <span class="t2_0">0x230d6c in foo (test)</span>
     const int_slice = mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                           <span class="t32_1">^</span>
@@ -11390,7 +11323,7 @@ thread 27620 panic: incorrect alignment
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27663 panic: access of inactive union field
+thread 12878 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:14:6</span>: <span class="t2_0">0x23e29a in bar (test)</span>
     f.float = 12.34;
      <span class="t32_1">^</span>
@@ -11495,7 +11428,7 @@ value: 1.23400001e+01</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 27740 panic: cast causes pointer to be null
+thread 12955 panic: cast causes pointer to be null
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:15</span>: <span class="t2_0">0x229ae0 in main (test)</span>
     var ptr = @ptrCast(*i32, opt_ptr);
               <span class="t32_1">^</span>
@@ -11601,7 +11534,7 @@ All 1 tests passed.</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe cli_allocation.zig </kbd>
 
 $ <kbd>./cli_allocation</kbd>
-ptr=i32@7f7223dc8018</samp></pre></figure>
+ptr=i32@7f3a68879018</samp></pre></figure>
               When using this kind of allocator, there is no need to free anything manually. Everything
               gets freed at once with the call to <code>arena.deinit()</code>.
           </li>
