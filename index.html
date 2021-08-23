@@ -9,6 +9,10 @@
       body{
         font-family: system-ui, -apple-system, Roboto, "Segoe UI", sans-serif;
         margin: 0;
+        line-height: 1.5;
+      }
+      a:hover,a:focus {
+        background: #fff2a8;
       }
       dt {
         font-weight: bold;
@@ -41,6 +45,13 @@
       }
       .file {
         font-weight: bold;
+        border: unset;
+      }
+      code {
+        background: #f8f8f8;
+        border: 1px dotted silver;
+        padding-left: 0.3em;
+        padding-right: 0.3em;
       }
       pre > code {
         display: block;
@@ -51,18 +62,14 @@
         border: 1px dotted silver;
         line-height: normal;
       }
-      code {
-        background-color: #f8f8f8;
-        border: 1px dotted silver;
-        padding-left: 0.3em;
-        padding-right: 0.3em;
+      samp {
+        background: #fefefe;
+        color: #333;
       }
       pre > samp {
         display: block;
         overflow: auto;
         padding: 0.5em;
-        color: #333;
-        background: #fefefe;
         border: 1px solid silver;
         line-height: normal;
       }
@@ -116,38 +123,36 @@
       #contents {
         max-width: 60em;
         margin: auto;
-        line-height: 1.5;
       }
 
       #navigation {
         padding: 0 1em;
       }
 
+      figure {
+        margin: auto 0;
+      }
       figure pre {
         margin-top: 0;
       }
 
-      figure {
-        margin-left: 0;
-      }
-
       figcaption {
-        padding-left: 0.25em;
+        padding-left: 0.5em;
         font-size: small;
       }
       figcaption.zig-cap {
-        background-color: #f7a41d;
+        background: #f7a41d;
       }
       figcaption.c-cap {
-        background-color: #a8b9cc;
+        background: #a8b9cc;
         color: #000;
       }
       figcaption.javascript-cap {
-        background-color: #365d95;
+        background: #365d95;
         color: #fff;
       }
       figcaption.shell-cap {
-        background-color: #737475;
+        background: #737475;
         color: #fff;
       }
 
@@ -184,11 +189,14 @@
 
       @media (prefers-color-scheme: dark) {
         body{
-            background-color:#111;
+            background:#111;
             color: #bbb;
         }
         a {
             color: #f7a31d;
+        }
+        a:hover,a:focus {
+            color: #000;
         }
         table, th, td {
             border-color: grey;
@@ -200,23 +208,25 @@
             color: red;
         }
         .t32_1 {
-            color: green;
+            color: #00B800;
         }
         .t36_1 {
             color: #0086b3;
+        }
+        code {
+          background: #222;
+          border-color: #444;
         }
         pre > code {
             color: #ccc;
             background: #222;
             border-color: #444;
         }
-        code {
-          background-color: #222;
-          border-color: #444;
+        samp {
+          background: #000;
+          color: #ccc;
         }
         pre > samp {
-          color: #fff;
-          background: #000;
           border: 1px solid black;
         }
         .tok-kw {
@@ -246,9 +256,7 @@
         h1 a, h2 a, h3 a, h4 a, h5 a {
             color: #aaa;
         }
-
         figcaption.zig-cap {
-          background-color: #f7a41d;
           color: #000;
         }
       }
@@ -278,19 +286,6 @@
         <li><a id="toc-Zig-Standard-Library" href="#Zig-Standard-Library">Zig Standard Library</a></li>
         <li><a id="toc-Hello-World" href="#Hello-World">Hello World</a></li>
         <li><a id="toc-Zig-Test" href="#Zig-Test">Zig Test</a></li>
-        <li><a id="toc-Zig-Build-System" href="#Zig-Build-System">Zig Build System</a>
-        <ul>
-            <li><a id="toc-Building-an-Executable" href="#Building-an-Executable">Building an Executable</a></li>
-            <li><a id="toc-Building-a-Library" href="#Building-a-Library">Building a Library</a></li>
-            <li><a id="toc-Build-Mode" href="#Build-Mode">Build Mode</a>
-            <ul>
-                <li><a id="toc-Debug" href="#Debug">Debug</a></li>
-                <li><a id="toc-ReleaseFast" href="#ReleaseFast">ReleaseFast</a></li>
-                <li><a id="toc-ReleaseSafe" href="#ReleaseSafe">ReleaseSafe</a></li>
-                <li><a id="toc-ReleaseSmall" href="#ReleaseSmall">ReleaseSmall</a></li>
-            </ul></li>
-            <li><a id="toc-Single-Threaded-Builds" href="#Single-Threaded-Builds">Single Threaded Builds</a></li>
-        </ul></li>
         <li><a id="toc-Comments" href="#Comments">Comments</a>
         <ul>
             <li><a id="toc-Doc-comments" href="#Doc-comments">Doc comments</a></li>
@@ -597,6 +592,14 @@
             <li><a id="toc-TypeOf" href="#TypeOf">@TypeOf</a></li>
             <li><a id="toc-unionInit" href="#unionInit">@unionInit</a></li>
         </ul></li>
+        <li><a id="toc-Build-Mode" href="#Build-Mode">Build Mode</a>
+        <ul>
+            <li><a id="toc-Debug" href="#Debug">Debug</a></li>
+            <li><a id="toc-ReleaseFast" href="#ReleaseFast">ReleaseFast</a></li>
+            <li><a id="toc-ReleaseSafe" href="#ReleaseSafe">ReleaseSafe</a></li>
+            <li><a id="toc-ReleaseSmall" href="#ReleaseSmall">ReleaseSmall</a></li>
+        </ul></li>
+        <li><a id="toc-Single-Threaded-Builds" href="#Single-Threaded-Builds">Single Threaded Builds</a></li>
         <li><a id="toc-Undefined-Behavior" href="#Undefined-Behavior">Undefined Behavior</a>
         <ul>
             <li><a id="toc-Reaching-Unreachable-Code" href="#Reaching-Unreachable-Code">Reaching Unreachable Code</a></li>
@@ -636,9 +639,14 @@
         </ul></li>
         <li><a id="toc-Compile-Variables" href="#Compile-Variables">Compile Variables</a></li>
         <li><a id="toc-Root-Source-File" href="#Root-Source-File">Root Source File</a></li>
+        <li><a id="toc-Zig-Build-System" href="#Zig-Build-System">Zig Build System</a>
+        <ul>
+            <li><a id="toc-Building-an-Executable" href="#Building-an-Executable">Building an Executable</a></li>
+            <li><a id="toc-Building-a-Library" href="#Building-a-Library">Building a Library</a></li>
+            <li><a id="toc-Compiling-C-Source-Code" href="#Compiling-C-Source-Code">Compiling C Source Code</a></li>
+        </ul></li>
         <li><a id="toc-C" href="#C">C</a>
         <ul>
-            <li><a id="toc-Compiling-C-Source-Code" href="#Compiling-C-Source-Code">Compiling C Source Code</a></li>
             <li><a id="toc-C-Type-Primitives" href="#C-Type-Primitives">C Type Primitives</a></li>
             <li><a id="toc-Import-from-C-Header-File" href="#Import-from-C-Header-File">Import from C Header File</a></li>
             <li><a id="toc-C-Translation-CLI" href="#C-Translation-CLI">C Translation CLI</a>
@@ -712,7 +720,7 @@
         The <a href="https://ziglang.org/documentation/master/std/">Zig Standard Library</a> has its own documentation.
       </p>
       <p>
-        Zig's Standard Library contains commonly used functions, data structures, and values that will help you build programs or libraries.
+        Zig's Standard Library contains commonly used algorithms, data structures, and definitions to help you build programs or libraries.
         You will see many examples of Zig's Standard Library used in this documentation. To learn more about the Zig Standard Library,
         visit the link above.
       </p>
@@ -734,13 +742,13 @@ Hello, world!</samp></pre></figure>
         The Zig code sample above demonstrates one way to create a program that will output: <samp>Hello, world!</samp>.
       </p>
       <p>
-        The code sample shows the contents of a file named <span class="file">hello.zig</span>. Files storing Zig
+        The code sample shows the contents of a file named <code class="file">hello.zig</code>. Files storing Zig
         source code are <a href="#Source-Encoding">UTF-8 encoded</a> text files. The files storing
-        Zig source code are usually named with the <em>.zig</em> extension.
+        Zig source code are usually named with the <code class="file"><em>.zig</em></code> extension.
       </p>
       <p>
-        Following the <span class="file">hello.zig</span> Zig code sample, the <a href="#Zig-Build-System">Zig Build System</a> is used
-        to build an executable program from the <span class="file">hello.zig</span> source code. Then, the
+        Following the <code class="file">hello.zig</code> Zig code sample, the <a href="#Zig-Build-System">Zig Build System</a> is used
+        to build an executable program from the <code class="file">hello.zig</code> source code. Then, the
         <span class="programname">hello</span> program is executed showing its output <samp>Hello, world!</samp>. The
         lines beginning with <code>$</code> represent command line prompts and a command.
         Everything else is program output.
@@ -769,7 +777,7 @@ Hello, world!</samp></pre></figure>
         cannot perform its task, it might return an error. Zig makes all of this explicit.
       </p>
       <p>
-        In the <span class="file">hello.zig</span> code sample, the <code>main</code> function is declared
+        In the <code class="file">hello.zig</code> code sample, the <code>main</code> function is declared
         with the <code>!<span class="tok-type">void</span></code> return type. This return type is known as an <a href="#Error-Union-Type">Error Union Type</a>.
         This syntax tells the Zig compiler that the function will either return an
         error or a value. An error union type combines an <a href="#Error-Set-Type">Error Set Type</a> and any other data type
@@ -825,7 +833,7 @@ Hello, world!</samp></pre></figure>
         to handle the failure case of printing to standard output, you can use alternate functions: the
         functions in <code>std.log</code> for proper logging or the <code>std.debug.print</code> function.
         This documentation will use the latter option to print to standard error (stderr) and silently return
-        on failure. The next code sample, <span class="file">hello_again.zig</span> demonstrates the use of
+        on failure. The next code sample, <code class="file">hello_again.zig</code> demonstrates the use of
         <code>std.debug.print</code>.
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">hello_again.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> print = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).debug.print;
@@ -922,187 +930,6 @@ docgen_tmp/zig-cache/o/9264bf657f6275ee98061db75408a88e/test /home/paul/Developm
       isolation.
       </p>
       
-
-      <h2 id="Zig-Build-System"><a href="#toc-Zig-Build-System">Zig Build System</a> <a class="hdr" href="#Zig-Build-System">§</a></h2>
-
-      <p>
-      The Zig Build System provides a cross-platform, dependency-free way to declare
-      the logic required to build a project. With this system, the logic to build
-      a project is written in a build.zig file, using the Zig Build System API to
-      declare and configure build artifacts and other tasks.
-      </p>
-      <p>
-      Some examples of tasks the build system can help with:
-      </p>
-      <ul>
-        <li>Creating build artifacts by executing the Zig compiler. This includes
-          building Zig source code as well as C and C++ source code.</li>
-        <li>Capturing user-configured options and using those options to configure
-          the build.</li>
-        <li>Surfacing build configuration as <a href="#comptime">comptime</a> values by providing a
-          file that can be <a href="#import">imported</a> by Zig code.</li>
-        <li>Caching build artifacts to avoid unnecessarily repeating steps.</li>
-        <li>Executing build artifacts or system-installed tools.</li>
-        <li>Running tests and verifying the output of executing a build artifact matches
-        the expected value.</li>
-        <li>Running <code>zig fmt</code> on a codebase or a subset of it.</li>
-        <li>Custom tasks.</li>
-      </ul>
-      <p>
-      To use the build system, run <kbd>zig build --help</kbd>
-      to see a command-line usage help menu. This will include project-specific
-      options that were declared in the build.zig script.
-      </p>
-
-      <h3 id="Building-an-Executable"><a href="#toc-Building-an-Executable">Building an Executable</a> <a class="hdr" href="#Building-an-Executable">§</a></h3>
-
-      <p>This <kbd>build.zig</kbd> file is automatically generated
-        by <kbd>zig init-exe</kbd>.</p>
-      <figure><figcaption class="zig-cap"><cite class="file">build.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Builder = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).build.Builder;
-
-<span class="tok-kw">pub</span> <span class="tok-kw">fn</span> <span class="tok-fn">build</span>(b: *Builder) <span class="tok-type">void</span> {
-    <span class="tok-comment">// Standard target options allows the person running `zig build` to choose</span>
-    <span class="tok-comment">// what target to build for. Here we do not override the defaults, which</span>
-    <span class="tok-comment">// means any target is allowed, and the default is native. Other options</span>
-    <span class="tok-comment">// for restricting supported target set are available.</span>
-    <span class="tok-kw">const</span> target = b.standardTargetOptions(.{});
-
-    <span class="tok-comment">// Standard release options allow the person running `zig build` to select</span>
-    <span class="tok-comment">// between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.</span>
-    <span class="tok-kw">const</span> mode = b.standardReleaseOptions();
-
-    <span class="tok-kw">const</span> exe = b.addExecutable(<span class="tok-str">&quot;example&quot;</span>, <span class="tok-str">&quot;src/main.zig&quot;</span>);
-    exe.setTarget(target);
-    exe.setBuildMode(mode);
-    exe.install();
-
-    <span class="tok-kw">const</span> run_cmd = exe.run();
-    run_cmd.step.dependOn(b.getInstallStep());
-    <span class="tok-kw">if</span> (b.args) |args| {
-        run_cmd.addArgs(args);
-    }
-
-    <span class="tok-kw">const</span> run_step = b.step(<span class="tok-str">&quot;run&quot;</span>, <span class="tok-str">&quot;Run the app&quot;</span>);
-    run_step.dependOn(&amp;run_cmd.step);
-}</code></pre></figure>
-      
-
-      <h3 id="Building-a-Library"><a href="#toc-Building-a-Library">Building a Library</a> <a class="hdr" href="#Building-a-Library">§</a></h3>
-
-      <p>This <span class="file">build.zig</span> file is automatically generated
-        by <kbd>zig init-lib</kbd>.</p>
-      <figure><figcaption class="zig-cap"><cite class="file">build.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Builder = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).build.Builder;
-
-<span class="tok-kw">pub</span> <span class="tok-kw">fn</span> <span class="tok-fn">build</span>(b: *Builder) <span class="tok-type">void</span> {
-    <span class="tok-kw">const</span> mode = b.standardReleaseOptions();
-    <span class="tok-kw">const</span> lib = b.addStaticLibrary(<span class="tok-str">&quot;example&quot;</span>, <span class="tok-str">&quot;src/main.zig&quot;</span>);
-    lib.setBuildMode(mode);
-    lib.install();
-
-    <span class="tok-kw">var</span> main_tests = b.addTest(<span class="tok-str">&quot;src/main.zig&quot;</span>);
-    main_tests.setBuildMode(mode);
-
-    <span class="tok-kw">const</span> test_step = b.step(<span class="tok-str">&quot;test&quot;</span>, <span class="tok-str">&quot;Run library tests&quot;</span>);
-    test_step.dependOn(&amp;main_tests.step);
-}</code></pre></figure>
-      
-
-      <h3 id="Build-Mode"><a href="#toc-Build-Mode">Build Mode</a> <a class="hdr" href="#Build-Mode">§</a></h3>
-
-      <p>
-      Zig has four build modes:
-      </p>
-      <ul>
-        <li><a href="#Debug">Debug</a> (default)</li>
-        <li><a href="#ReleaseFast">ReleaseFast</a></li>
-        <li><a href="#ReleaseSafe">ReleaseSafe</a></li>
-        <li><a href="#ReleaseSmall">ReleaseSmall</a></li>
-      </ul>
-      <p>
-      To add standard build options to a <span class="file">build.zig</span> file:
-      </p>
-      <figure><figcaption class="zig-cap"><cite class="file">build.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Builder = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).build.Builder;
-
-<span class="tok-kw">pub</span> <span class="tok-kw">fn</span> <span class="tok-fn">build</span>(b: *Builder) <span class="tok-type">void</span> {
-    <span class="tok-kw">const</span> exe = b.addExecutable(<span class="tok-str">&quot;example&quot;</span>, <span class="tok-str">&quot;example.zig&quot;</span>);
-    exe.setBuildMode(b.standardReleaseOptions());
-    b.default_step.dependOn(&amp;exe.step);
-}</code></pre></figure>
-      <p>
-      This causes these options to be available:
-      </p>
-      <pre><code>  -Drelease-safe=[bool] optimizations on and safety on
-  -Drelease-fast=[bool] optimizations on and safety off
-  -Drelease-small=[bool] size optimizations on and safety off</code></pre>
-      <h4 id="Debug"><a href="#toc-Debug">Debug</a> <a class="hdr" href="#Debug">§</a></h4>
-
-      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig</kbd></samp></pre></figure>
-      <ul>
-        <li>Fast compilation speed</li>
-        <li>Safety checks enabled</li>
-        <li>Slow runtime performance</li>
-        <li>Large binary size</li>
-        <li>No reproducible build requirement</li>
-      </ul>
-      
-      <h4 id="ReleaseFast"><a href="#toc-ReleaseFast">ReleaseFast</a> <a class="hdr" href="#ReleaseFast">§</a></h4>
-
-      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseFast</kbd></samp></pre></figure>
-      <ul>
-        <li>Fast runtime performance</li>
-        <li>Safety checks disabled</li>
-        <li>Slow compilation speed</li>
-        <li>Large binary size</li>
-        <li>Reproducible build</li>
-      </ul>
-      
-      <h4 id="ReleaseSafe"><a href="#toc-ReleaseSafe">ReleaseSafe</a> <a class="hdr" href="#ReleaseSafe">§</a></h4>
-
-      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseSafe</kbd></samp></pre></figure>
-      <ul>
-        <li>Medium runtime performance</li>
-        <li>Safety checks enabled</li>
-        <li>Slow compilation speed</li>
-        <li>Large binary size</li>
-        <li>Reproducible build</li>
-      </ul>
-      
-      <h4 id="ReleaseSmall"><a href="#toc-ReleaseSmall">ReleaseSmall</a> <a class="hdr" href="#ReleaseSmall">§</a></h4>
-
-      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseSmall</kbd></samp></pre></figure>
-      <ul>
-        <li>Medium runtime performance</li>
-        <li>Safety checks disabled</li>
-        <li>Slow compilation speed</li>
-        <li>Small binary size</li>
-        <li>Reproducible build</li>
-      </ul>
-      
-      
-
-      <h3 id="Single-Threaded-Builds"><a href="#toc-Single-Threaded-Builds">Single Threaded Builds</a> <a class="hdr" href="#Single-Threaded-Builds">§</a></h3>
-
-      <p>Zig has a compile option <kbd>--single-threaded</kbd> which has the following effects:</p>
-      <ul>
-        <li>All <a href="#Thread-Local-Variables">Thread Local Variables</a> are treated as regular <a href="#Container-Level-Variables">Container Level Variables</a>.</li>
-        <li>The overhead of <a href="#Async-Functions">Async Functions</a> becomes equivalent to function call overhead.</li>
-        <li>The <code><span class="tok-builtin">@import</span>(<span class="tok-str">&quot;builtin&quot;</span>).single_threaded</code> becomes <code><span class="tok-null">true</span></code>
-          and therefore various userland APIs which read this variable become more efficient.
-          For example <code>std.Mutex</code> becomes
-          an empty data structure and all of its functions become no-ops.</li>
-      </ul>
-      
-
-      <p>See also:</p><ul>
-<li><a href="#Compile-Variables">Compile Variables</a></li>
-<li><a href="#Undefined-Behavior">Undefined Behavior</a></li>
-<li><a href="#C">C</a></li>
-<li><a href="#WebAssembly">WebAssembly</a></li>
-<li><a href="#Targets">Targets</a></li>
-</ul>
-
-      
-
       <h2 id="Comments"><a href="#toc-Comments">Comments</a> <a class="hdr" href="#Comments">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">comments.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;
@@ -3127,7 +2954,7 @@ All 2 tests passed.</samp></pre></figure>
     <span class="tok-kw">const</span> int_slice = std.mem.bytesAsSlice(<span class="tok-type">u32</span>, <span class="tok-builtin">@alignCast</span>(<span class="tok-number">4</span>, slice4));
     <span class="tok-kw">return</span> int_slice[<span class="tok-number">0</span>];
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;pointer alignment safety&quot;... thread 8698 panic: incorrect alignment
+Test [1/1] test &quot;pointer alignment safety&quot;... thread 11782 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:10:63</span>: <span class="t2_0">0x20807c in foo (test)</span>
     const int_slice = std.mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                               <span class="t32_1">^</span>
@@ -3236,7 +3063,7 @@ All 1 tests passed.</samp></pre></figure>
     <span class="tok-comment">// Note that `slice.ptr` does not invoke safety checking, while `&amp;slice[0]`</span>
     <span class="tok-comment">// asserts that the slice has len &gt;= 1.</span>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;basic slices&quot;... thread 8758 panic: index out of bounds
+Test [1/1] test &quot;basic slices&quot;... thread 11838 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:22:10</span>: <span class="t2_0">0x206933 in test &quot;basic slices&quot; (test)</span>
     slice[10] += 1;
          <span class="t32_1">^</span>
@@ -4080,7 +3907,7 @@ All 1 tests passed.</samp></pre></figure>
     <span class="tok-kw">var</span> payload = Payload{ .int = <span class="tok-number">1234</span> };
     payload.float = <span class="tok-number">12.34</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;simple union&quot;... thread 9193 panic: access of inactive union field
+Test [1/1] test &quot;simple union&quot;... thread 12279 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:8:12</span>: <span class="t2_0">0x2066fb in test &quot;simple union&quot; (test)</span>
     payload.float = 12.34;
            <span class="t32_1">^</span>
@@ -5276,7 +5103,7 @@ All 1 tests passed.</samp></pre></figure>
 <span class="tok-kw">test</span> <span class="tok-str">&quot;this will fail&quot;</span> {
     assert(<span class="tok-null">false</span>);
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;this will fail&quot;... thread 9857 panic: reached unreachable code
+Test [1/1] test &quot;this will fail&quot;... thread 12953 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:14</span>: <span class="t2_0">0x207ecb in assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -6030,7 +5857,7 @@ error: PermissionDenied
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 10368 panic: PermissionDenied
+thread 13464 panic: PermissionDenied
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:38:5</span>: <span class="t2_0">0x232286 in bang2 (test)</span>
     @panic(&quot;PermissionDenied&quot;);
     <span class="t32_1">^</span>
@@ -6951,16 +6778,16 @@ All 1 tests passed.</samp></pre></figure>
       <p>
       Instead of the above pattern, it is generally recommended to explicitly alias individual declarations.
       However, <code><span class="tok-kw">usingnamespace</span></code> has an important use case when organizing the public
-      API of a file or package. For example, one might have <code>c.zig</code> with all of the
+      API of a file or package. For example, one might have <code class="file">c.zig</code> with all of the
       <a href="#Import-from-C-Header-File">C imports</a>:
       </p>
-      <pre><code><span class="tok-kw">pub</span> <span class="tok-kw">usingnamespace</span> <span class="tok-builtin">@cImport</span>({
+      <figure><figcaption class="zig-cap"><cite class="file">c.zig</cite></figcaption><pre><code><span class="tok-kw">pub</span> <span class="tok-kw">usingnamespace</span> <span class="tok-builtin">@cImport</span>({
     <span class="tok-builtin">@cInclude</span>(<span class="tok-str">&quot;epoxy/gl.h&quot;</span>);
     <span class="tok-builtin">@cInclude</span>(<span class="tok-str">&quot;GLFW/glfw3.h&quot;</span>);
     <span class="tok-builtin">@cDefine</span>(<span class="tok-str">&quot;STBI_ONLY_PNG&quot;</span>, <span class="tok-str">&quot;&quot;</span>);
     <span class="tok-builtin">@cDefine</span>(<span class="tok-str">&quot;STBI_NO_STDIO&quot;</span>, <span class="tok-str">&quot;&quot;</span>);
     <span class="tok-builtin">@cInclude</span>(<span class="tok-str">&quot;stb_image.h&quot;</span>);
-});</code></pre>
+});</code></pre></figure>
       <p>
       The above example demonstrates using <code><span class="tok-kw">pub</span></code> to qualify the
       <code><span class="tok-kw">usingnamespace</span></code> additionally makes the imported declarations
@@ -7711,7 +7538,7 @@ hello world</samp></pre></figure>
       <p>
       Dissecting the syntax:
       </p>
-      <pre><code><span class="tok-comment">// Inline assembly is an expression which returns a value.</span>
+      <figure><figcaption class="zig-cap"><cite class="file">Assembly Syntax Explained</cite></figcaption><pre><code><span class="tok-comment">// Inline assembly is an expression which returns a value.</span>
 <span class="tok-comment">// the `asm` keyword begins the expression.</span>
 _ = <span class="tok-kw">asm</span>
 <span class="tok-comment">// `volatile` is an optional modifier that tells Zig this</span>
@@ -7766,7 +7593,7 @@ _ = <span class="tok-kw">asm</span>
 <span class="tok-comment">// output. In this example we list $rcx and $r11 because it is known the</span>
 <span class="tok-comment">// kernel syscall does not preserve these registers.</span>
     : <span class="tok-str">&quot;rcx&quot;</span>, <span class="tok-str">&quot;r11&quot;</span>
-);</code></pre>
+);</code></pre></figure>
       <p>
       For i386 and x86_64 targets, the syntax is AT&amp;T syntax, rather than the more
       popular Intel syntax. This is due to technical constraints; assembly parsing is
@@ -7872,12 +7699,19 @@ All 1 tests passed.</samp></pre></figure>
       <p>
       When a function is called, a frame is pushed to the stack,
       the function runs until it reaches a return statement, and then the frame is popped from the stack.
-      At the callsite, the following code does not run until the function returns.
+      The code following the callsite does not run until the function returns.
       </p>
       <p>
-      An async function is a function whose callsite is split into an <code><span class="tok-kw">async</span></code> initiation,
+      An async function is a function whose execution is split into an <code><span class="tok-kw">async</span></code> initiation,
       followed by an <code><span class="tok-kw">await</span></code> completion. Its frame is
       provided explicitly by the caller, and it can be suspended and resumed any number of times.
+      </p>
+      <p>
+      The code following the <code><span class="tok-kw">async</span></code> callsite runs immediately after the async 
+      function first suspends. When the return value of the async function is needed, 
+      the calling code can <code><span class="tok-kw">await</span></code> on the async function frame. 
+      This will suspend the calling code until the async function completes, at which point 
+      execution resumes just after the <code><span class="tok-kw">await</span></code> callsite.
       </p>
       <p>
       Zig infers that a function is <code><span class="tok-kw">async</span></code> when it observes that the function contains
@@ -7985,7 +7819,14 @@ All 1 tests passed.</samp></pre></figure>
 
       <p>
       In the same way that every <code><span class="tok-kw">suspend</span></code> has a matching
-      <code><span class="tok-kw">resume</span></code>, every <code><span class="tok-kw">async</span></code> has a matching <code><span class="tok-kw">await</span></code>.
+      <code><span class="tok-kw">resume</span></code>, every <code><span class="tok-kw">async</span></code> has a matching <code><span class="tok-kw">await</span></code>
+      in standard code.
+      </p>
+      <p>
+      However, it is possible to have an <code><span class="tok-kw">async</span></code> call 
+      without a matching <code><span class="tok-kw">await</span></code>. Upon completion of the async function, 
+      execution would continue at the most recent <code><span class="tok-kw">async</span></code> callsite or <code><span class="tok-kw">resume</span></code> callsite,
+      and the return value of the async function would be lost.
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
 <span class="tok-kw">const</span> expect = std.testing.expect;
@@ -8020,7 +7861,9 @@ All 1 tests passed.</samp></pre></figure>
       </p>
       <p>
       <code><span class="tok-kw">await</span></code> is a suspend point, and takes as an operand anything that
-      coerces to <code><span class="tok-kw">anyframe</span>-&gt;T</code>.
+      coerces to <code><span class="tok-kw">anyframe</span>-&gt;T</code>. Calling <code><span class="tok-kw">await</span></code> on 
+      the frame of an async function will cause execution to continue at the 
+      <code><span class="tok-kw">await</span></code> callsite once the target function completes.
       </p>
       <p>
       There is a common misconception that <code><span class="tok-kw">await</span></code> resumes the target function.
@@ -9798,7 +9641,7 @@ All 1 tests passed.</samp></pre></figure>
         }
     }
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig -OReleaseFast</kbd>
-Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 12018 panic: integer overflow
+Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 15204 panic: integer overflow
 error: the following test command crashed:
 docgen_tmp/zig-cache/o/9264bf657f6275ee98061db75408a88e/test /home/paul/Development/zig/build/zig</samp></pre></figure>
       <p>Note: it is <a href="https://github.com/ziglang/zig/issues/978">planned</a> to replace
@@ -10250,7 +10093,7 @@ All 1 tests passed.</samp></pre></figure>
     <span class="tok-kw">var</span> b: <span class="tok-type">u8</span> = <span class="tok-builtin">@intCast</span>(<span class="tok-type">u8</span>, a);
     _ = b;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;integer cast panic&quot;... thread 12136 panic: integer cast truncated bits
+Test [1/1] test &quot;integer cast panic&quot;... thread 15320 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:17</span>: <span class="t2_0">0x2066b5 in test &quot;integer cast panic&quot; (test)</span>
     var b: u8 = @intCast(u8, a);
                 <span class="t32_1">^</span>
@@ -10397,6 +10240,100 @@ All 1 tests passed.</samp></pre></figure>
       
       
 
+      <h2 id="Build-Mode"><a href="#toc-Build-Mode">Build Mode</a> <a class="hdr" href="#Build-Mode">§</a></h2>
+
+      <p>
+      Zig has four build modes:
+      </p>
+      <ul>
+        <li><a href="#Debug">Debug</a> (default)</li>
+        <li><a href="#ReleaseFast">ReleaseFast</a></li>
+        <li><a href="#ReleaseSafe">ReleaseSafe</a></li>
+        <li><a href="#ReleaseSmall">ReleaseSmall</a></li>
+      </ul>
+      <p>
+      To add standard build options to a <code class="file">build.zig</code> file:
+      </p>
+      <figure><figcaption class="zig-cap"><cite class="file">build.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Builder = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).build.Builder;
+
+<span class="tok-kw">pub</span> <span class="tok-kw">fn</span> <span class="tok-fn">build</span>(b: *Builder) <span class="tok-type">void</span> {
+    <span class="tok-kw">const</span> exe = b.addExecutable(<span class="tok-str">&quot;example&quot;</span>, <span class="tok-str">&quot;example.zig&quot;</span>);
+    exe.setBuildMode(b.standardReleaseOptions());
+    b.default_step.dependOn(&amp;exe.step);
+}</code></pre></figure>
+      <p>
+      This causes these options to be available:
+      </p>
+      <dl>
+        <dt><kbd>-Drelease-safe=[bool]</kbd></dt><dd>Optimizations on and safety on</dd>
+        <dt><kbd>-Drelease-fast=[bool]</kbd></dt><dd>Optimizations on and safety off</dd>
+        <dt><kbd>-Drelease-small=[bool]</kbd></dt><dd>Size optimizations on and safety off</dd>
+      </dl>
+      <h3 id="Debug"><a href="#toc-Debug">Debug</a> <a class="hdr" href="#Debug">§</a></h3>
+
+      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig</kbd></samp></pre></figure>
+      <ul>
+        <li>Fast compilation speed</li>
+        <li>Safety checks enabled</li>
+        <li>Slow runtime performance</li>
+        <li>Large binary size</li>
+        <li>No reproducible build requirement</li>
+      </ul>
+      
+      <h3 id="ReleaseFast"><a href="#toc-ReleaseFast">ReleaseFast</a> <a class="hdr" href="#ReleaseFast">§</a></h3>
+
+      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseFast</kbd></samp></pre></figure>
+      <ul>
+        <li>Fast runtime performance</li>
+        <li>Safety checks disabled</li>
+        <li>Slow compilation speed</li>
+        <li>Large binary size</li>
+        <li>Reproducible build</li>
+      </ul>
+      
+      <h3 id="ReleaseSafe"><a href="#toc-ReleaseSafe">ReleaseSafe</a> <a class="hdr" href="#ReleaseSafe">§</a></h3>
+
+      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseSafe</kbd></samp></pre></figure>
+      <ul>
+        <li>Medium runtime performance</li>
+        <li>Safety checks enabled</li>
+        <li>Slow compilation speed</li>
+        <li>Large binary size</li>
+        <li>Reproducible build</li>
+      </ul>
+      
+      <h3 id="ReleaseSmall"><a href="#toc-ReleaseSmall">ReleaseSmall</a> <a class="hdr" href="#ReleaseSmall">§</a></h3>
+
+      <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseSmall</kbd></samp></pre></figure>
+      <ul>
+        <li>Medium runtime performance</li>
+        <li>Safety checks disabled</li>
+        <li>Slow compilation speed</li>
+        <li>Small binary size</li>
+        <li>Reproducible build</li>
+      </ul>
+      
+      <p>See also:</p><ul>
+<li><a href="#Compile-Variables">Compile Variables</a></li>
+<li><a href="#Zig-Build-System">Zig Build System</a></li>
+<li><a href="#Undefined-Behavior">Undefined Behavior</a></li>
+</ul>
+
+      
+
+      <h2 id="Single-Threaded-Builds"><a href="#toc-Single-Threaded-Builds">Single Threaded Builds</a> <a class="hdr" href="#Single-Threaded-Builds">§</a></h2>
+
+      <p>Zig has a compile option <kbd>--single-threaded</kbd> which has the following effects:</p>
+      <ul>
+        <li>All <a href="#Thread-Local-Variables">Thread Local Variables</a> are treated as regular <a href="#Container-Level-Variables">Container Level Variables</a>.</li>
+        <li>The overhead of <a href="#Async-Functions">Async Functions</a> becomes equivalent to function call overhead.</li>
+        <li>The <code><span class="tok-builtin">@import</span>(<span class="tok-str">&quot;builtin&quot;</span>).single_threaded</code> becomes <code><span class="tok-null">true</span></code>
+          and therefore various userland APIs which read this variable become more efficient.
+          For example <code>std.Mutex</code> becomes
+          an empty data structure and all of its functions become no-ops.</li>
+      </ul>
+      
+
       <h2 id="Undefined-Behavior"><a href="#toc-Undefined-Behavior">Undefined Behavior</a> <a class="hdr" href="#Undefined-Behavior">§</a></h2>
 
       <p>
@@ -10414,7 +10351,7 @@ All 1 tests passed.</samp></pre></figure>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">test</span> <span class="tok-str">&quot;safety check&quot;</span> {
     <span class="tok-kw">unreachable</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig </kbd>
-Test [1/1] test &quot;safety check&quot;... thread 12203 panic: reached unreachable code
+Test [1/1] test &quot;safety check&quot;... thread 15433 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:2:5</span>: <span class="t2_0">0x20668a in test &quot;safety check&quot; (test)</span>
     unreachable;
     <span class="t32_1">^</span>
@@ -10464,7 +10401,7 @@ comptime {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12240 panic: reached unreachable code
+thread 15462 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/build/lib/zig/std/debug.zig:231:14</span>: <span class="t2_0">0x20432b in std.debug.assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -10507,7 +10444,7 @@ thread 12240 panic: reached unreachable code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12269 panic: index out of bounds
+thread 15491 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:7:13</span>: <span class="t2_0">0x230a29 in foo (test)</span>
     return x[5];
             <span class="t32_1">^</span>
@@ -10549,7 +10486,7 @@ thread 12269 panic: index out of bounds
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12306 panic: attempt to cast negative value to unsigned integer
+thread 15528 panic: attempt to cast negative value to unsigned integer
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:20</span>: <span class="t2_0">0x229b47 in main (test)</span>
     var unsigned = @intCast(u32, value);
                    <span class="t32_1">^</span>
@@ -10591,7 +10528,7 @@ thread 12306 panic: attempt to cast negative value to unsigned integer
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12335 panic: integer cast truncated bits
+thread 15557 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:18</span>: <span class="t2_0">0x229b4c in main (test)</span>
     const byte = @intCast(u8, spartan_count);
                  <span class="t32_1">^</span>
@@ -10645,7 +10582,7 @@ thread 12335 panic: integer cast truncated bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12372 panic: integer overflow
+thread 15594 panic: integer overflow
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:10</span>: <span class="t2_0">0x229b2f in main (test)</span>
     byte += 1;
          <span class="t32_1">^</span>
@@ -10776,7 +10713,7 @@ All 1 tests passed.</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12469 panic: left shift overflowed bits
+thread 15703 panic: left shift overflowed bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b6b in main (test)</span>
     var y = @shlExact(x, 2);
             <span class="t32_1">^</span>
@@ -10814,7 +10751,7 @@ thread 12469 panic: left shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12498 panic: right shift overflowed bits
+thread 15740 panic: right shift overflowed bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b6b in main (test)</span>
     var y = @shrExact(x, 2);
             <span class="t32_1">^</span>
@@ -10855,7 +10792,7 @@ thread 12498 panic: right shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12538 panic: division by zero
+thread 15769 panic: division by zero
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229b39 in main (test)</span>
     var c = a / b;
               <span class="t32_1">^</span>
@@ -10896,7 +10833,7 @@ thread 12538 panic: division by zero
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12567 panic: remainder division by zero or negative value
+thread 15798 panic: remainder division by zero or negative value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229b5b in main (test)</span>
     var c = a % b;
               <span class="t32_1">^</span>
@@ -10937,7 +10874,7 @@ thread 12567 panic: remainder division by zero or negative value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12604 panic: exact division produced remainder
+thread 15835 panic: exact division produced remainder
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:13</span>: <span class="t2_0">0x229b7d in main (test)</span>
     var c = @divExact(a, b);
             <span class="t32_1">^</span>
@@ -10976,7 +10913,7 @@ thread 12604 panic: exact division produced remainder
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12633 panic: attempt to use null value
+thread 15864 panic: attempt to use null value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:33</span>: <span class="t2_0">0x229b3c in main (test)</span>
     var number = optional_number.?;
                                 <span class="t32_1">^</span>
@@ -11040,7 +10977,7 @@ it's null</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12690 panic: attempt to unwrap error: UnableToReturnNumber
+thread 15921 panic: attempt to unwrap error: UnableToReturnNumber
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:9:5</span>: <span class="t2_0">0x230b04 in getNumberOrFail (test)</span>
     return error.UnableToReturnNumber;
     <span class="t32_1">^</span>
@@ -11109,7 +11046,7 @@ got error: UnableToReturnNumber</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12749 panic: invalid error code
+thread 15979 panic: invalid error code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:23</span>: <span class="t2_0">0x229ba3 in main (test)</span>
     var invalid_err = @intToError(number);
                       <span class="t32_1">^</span>
@@ -11162,7 +11099,7 @@ const Foo = enum {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12778 panic: invalid enum value
+thread 16008 panic: invalid enum value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:11:13</span>: <span class="t2_0">0x229bc9 in main (test)</span>
     var b = @intToEnum(Foo, a);
             <span class="t32_1">^</span>
@@ -11218,7 +11155,7 @@ thread 12778 panic: invalid enum value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12807 panic: invalid error code
+thread 16045 panic: invalid error code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:15:15</span>: <span class="t2_0">0x230ae6 in foo (test)</span>
     const x = @errSetCast(Set2, set1);
               <span class="t32_1">^</span>
@@ -11268,7 +11205,7 @@ thread 12807 panic: invalid error code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12847 panic: incorrect alignment
+thread 16074 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:9:59</span>: <span class="t2_0">0x230d6c in foo (test)</span>
     const int_slice = mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                           <span class="t32_1">^</span>
@@ -11323,7 +11260,7 @@ thread 12847 panic: incorrect alignment
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12878 panic: access of inactive union field
+thread 16111 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:14:6</span>: <span class="t2_0">0x23e29a in bar (test)</span>
     f.float = 12.34;
      <span class="t32_1">^</span>
@@ -11428,7 +11365,7 @@ value: 1.23400001e+01</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig </kbd>
 
 $ <kbd>./test</kbd>
-thread 12955 panic: cast causes pointer to be null
+thread 16189 panic: cast causes pointer to be null
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:15</span>: <span class="t2_0">0x229ae0 in main (test)</span>
     var ptr = @ptrCast(*i32, opt_ptr);
               <span class="t32_1">^</span>
@@ -11534,7 +11471,7 @@ All 1 tests passed.</samp></pre></figure>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe cli_allocation.zig </kbd>
 
 $ <kbd>./cli_allocation</kbd>
-ptr=i32@7f3a68879018</samp></pre></figure>
+ptr=i32@7ff3e3165018</samp></pre></figure>
               When using this kind of allocator, there is no need to free anything manually. Everything
               gets freed at once with the call to <code>arena.deinit()</code>.
           </li>
@@ -11854,15 +11791,90 @@ All 1 tests passed.</samp></pre></figure>
       <p>TODO: lazy analysis</p>
       <p>TODO: using comptime { _ = @import() }</p>
       
-      <h2 id="C"><a href="#toc-C">C</a> <a class="hdr" href="#C">§</a></h2>
+      <h2 id="Zig-Build-System"><a href="#toc-Zig-Build-System">Zig Build System</a> <a class="hdr" href="#Zig-Build-System">§</a></h2>
 
       <p>
-      Although Zig is independent of C, and, unlike most other languages, does not depend on libc,
-      Zig acknowledges the importance of interacting with existing C code.
+      The Zig Build System provides a cross-platform, dependency-free way to declare
+      the logic required to build a project. With this system, the logic to build
+      a project is written in a build.zig file, using the Zig Build System API to
+      declare and configure build artifacts and other tasks.
       </p>
       <p>
-      There are a few ways that Zig facilitates C interop.
+      Some examples of tasks the build system can help with:
       </p>
+      <ul>
+        <li>Creating build artifacts by executing the Zig compiler. This includes
+          building Zig source code as well as C and C++ source code.</li>
+        <li>Capturing user-configured options and using those options to configure
+          the build.</li>
+        <li>Surfacing build configuration as <a href="#comptime">comptime</a> values by providing a
+          file that can be <a href="#import">imported</a> by Zig code.</li>
+        <li>Caching build artifacts to avoid unnecessarily repeating steps.</li>
+        <li>Executing build artifacts or system-installed tools.</li>
+        <li>Running tests and verifying the output of executing a build artifact matches
+        the expected value.</li>
+        <li>Running <code>zig fmt</code> on a codebase or a subset of it.</li>
+        <li>Custom tasks.</li>
+      </ul>
+      <p>
+      To use the build system, run <kbd>zig build --help</kbd>
+      to see a command-line usage help menu. This will include project-specific
+      options that were declared in the build.zig script.
+      </p>
+
+      <h3 id="Building-an-Executable"><a href="#toc-Building-an-Executable">Building an Executable</a> <a class="hdr" href="#Building-an-Executable">§</a></h3>
+
+      <p>This <code class="file">build.zig</code> file is automatically generated
+        by <kbd>zig init-exe</kbd>.</p>
+      <figure><figcaption class="zig-cap"><cite class="file">build.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Builder = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).build.Builder;
+
+<span class="tok-kw">pub</span> <span class="tok-kw">fn</span> <span class="tok-fn">build</span>(b: *Builder) <span class="tok-type">void</span> {
+    <span class="tok-comment">// Standard target options allows the person running `zig build` to choose</span>
+    <span class="tok-comment">// what target to build for. Here we do not override the defaults, which</span>
+    <span class="tok-comment">// means any target is allowed, and the default is native. Other options</span>
+    <span class="tok-comment">// for restricting supported target set are available.</span>
+    <span class="tok-kw">const</span> target = b.standardTargetOptions(.{});
+
+    <span class="tok-comment">// Standard release options allow the person running `zig build` to select</span>
+    <span class="tok-comment">// between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.</span>
+    <span class="tok-kw">const</span> mode = b.standardReleaseOptions();
+
+    <span class="tok-kw">const</span> exe = b.addExecutable(<span class="tok-str">&quot;example&quot;</span>, <span class="tok-str">&quot;src/main.zig&quot;</span>);
+    exe.setTarget(target);
+    exe.setBuildMode(mode);
+    exe.install();
+
+    <span class="tok-kw">const</span> run_cmd = exe.run();
+    run_cmd.step.dependOn(b.getInstallStep());
+    <span class="tok-kw">if</span> (b.args) |args| {
+        run_cmd.addArgs(args);
+    }
+
+    <span class="tok-kw">const</span> run_step = b.step(<span class="tok-str">&quot;run&quot;</span>, <span class="tok-str">&quot;Run the app&quot;</span>);
+    run_step.dependOn(&amp;run_cmd.step);
+}</code></pre></figure>
+      
+
+      <h3 id="Building-a-Library"><a href="#toc-Building-a-Library">Building a Library</a> <a class="hdr" href="#Building-a-Library">§</a></h3>
+
+      <p>This <code class="file">build.zig</code> file is automatically generated
+        by <kbd>zig init-lib</kbd>.</p>
+      <figure><figcaption class="zig-cap"><cite class="file">build.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Builder = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).build.Builder;
+
+<span class="tok-kw">pub</span> <span class="tok-kw">fn</span> <span class="tok-fn">build</span>(b: *Builder) <span class="tok-type">void</span> {
+    <span class="tok-kw">const</span> mode = b.standardReleaseOptions();
+    <span class="tok-kw">const</span> lib = b.addStaticLibrary(<span class="tok-str">&quot;example&quot;</span>, <span class="tok-str">&quot;src/main.zig&quot;</span>);
+    lib.setBuildMode(mode);
+    lib.install();
+
+    <span class="tok-kw">var</span> main_tests = b.addTest(<span class="tok-str">&quot;src/main.zig&quot;</span>);
+    main_tests.setBuildMode(mode);
+
+    <span class="tok-kw">const</span> test_step = b.step(<span class="tok-str">&quot;test&quot;</span>, <span class="tok-str">&quot;Run library tests&quot;</span>);
+    test_step.dependOn(&amp;main_tests.step);
+}</code></pre></figure>
+      
+
       <h3 id="Compiling-C-Source-Code"><a href="#toc-Compiling-C-Source-Code">Compiling C Source Code</a> <a class="hdr" href="#Compiling-C-Source-Code">§</a></h3>
 
       <pre><code>lib.addCSourceFile(<span class="tok-str">&quot;src/lib.c&quot;</span>, &amp;[_][]<span class="tok-kw">const</span> <span class="tok-type">u8</span>{
@@ -11872,6 +11884,16 @@ All 1 tests passed.</samp></pre></figure>
 });</code></pre>
       
 
+      
+      <h2 id="C"><a href="#toc-C">C</a> <a class="hdr" href="#C">§</a></h2>
+
+      <p>
+      Although Zig is independent of C, and, unlike most other languages, does not depend on libc,
+      Zig acknowledges the importance of interacting with existing C code.
+      </p>
+      <p>
+      There are a few ways that Zig facilitates C interop.
+      </p>
       <h3 id="C-Type-Primitives"><a href="#toc-C-Type-Primitives">C Type Primitives</a> <a class="hdr" href="#C-Type-Primitives">§</a></h3>
 
       <p>
@@ -11898,7 +11920,7 @@ All 1 tests passed.</samp></pre></figure>
 
       <p>
       The <code><span class="tok-builtin">@cImport</span></code> builtin function can be used
-      to directly import symbols from .h files:
+      to directly import symbols from <code class="file">.h</code files:
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> c = <span class="tok-builtin">@cImport</span>({
     <span class="tok-comment">// See https://github.com/ziglang/zig/issues/515</span>
@@ -11914,7 +11936,7 @@ hello</samp></pre></figure>
       <p>
       The <code><span class="tok-builtin">@cImport</span></code> function takes an expression as a parameter.
       This expression is evaluated at compile-time and is used to control
-      preprocessor directives and include multiple .h files:
+      preprocessor directives and include multiple <code class="file">.h</code> files:
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> builtin = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;builtin&quot;</span>);
 
@@ -12045,10 +12067,10 @@ info(compilation): C import output: docgen_tmp/zig-cache/o/8a84c86bc90720b717fdd
 
 $ <kbd>./verbose</kbd></samp></pre></figure>
       <p>
-        <span class="file">cimport.h</span> contains the file to translate (constructed from calls to
+        <code class="file">cimport.h</code> contains the file to translate (constructed from calls to
         <code><span class="tok-builtin">@cInclude</span></code>, <code><span class="tok-builtin">@cDefine</span></code>, and <code><span class="tok-builtin">@cUndef</span></code>),
-        <span class="file">cimport.h.d</span> is the list of file dependencies, and
-        <span class="file">cimport.zig</span> contains the translated output.
+        <code class="file">cimport.h.d</code> is the list of file dependencies, and
+        <code class="file">cimport.zig</code> contains the translated output.
       </p>
       <p>See also:</p><ul>
 <li><a href="#Import-from-C-Header-File">Import from C Header File</a></li>
@@ -12653,9 +12675,9 @@ coding style.
       <p>
       File names fall into two categories: types and namespaces. If the file
       (implicitly a struct) has top level fields, it should be named like any
-      other struct with fields using <code>TitleCase</code>. Otherwise,
-      it should use <code>snake_case</code>. Directory names should be
-      <code>snake_case</code>.
+      other struct with fields using <code class="file">TitleCase</code>. Otherwise,
+      it should use <code class="file">snake_case</code>. Directory names should be
+      <code class="file">snake_case</code>.
       </p>
       <p>
       These are general rules of thumb; if it makes sense to do something different,
@@ -12746,7 +12768,7 @@ coding style.
       but use of hard tabs is discouraged. See <a href="#Grammar">Grammar</a>.
       </p>
       <p>
-      Note that running <code>zig fmt</code> on a source file will implement all recommendations mentioned here.
+      Note that running <kbd>zig fmt</kbd> on a source file will implement all recommendations mentioned here.
       Note also that the stage1 compiler does <a href="https://github.com/ziglang/zig/wiki/FAQ#why-does-zig-force-me-to-use-spaces-instead-of-tabs">not yet support CR or HT</a> control characters.
       </p>
       <p>
