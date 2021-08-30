@@ -31,6 +31,10 @@
         header {
           margin-left: calc(var(--nav-width) + var(--nav-margin-l));
         }
+        header h1 {
+          margin: auto;
+          max-width: 30em;
+        }
         #navigation {
           overflow: auto;
           width: var(--nav-width);
@@ -2996,7 +3000,7 @@ All 2 tests passed.
     <span class="tok-kw">const</span> int_slice = std.mem.bytesAsSlice(<span class="tok-type">u32</span>, <span class="tok-builtin">@alignCast</span>(<span class="tok-number">4</span>, slice4));
     <span class="tok-kw">return</span> int_slice[<span class="tok-number">0</span>];
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;pointer alignment safety&quot;... thread 27076 panic: incorrect alignment
+Test [1/1] test &quot;pointer alignment safety&quot;... thread 19481 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:10:63</span>: <span class="t2_0">0x20807c in foo (test)</span>
     const int_slice = std.mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                               <span class="t32_1">^</span>
@@ -3108,7 +3112,7 @@ All 1 tests passed.
     <span class="tok-comment">// Note that `slice.ptr` does not invoke safety checking, while `&amp;slice[0]`</span>
     <span class="tok-comment">// asserts that the slice has len &gt;= 1.</span>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;basic slices&quot;... thread 27132 panic: index out of bounds
+Test [1/1] test &quot;basic slices&quot;... thread 19539 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:22:10</span>: <span class="t2_0">0x206933 in test &quot;basic slices&quot; (test)</span>
     slice[10] += 1;
          <span class="t32_1">^</span>
@@ -3975,7 +3979,7 @@ All 1 tests passed.
     <span class="tok-kw">var</span> payload = Payload{ .int = <span class="tok-number">1234</span> };
     payload.float = <span class="tok-number">12.34</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;simple union&quot;... thread 27569 panic: access of inactive union field
+Test [1/1] test &quot;simple union&quot;... thread 19971 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:8:12</span>: <span class="t2_0">0x2066fb in test &quot;simple union&quot; (test)</span>
     payload.float = 12.34;
            <span class="t32_1">^</span>
@@ -5202,7 +5206,7 @@ All 1 tests passed.
 <span class="tok-kw">test</span> <span class="tok-str">&quot;this will fail&quot;</span> {
     assert(<span class="tok-null">false</span>);
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;this will fail&quot;... thread 28219 panic: reached unreachable code
+Test [1/1] test &quot;this will fail&quot;... thread 20629 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:14</span>: <span class="t2_0">0x207ecb in assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -5972,7 +5976,7 @@ error: PermissionDenied
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 28721 panic: PermissionDenied
+thread 21128 panic: PermissionDenied
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:38:5</span>: <span class="t2_0">0x232286 in bang2 (test)</span>
     @panic(&quot;PermissionDenied&quot;);
     <span class="t32_1">^</span>
@@ -9814,7 +9818,7 @@ All 1 tests passed.
         }
     }
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig -OReleaseFast</kbd>
-Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 30343 panic: integer overflow
+Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 22739 panic: integer overflow
 error: the following test command crashed:
 docgen_tmp/zig-cache/o/f55fc4426cb7633d83f37d04785be411/test /home/paul/Development/zig/build/zig
 </samp></pre></figure>
@@ -10271,7 +10275,7 @@ All 1 tests passed.
     <span class="tok-kw">var</span> b: <span class="tok-type">u8</span> = <span class="tok-builtin">@intCast</span>(<span class="tok-type">u8</span>, a);
     _ = b;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;integer cast panic&quot;... thread 30457 panic: integer cast truncated bits
+Test [1/1] test &quot;integer cast panic&quot;... thread 22919 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:17</span>: <span class="t2_0">0x2066b5 in test &quot;integer cast panic&quot; (test)</span>
     var b: u8 = @intCast(u8, a);
                 <span class="t32_1">^</span>
@@ -10536,7 +10540,7 @@ All 1 tests passed.
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">test</span> <span class="tok-str">&quot;safety check&quot;</span> {
     <span class="tok-kw">unreachable</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;safety check&quot;... thread 30543 panic: reached unreachable code
+Test [1/1] test &quot;safety check&quot;... thread 23011 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:2:5</span>: <span class="t2_0">0x20668a in test &quot;safety check&quot; (test)</span>
     unreachable;
     <span class="t32_1">^</span>
@@ -10588,7 +10592,7 @@ comptime {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30572 panic: reached unreachable code
+thread 23040 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/zig/build/lib/zig/std/debug.zig:231:14</span>: <span class="t2_0">0x20432b in std.debug.assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -10633,7 +10637,7 @@ thread 30572 panic: reached unreachable code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30609 panic: index out of bounds
+thread 23069 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:7:13</span>: <span class="t2_0">0x230a29 in foo (test)</span>
     return x[5];
             <span class="t32_1">^</span>
@@ -10677,7 +10681,7 @@ thread 30609 panic: index out of bounds
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30638 panic: attempt to cast negative value to unsigned integer
+thread 23106 panic: attempt to cast negative value to unsigned integer
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:20</span>: <span class="t2_0">0x229b47 in main (test)</span>
     var unsigned = @intCast(u32, value);
                    <span class="t32_1">^</span>
@@ -10721,7 +10725,7 @@ thread 30638 panic: attempt to cast negative value to unsigned integer
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30675 panic: integer cast truncated bits
+thread 23135 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:18</span>: <span class="t2_0">0x229b4c in main (test)</span>
     const byte = @intCast(u8, spartan_count);
                  <span class="t32_1">^</span>
@@ -10777,7 +10781,7 @@ thread 30675 panic: integer cast truncated bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30704 panic: integer overflow
+thread 23172 panic: integer overflow
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:10</span>: <span class="t2_0">0x229b2f in main (test)</span>
     byte += 1;
          <span class="t32_1">^</span>
@@ -10913,7 +10917,7 @@ All 1 tests passed.
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30808 panic: left shift overflowed bits
+thread 23268 panic: left shift overflowed bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b6b in main (test)</span>
     var y = @shlExact(x, 2);
             <span class="t32_1">^</span>
@@ -10953,7 +10957,7 @@ thread 30808 panic: left shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30837 panic: right shift overflowed bits
+thread 23305 panic: right shift overflowed bits
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b6b in main (test)</span>
     var y = @shrExact(x, 2);
             <span class="t32_1">^</span>
@@ -10996,7 +11000,7 @@ thread 30837 panic: right shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30866 panic: division by zero
+thread 23334 panic: division by zero
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229b39 in main (test)</span>
     var c = a / b;
               <span class="t32_1">^</span>
@@ -11039,7 +11043,7 @@ thread 30866 panic: division by zero
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30903 panic: remainder division by zero or negative value
+thread 23371 panic: remainder division by zero or negative value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229b5b in main (test)</span>
     var c = a % b;
               <span class="t32_1">^</span>
@@ -11082,7 +11086,7 @@ thread 30903 panic: remainder division by zero or negative value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30932 panic: exact division produced remainder
+thread 23400 panic: exact division produced remainder
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:13</span>: <span class="t2_0">0x229b7d in main (test)</span>
     var c = @divExact(a, b);
             <span class="t32_1">^</span>
@@ -11123,7 +11127,7 @@ thread 30932 panic: exact division produced remainder
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 30972 panic: attempt to use null value
+thread 23430 panic: attempt to use null value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:5:33</span>: <span class="t2_0">0x229b3c in main (test)</span>
     var number = optional_number.?;
                                 <span class="t32_1">^</span>
@@ -11190,7 +11194,7 @@ it's null
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31032 panic: attempt to unwrap error: UnableToReturnNumber
+thread 23487 panic: attempt to unwrap error: UnableToReturnNumber
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:9:5</span>: <span class="t2_0">0x230b04 in getNumberOrFail (test)</span>
     return error.UnableToReturnNumber;
     <span class="t32_1">^</span>
@@ -11262,7 +11266,7 @@ got error: UnableToReturnNumber
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31139 panic: invalid error code
+thread 23546 panic: invalid error code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:6:23</span>: <span class="t2_0">0x229ba3 in main (test)</span>
     var invalid_err = @intToError(number);
                       <span class="t32_1">^</span>
@@ -11317,7 +11321,7 @@ const Foo = enum {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31176 panic: invalid enum value
+thread 23575 panic: invalid enum value
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:11:13</span>: <span class="t2_0">0x229bc9 in main (test)</span>
     var b = @intToEnum(Foo, a);
             <span class="t32_1">^</span>
@@ -11375,7 +11379,7 @@ thread 31176 panic: invalid enum value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31205 panic: invalid error code
+thread 23612 panic: invalid error code
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:15:15</span>: <span class="t2_0">0x230ae6 in foo (test)</span>
     const x = @errSetCast(Set2, set1);
               <span class="t32_1">^</span>
@@ -11427,7 +11431,7 @@ thread 31205 panic: invalid error code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31242 panic: incorrect alignment
+thread 23641 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:9:59</span>: <span class="t2_0">0x230d6c in foo (test)</span>
     const int_slice = mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                           <span class="t32_1">^</span>
@@ -11484,7 +11488,7 @@ thread 31242 panic: incorrect alignment
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31271 panic: access of inactive union field
+thread 23686 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:14:6</span>: <span class="t2_0">0x23e29a in bar (test)</span>
     f.float = 12.34;
      <span class="t32_1">^</span>
@@ -11593,7 +11597,7 @@ value: 1.23400001e+01
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 31348 panic: cast causes pointer to be null
+thread 23763 panic: cast causes pointer to be null
 <span class="t1_0">/home/paul/Development/zig/doc/docgen_tmp/test.zig:3:15</span>: <span class="t2_0">0x229ae0 in main (test)</span>
     var ptr = @ptrCast(*i32, opt_ptr);
               <span class="t32_1">^</span>
@@ -11701,7 +11705,7 @@ All 1 tests passed.
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe cli_allocation.zig</kbd>
 
 $ <kbd>./cli_allocation</kbd>
-ptr=i32@7f5f02fda018
+ptr=i32@7fb926a9b018
 </samp></pre></figure>
               When using this kind of allocator, there is no need to free anything manually. Everything
               gets freed at once with the call to <code>arena.deinit()</code>.
