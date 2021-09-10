@@ -294,7 +294,7 @@
       </nav>
       <nav aria-labelledby="table-of-contents">
         <h2 id="table-of-contents">Table of Contents</h2>
-        
+
 
     <ul>
         <li><a id="toc-Introduction" href="#Introduction">Introduction</a></li>
@@ -748,7 +748,7 @@
     <p>
     This HTML document depends on no external files, so you can use it offline.
     </p>
-    
+
 
     <h2 id="Zig-Standard-Library"><a href="#toc-Zig-Standard-Library">Zig Standard Library</a> <a class="hdr" href="#Zig-Standard-Library">§</a></h2>
 
@@ -760,7 +760,7 @@
       You will see many examples of Zig's Standard Library used in this documentation. To learn more about the Zig Standard Library,
       visit the link above.
     </p>
-    
+
 
     <h2 id="Hello-World"><a href="#toc-Hello-World">Hello World</a> <a class="hdr" href="#Hello-World">§</a></h2>
 
@@ -893,7 +893,7 @@ Hello, world!
 <li><a href="#Source-Encoding">Source Encoding</a></li>
 </ul>
 
-    
+
     <h2 id="Zig-Test"><a href="#toc-Zig-Test">Zig Test</a> <a class="hdr" href="#Zig-Test">§</a></h2>
 
     <p>
@@ -934,7 +934,7 @@ All 1 tests passed.
       <p>
         The shell output shown above displays the line <samp>Test [1/1] test "expect addOne adds one to 41 correctly"...</samp>.
         This line was printed to standard error (stderr) by the <kbd>zig test</kbd>. When the <kbd>zig test</kbd> tool's
-        standard error is output to the terminal, these lines are cleared when the test succeeds. 
+        standard error is output to the terminal, these lines are cleared when the test succeeds.
         Lines like this indicate which test out of the total number of tests is being run, in this case, <samp>[1/1]</samp>
         indicates that the first test out of a total of one test is being run. The next line, <samp>All 1 tests passed.</samp>,
         is also printed to standard error. It indicates the total number of tests that have passed.
@@ -1018,7 +1018,7 @@ Test [5/6] O.test &quot;O demo test&quot;...
 Test [6/6] struct:37:8.test &quot;U.struct demo test&quot;...
 All 6 tests passed.
 </samp></pre></figure>
-      
+
       <h3 id="Test-Failure"><a href="#toc-Test-Failure">Test Failure</a> <a class="hdr" href="#Test-Failure">§</a></h3>
 
       <p>
@@ -1049,7 +1049,7 @@ Test [2/2] test &quot;expect this to succeed&quot;...
 error: the following test command failed with exit code 1:
 docgen_tmp/zig-cache/o/9f75c2aae2d74625b6cfd3b0ed93d046/test /home/paul/Development/Zig/zig-master/zig
 </samp></pre></figure>
-      
+
       <h3 id="Skip-Tests"><a href="#toc-Skip-Tests">Skip Tests</a> <a class="hdr" href="#Skip-Tests">§</a></h3>
 
       <p>
@@ -1065,14 +1065,14 @@ Test [2/1] test &quot;this will be skipped&quot;... SKIP
 0 passed; 1 skipped; 0 failed.
 </samp></pre></figure>
       <p>
-        Another way to skip tests is to filter them out using the <kdb>--test-filter [text]</kbd> command line parameter.
+        Another way to skip tests is to filter them out using the <kbd>--test-filter [text]</kbd> command line parameter.
         This makes the test build only include tests whose name contains the supplied filter text.
       </p>
-      
+
       <h3 id="Detecting-Test-Build"><a href="#toc-Detecting-Test-Build">Detecting Test Build</a> <a class="hdr" href="#Detecting-Test-Build">§</a></h3>
 
       <p>
-        When you need to write code that is aware it is being run by the <kdb>zig test</kdb> tool, the
+        When you need to write code that is aware it is being run by the <kbd>zig test</kbd> tool, the
         <a href="#Compile-Variables">compile variable</a>, <code><span class="tok-builtin">@import</span>(<span class="tok-str">&quot;builtin&quot;</span>).is_test</code>, is available.
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">detect_test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
@@ -1085,7 +1085,7 @@ Test [2/1] test &quot;this will be skipped&quot;... SKIP
 Test [1/1] test &quot;builtin.is_test&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h3 id="The-Testing-Namespace"><a href="#toc-The-Testing-Namespace">The Testing Namespace</a> <a class="hdr" href="#The-Testing-Namespace">§</a></h3>
 
       <p>
@@ -1124,14 +1124,14 @@ All 3 tests passed.
 </samp></pre></figure>
       <p>The Zig Standard Library also contains functions to compare <a href="#Slices">Slices</a>, strings, and more. See the rest of the
         <code>std.testing</code> namespace in the Zig Standard Library for more available functions.</p>
-      
+
       <h3 id="Test-Tool-Documentation"><a href="#toc-Test-Tool-Documentation">Test Tool Documentation</a> <a class="hdr" href="#Test-Tool-Documentation">§</a></h3>
 
       <p>
         <kbd>zig test</kbd> has a few command line parameters which affect the compilation. See <kbd>zig --help</kbd> for a full list.
       </p>
-      
-      
+
+
 
       <h2 id="Comments"><a href="#toc-Comments">Comments</a> <a class="hdr" href="#Comments">§</a></h2>
 
@@ -1184,7 +1184,7 @@ All 1 tests passed.
       become a compile error to have a doc comment in an unexpected place, such as
       in the middle of an expression, or just before a non-doc comment.
       </p>
-      
+
       <h3 id="Top-Level-Doc-Comments"><a href="#toc-Top-Level-Doc-Comments">Top-Level Doc Comments</a> <a class="hdr" href="#Top-Level-Doc-Comments">§</a></h3>
 
       <p>User documentation that doesn't belong to whatever
@@ -1195,8 +1195,8 @@ All 1 tests passed.
       <figure><figcaption class="zig-cap"><cite class="file">tldoc_comments.zig</cite></figcaption><pre><code><span class="tok-comment">//! This module provides functions for retrieving the current date and</span>
 <span class="tok-comment">//! time with varying degrees of precision and accuracy. It does not</span>
 <span class="tok-comment">//! depend on libc, but will use functions from it if available.</span></code></pre></figure>
-      
-      
+
+
       <h2 id="Values"><a href="#toc-Values">Values</a> <a class="hdr" href="#Values">§</a></h2>
 
       <p>
@@ -1503,7 +1503,7 @@ value: 1234
 <li><a href="#Type">@Type</a></li>
 </ul>
 
-      
+
       <h3 id="Primitive-Values"><a href="#toc-Primitive-Values">Primitive Values</a> <a class="hdr" href="#Primitive-Values">§</a></h3>
 
       <div class="table-wrapper">
@@ -1536,7 +1536,7 @@ value: 1234
 <li><a href="#undefined">undefined</a></li>
 </ul>
 
-      
+
       <h3 id="String-Literals-and-Unicode-Code-Point-Literals"><a href="#toc-String-Literals-and-Unicode-Code-Point-Literals">String Literals and Unicode Code Point Literals</a> <a class="hdr" href="#String-Literals-and-Unicode-Code-Point-Literals">§</a></h3>
 
       <p>
@@ -1636,7 +1636,7 @@ All 1 tests passed.
       </table>
       </div>
       <p>Note that the maximum valid Unicode point is <code><span class="tok-number">0x10ffff</span></code>.</p>
-      
+
       <h4 id="Multiline-String-Literals"><a href="#toc-Multiline-String-Literals">Multiline String Literals</a> <a class="hdr" href="#Multiline-String-Literals">§</a></h4>
 
       <p>
@@ -1659,8 +1659,8 @@ All 1 tests passed.
 <li><a href="#embedFile">@embedFile</a></li>
 </ul>
 
-      
-      
+
+
       <h3 id="Assignment"><a href="#toc-Assignment">Assignment</a> <a class="hdr" href="#Assignment">§</a></h3>
 
       <p>Use the <code><span class="tok-kw">const</span></code> keyword to assign a value to an identifier:</p>
@@ -1730,9 +1730,9 @@ All 1 tests passed.
       In <a href="#Debug">Debug</a> mode, Zig writes <code><span class="tok-number">0xaa</span></code> bytes to undefined memory. This is to catch
       bugs early, and to help detect use of undefined memory in a debugger.
       </p>
-      
-      
-      
+
+
+
 
       <h2 id="Variables"><a href="#toc-Variables">Variables</a> <a class="hdr" href="#Variables">§</a></h2>
 
@@ -1794,7 +1794,7 @@ All 1 tests passed.
 Test [1/1] test &quot;namespaced container level variable&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="Static-Local-Variables"><a href="#toc-Static-Local-Variables">Static Local Variables</a> <a class="hdr" href="#Static-Local-Variables">§</a></h3>
 
@@ -1829,7 +1829,7 @@ All 1 tests passed.
 <li><a href="#Exporting-a-C-Library">Exporting a C Library</a></li>
 </ul>
 
-      
+
 
       <h3 id="Thread-Local-Variables"><a href="#toc-Thread-Local-Variables">Thread Local Variables</a> <a class="hdr" href="#Thread-Local-Variables">§</a></h3>
 
@@ -1862,7 +1862,7 @@ All 1 tests passed.
       <p>
       Thread local variables may not be <code><span class="tok-kw">const</span></code>.
       </p>
-      
+
 
       <h3 id="Local-Variables"><a href="#toc-Local-Variables">Local Variables</a> <a class="hdr" href="#Local-Variables">§</a></h3>
 
@@ -1903,8 +1903,8 @@ All 1 tests passed.
 Test [1/1] test &quot;comptime vars&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="Integers"><a href="#toc-Integers">Integers</a> <a class="hdr" href="#Integers">§</a></h2>
 
@@ -1921,7 +1921,7 @@ All 1 tests passed.
 <span class="tok-kw">const</span> binary_mask = <span class="tok-number">0b1_1111_1111</span>;
 <span class="tok-kw">const</span> permissions = <span class="tok-number">0o7_5_5</span>;
 <span class="tok-kw">const</span> big_address = <span class="tok-number">0xFF80_0000_0000_0000</span>;</code></pre></figure>
-      
+
       <h3 id="Runtime-Integer-Values"><a href="#toc-Runtime-Integer-Values">Runtime Integer Values</a> <a class="hdr" href="#Runtime-Integer-Values">§</a></h3>
 
       <p>
@@ -1955,8 +1955,8 @@ All 1 tests passed.
 <li><a href="#Wrapping-Operations">Wrapping Operations</a></li>
 </ul>
 
-      
-      
+
+
       <h2 id="Floats"><a href="#toc-Floats">Floats</a> <a class="hdr" href="#Floats">§</a></h2>
 
       <p>Zig has the following floating point types:</p>
@@ -1999,7 +1999,7 @@ All 1 tests passed.
 <span class="tok-kw">const</span> inf = std.math.inf(<span class="tok-type">f32</span>);
 <span class="tok-kw">const</span> negative_inf = -std.math.inf(<span class="tok-type">f64</span>);
 <span class="tok-kw">const</span> nan = std.math.nan(<span class="tok-type">f128</span>);</code></pre></figure>
-      
+
       <h3 id="Floating-Point-Operations"><a href="#toc-Floating-Point-Operations">Floating Point Operations</a> <a class="hdr" href="#Floating-Point-Operations">§</a></h3>
 
       <p>By default floating point operations use <code>Strict</code> mode,
@@ -2039,8 +2039,8 @@ strict = 9.765625e-04
 <li><a href="#Division-by-Zero">Division by Zero</a></li>
 </ul>
 
-      
-      
+
+
       <h2 id="Operators"><a href="#toc-Operators">Operators</a> <a class="hdr" href="#Operators">§</a></h2>
 
       <p>
@@ -2667,7 +2667,7 @@ ptr.* == <span class="tok-number">1234</span></code></pre>
         </tbody>
       </table>
       </div>
-      
+
       <h3 id="Precedence"><a href="#toc-Precedence">Precedence</a> <a class="hdr" href="#Precedence">§</a></h3>
 
       <pre><code>x() x[] x.y x.* x.?
@@ -2682,8 +2682,8 @@ x{}
 <span class="tok-kw">and</span>
 <span class="tok-kw">or</span>
 = *= /= %= += -= &lt;&lt;= &gt;&gt;= &amp;= ^= |=</code></pre>
-      
-      
+
+
       <h2 id="Arrays"><a href="#toc-Arrays">Arrays</a> <a class="hdr" href="#Arrays">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">arrays.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;
@@ -2839,7 +2839,7 @@ All 1 tests passed.
 Test [1/1] test &quot;fully anonymous list literal&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="Multidimensional-Arrays"><a href="#toc-Multidimensional-Arrays">Multidimensional Arrays</a> <a class="hdr" href="#Multidimensional-Arrays">§</a></h3>
 
@@ -2871,7 +2871,7 @@ All 1 tests passed.
 Test [1/1] test &quot;multidimensional arrays&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="Sentinel-Terminated-Arrays"><a href="#toc-Sentinel-Terminated-Arrays">Sentinel-Terminated Arrays</a> <a class="hdr" href="#Sentinel-Terminated-Arrays">§</a></h3>
 
@@ -2897,8 +2897,8 @@ All 1 tests passed.
 <li><a href="#Sentinel-Terminated-Slices">Sentinel-Terminated Slices</a></li>
 </ul>
 
-      
-      
+
+
 
       <h2 id="Vectors"><a href="#toc-Vectors">Vectors</a> <a class="hdr" href="#Vectors">§</a></h2>
 
@@ -2921,8 +2921,8 @@ All 1 tests passed.
       * "shuffle"
       * Advice on writing high perf software, how to abstract the best way
       </p>
-      
-      
+
+
 
       <h2 id="Pointers"><a href="#toc-Pointers">Pointers</a> <a class="hdr" href="#Pointers">§</a></h2>
 
@@ -3099,7 +3099,7 @@ All 1 tests passed.
       If you see code that is using <code><span class="tok-kw">volatile</span></code> for something other than Memory Mapped
       Input/Output, it is probably a bug.
       </p>
-      
+
       <p>
       To convert one pointer type to another, use <a href="#ptrCast">@ptrCast</a>. This is an unsafe
       operation that Zig cannot protect you against. Use <code><span class="tok-builtin">@ptrCast</span></code> only when other
@@ -3239,7 +3239,7 @@ Test [1/1] test &quot;pointer alignment safety&quot;... thread 10468 panic: inco
 error: the following test command crashed:
 docgen_tmp/zig-cache/o/9f75c2aae2d74625b6cfd3b0ed93d046/test /home/paul/Development/Zig/zig-master/zig
 </samp></pre></figure>
-      
+
 
       <h3 id="allowzero"><a href="#toc-allowzero">allowzero</a> <a class="hdr" href="#allowzero">§</a></h3>
 
@@ -3262,7 +3262,7 @@ docgen_tmp/zig-cache/o/9f75c2aae2d74625b6cfd3b0ed93d046/test /home/paul/Developm
 Test [1/1] test &quot;allowzero&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="Sentinel-Terminated-Pointers"><a href="#toc-Sentinel-Terminated-Pointers">Sentinel-Terminated Pointers</a> <a class="hdr" href="#Sentinel-Terminated-Pointers">§</a></h3>
 
@@ -3295,8 +3295,8 @@ All 1 tests passed.
 <li><a href="#Sentinel-Terminated-Arrays">Sentinel-Terminated Arrays</a></li>
 </ul>
 
-      
-      
+
+
 
       <h2 id="Slices"><a href="#toc-Slices">Slices</a> <a class="hdr" href="#Slices">§</a></h2>
 
@@ -3428,8 +3428,8 @@ All 1 tests passed.
 <li><a href="#Sentinel-Terminated-Arrays">Sentinel-Terminated Arrays</a></li>
 </ul>
 
-      
-      
+
+
 
       <h2 id="Containers"><a href="#toc-Containers">Containers</a> <a class="hdr" href="#Containers">§</a></h2>
 
@@ -3447,7 +3447,7 @@ All 1 tests passed.
         <li>A <strong><a href="#union">union</a></strong> is a type of container.</li>
         <li>An <strong><a href="#opaque">opaque</a></strong> is a type of container.</li>
       </ul>
-      
+
       <h3 id="Nesting-Containers"><a href="#toc-Nesting-Containers">Nesting Containers</a> <a class="hdr" href="#Nesting-Containers">§</a></h3>
 
       <p>
@@ -3455,7 +3455,7 @@ All 1 tests passed.
         Also, when you use the <a href="#Builtin-Functions">builtin function</a> <code><span class="tok-builtin">@import</span></code>, the Zig source file given
         as its argument is returned as a struct. This means, a Zig source file can contain other Zig source files.
       </p>
-      
+
       <h3 id="Top-Level"><a href="#toc-Top-Level">Top-Level</a> <a class="hdr" href="#Top-Level">§</a></h3>
 
       <p>
@@ -3520,7 +3520,7 @@ All 1 tests passed.
         <li>Top-level <a href="#Variables">Variables</a> declarations</li>
         <li>Top-level fields/variants. See <a href="#struct">struct</a>, <a href="#enum">enum</a>, <a href="#union">union</a>.</li>
       </ul>
-      
+
       <h4 id="Order-Independent"><a href="#toc-Order-Independent">Order Independent</a> <a class="hdr" href="#Order-Independent">§</a></h4>
 
       <p>
@@ -3536,7 +3536,7 @@ All 1 tests passed.
         The code sample above reordered the original <code class="file">hello_again.zig</code>'s top-level declarations.
         The code compiles and runs the same.
       </p>
-      
+
       <h4 id="Lazy-Declaration-Analysis"><a href="#toc-Lazy-Declaration-Analysis">Lazy Declaration Analysis</a> <a class="hdr" href="#Lazy-Declaration-Analysis">§</a></h4>
 
       <p>
@@ -3572,9 +3572,9 @@ All 1 tests passed.
 Test [1/1] test &quot;unused function&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
-      
+
+
+
 
       <h2 id="struct"><a href="#toc-struct">struct</a> <a class="hdr" href="#struct">§</a></h2>
 
@@ -3743,7 +3743,7 @@ All 4 tests passed.
 Test [1/1] test &quot;default struct initialization fields&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="extern-struct"><a href="#toc-extern-struct">extern struct</a> <a class="hdr" href="#extern-struct">§</a></h3>
 
@@ -3756,7 +3756,7 @@ All 1 tests passed.
 <li><a href="#extern-enum">extern enum</a></li>
 </ul>
 
-      
+
 
       <h3 id="packed-struct"><a href="#toc-packed-struct">packed struct</a> <a class="hdr" href="#packed-struct">§</a></h3>
 
@@ -3982,7 +3982,7 @@ All 1 tests passed.
       (the use case for volatile packed structs) once this issue is resolved.
       Don't worry, there will be a good solution for this use case in zig.
       </p>
-      
+
 
       <h3 id="Struct-Naming"><a href="#toc-Struct-Naming">Struct Naming</a> <a class="hdr" href="#Struct-Naming">§</a></h3>
 
@@ -4014,7 +4014,7 @@ variable: Foo
 anonymous: struct:6:53
 function: List(i32)
 </samp></pre></figure>
-      
+
 
       <h3 id="Anonymous-Struct-Literals"><a href="#toc-Anonymous-Struct-Literals">Anonymous Struct Literals</a> <a class="hdr" href="#Anonymous-Struct-Literals">§</a></h3>
 
@@ -4096,13 +4096,13 @@ All 1 tests passed.
 Test [1/1] test &quot;tuple&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <p>See also:</p><ul>
 <li><a href="#comptime">comptime</a></li>
 <li><a href="#fieldParentPtr">@fieldParentPtr</a></li>
 </ul>
 
-      
+
       <h2 id="enum"><a href="#toc-enum">enum</a> <a class="hdr" href="#enum">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">enums.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;
@@ -4234,7 +4234,7 @@ export fn entry(foo: Foo) void { _ = foo; }
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> Foo = <span class="tok-kw">enum</span>(<span class="tok-type">c_int</span>) { a, b, c };
 <span class="tok-kw">export</span> <span class="tok-kw">fn</span> <span class="tok-fn">entry</span>(foo: Foo) <span class="tok-type">void</span> { _ = foo; }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-obj test.zig</kbd>
 </samp></pre></figure>
-      
+
 
       <h3 id="Enum-Literals"><a href="#toc-Enum-Literals">Enum Literals</a> <a class="hdr" href="#Enum-Literals">§</a></h3>
 
@@ -4269,7 +4269,7 @@ Test [1/2] test &quot;enum literals&quot;...
 Test [2/2] test &quot;switch using enum literals&quot;...
 All 2 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="Non-exhaustive-enum"><a href="#toc-Non-exhaustive-enum">Non-exhaustive enum</a> <a class="hdr" href="#Non-exhaustive-enum">§</a></h3>
 
@@ -4314,8 +4314,8 @@ All 2 tests passed.
 Test [1/1] test &quot;switch on non-exhaustive enum&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="union"><a href="#toc-union">union</a> <a class="hdr" href="#union">§</a></h2>
 
@@ -4510,7 +4510,7 @@ All 1 tests passed.
 Test [1/1] test &quot;@tagName&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="extern-union"><a href="#toc-extern-union">extern union</a> <a class="hdr" href="#extern-union">§</a></h3>
 
@@ -4522,13 +4522,13 @@ All 1 tests passed.
 <li><a href="#extern-struct">extern struct</a></li>
 </ul>
 
-      
+
 
       <h3 id="packed-union"><a href="#toc-packed-union">packed union</a> <a class="hdr" href="#packed-union">§</a></h3>
 
       <p>A <code><span class="tok-kw">packed</span> <span class="tok-kw">union</span></code> has well-defined in-memory layout and is eligible
           to be in a <a href="#packed-struct">packed struct</a>.</p>
-      
+
 
       <h3 id="Anonymous-Union-Literals"><a href="#toc-Anonymous-Union-Literals">Anonymous Union Literals</a> <a class="hdr" href="#Anonymous-Union-Literals">§</a></h3>
 
@@ -4555,9 +4555,9 @@ All 1 tests passed.
 Test [1/1] test &quot;anonymous union literal syntax&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
 
-      
+
+
 
       <h2 id="opaque"><a href="#toc-opaque">opaque</a> <a class="hdr" href="#opaque">§</a></h2>
 
@@ -4588,7 +4588,7 @@ All 1 tests passed.
     bar(w);
         <span class="t32_1">^</span>
 </samp></pre></figure>
-      
+
 
       <h2 id="blocks"><a href="#toc-blocks">blocks</a> <a class="hdr" href="#blocks">§</a></h2>
 
@@ -4669,8 +4669,8 @@ All 1 tests passed.
 Test [1/1] test &quot;separate scopes&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="switch"><a href="#toc-switch">switch</a> <a class="hdr" href="#switch">§</a></h2>
 
@@ -4820,7 +4820,7 @@ All 1 tests passed.
 test &quot;exhaustive switching&quot; {
                             <span class="t32_1">^</span>
 </samp></pre></figure>
-      
+
 
       <h3 id="Switching-with-Enum-Literals"><a href="#toc-Switching-with-Enum-Literals">Switching with Enum Literals</a> <a class="hdr" href="#Switching-with-Enum-Literals">§</a></h3>
 
@@ -4849,8 +4849,8 @@ test &quot;exhaustive switching&quot; {
 Test [1/1] test &quot;enum literals with switch&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="while"><a href="#toc-while">while</a> <a class="hdr" href="#while">§</a></h2>
 
@@ -4982,7 +4982,7 @@ Test [1/2] test &quot;nested break&quot;...
 Test [2/2] test &quot;nested continue&quot;...
 All 2 tests passed.
 </samp></pre></figure>
-      
+
       <h3 id="while-with-Optionals"><a href="#toc-while-with-Optionals">while with Optionals</a> <a class="hdr" href="#while-with-Optionals">§</a></h3>
 
       <p>
@@ -5027,7 +5027,7 @@ All 2 tests passed.
 Test [1/1] test &quot;while null capture&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="while-with-Error-Unions"><a href="#toc-while-with-Error-Unions">while with Error Unions</a> <a class="hdr" href="#while-with-Error-Unions">§</a></h3>
 
@@ -5064,7 +5064,7 @@ All 1 tests passed.
 Test [1/1] test &quot;while error union capture&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="inline-while"><a href="#toc-inline-while">inline while</a> <a class="hdr" href="#inline-while">§</a></h3>
 
@@ -5105,7 +5105,7 @@ All 1 tests passed.
         You have a benchmark to prove that forcibly unrolling the loop in this way is measurably faster.
         </li>
       </ul>
-      
+
       <p>See also:</p><ul>
 <li><a href="#if">if</a></li>
 <li><a href="#Optionals">Optionals</a></li>
@@ -5114,7 +5114,7 @@ All 1 tests passed.
 <li><a href="#unreachable">unreachable</a></li>
 </ul>
 
-      
+
       <h2 id="for"><a href="#toc-for">for</a> <a class="hdr" href="#for">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">for.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;
@@ -5218,7 +5218,7 @@ Test [1/2] test &quot;nested break&quot;...
 Test [2/2] test &quot;nested continue&quot;...
 All 2 tests passed.
 </samp></pre></figure>
-      
+
       <h3 id="inline-for"><a href="#toc-inline-for">inline for</a> <a class="hdr" href="#inline-for">§</a></h3>
 
       <p>
@@ -5260,7 +5260,7 @@ All 1 tests passed.
         You have a benchmark to prove that forcibly unrolling the loop in this way is measurably faster.
         </li>
       </ul>
-      
+
       <p>See also:</p><ul>
 <li><a href="#while">while</a></li>
 <li><a href="#comptime">comptime</a></li>
@@ -5268,7 +5268,7 @@ All 1 tests passed.
 <li><a href="#Slices">Slices</a></li>
 </ul>
 
-      
+
       <h2 id="if"><a href="#toc-if">if</a> <a class="hdr" href="#if">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">if.zig</cite></figcaption><pre><code><span class="tok-comment">// If expressions have three uses, corresponding to the three types:</span>
@@ -5439,7 +5439,7 @@ All 5 tests passed.
 <li><a href="#Errors">Errors</a></li>
 </ul>
 
-      
+
       <h2 id="defer"><a href="#toc-defer">defer</a> <a class="hdr" href="#defer">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">defer.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
@@ -5530,7 +5530,7 @@ All 3 tests passed.
 <li><a href="#Errors">Errors</a></li>
 </ul>
 
-      
+
       <h2 id="unreachable"><a href="#toc-unreachable">unreachable</a> <a class="hdr" href="#unreachable">§</a></h2>
 
       <p>
@@ -5591,7 +5591,7 @@ Test [1/1] test &quot;this will fail&quot;... thread 11638 panic: reached unreac
 error: the following test command crashed:
 docgen_tmp/zig-cache/o/9f75c2aae2d74625b6cfd3b0ed93d046/test /home/paul/Development/Zig/zig-master/zig
 </samp></pre></figure>
-      
+
       <h3 id="At-Compile-Time"><a href="#toc-At-Compile-Time">At Compile-Time</a> <a class="hdr" href="#At-Compile-Time">§</a></h3>
 
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> assert = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).debug.assert;
@@ -5620,8 +5620,8 @@ docgen_tmp/zig-cache/o/9f75c2aae2d74625b6cfd3b0ed93d046/test /home/paul/Developm
 <li><a href="#comptime">comptime</a></li>
 </ul>
 
-      
-      
+
+
       <h2 id="noreturn"><a href="#toc-noreturn">noreturn</a> <a class="hdr" href="#noreturn">§</a></h2>
 
       <p>
@@ -5663,7 +5663,7 @@ All 1 tests passed.
 <span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test noreturn_from_exit.zig -target x86_64-windows</kbd>
 warning: created docgen_tmp/zig-cache/o/8d3d5667ad45e2825713146ea85d0c91/test.exe but skipping execution because it is non-native
 </samp></pre></figure>
-      
+
       <h2 id="Functions"><a href="#toc-Functions">Functions</a> <a class="hdr" href="#Functions">§</a></h2>
 
       <figure><figcaption class="zig-cap"><cite class="file">functions.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;
@@ -5771,7 +5771,7 @@ All 1 tests passed.
       <p>
       For extern functions, Zig follows the C ABI for passing structs and unions by value.
       </p>
-      
+
       <h3 id="Function-Parameter-Type-Inference"><a href="#toc-Function-Parameter-Type-Inference">Function Parameter Type Inference</a> <a class="hdr" href="#Function-Parameter-Type-Inference">§</a></h3>
 
       <p>
@@ -5796,7 +5796,7 @@ Test [1/1] test &quot;fn type inference&quot;...
 All 1 tests passed.
 </samp></pre></figure>
 
-      
+
       <h3 id="Function-Reflection"><a href="#toc-Function-Reflection">Function Reflection</a> <a class="hdr" href="#Function-Reflection">§</a></h3>
 
       <figure><figcaption class="zig-cap"><cite class="file">test_fn_reflection.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> expect = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).testing.expect;
@@ -5808,8 +5808,8 @@ All 1 tests passed.
 Test [1/1] test &quot;fn reflection&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
       <h2 id="Errors"><a href="#toc-Errors">Errors</a> <a class="hdr" href="#Errors">§</a></h2>
 
       <h3 id="Error-Set-Type"><a href="#toc-Error-Set-Type">Error Set Type</a> <a class="hdr" href="#Error-Set-Type">§</a></h3>
@@ -5906,8 +5906,8 @@ All 1 tests passed.
       the error set at compile-time is better for generated documentation and
       helpful error messages, such as forgetting a possible error value in a <a href="#switch">switch</a>.
       </p>
-      
-      
+
+
       <h3 id="Error-Union-Type"><a href="#toc-Error-Union-Type">Error Union Type</a> <a class="hdr" href="#Error-Union-Type">§</a></h3>
 
       <p>
@@ -5993,7 +5993,7 @@ All 1 tests passed.
           a default value of 13. The type of the right hand side of the binary <code><span class="tok-kw">catch</span></code> operator must
               match the unwrapped error union type, or be of type <code><span class="tok-type">noreturn</span></code>.
       </p>
-      
+
       <h4 id="try"><a href="#toc-try">try</a> <a class="hdr" href="#try">§</a></h4>
 
       <p>Let's say you wanted to return the error if you got one, otherwise continue with the
@@ -6014,7 +6014,7 @@ All 1 tests passed.
       from the current function with the same error. Otherwise, the expression results in
       the unwrapped value.
       </p>
-      
+
       <p>
         Maybe you know with complete certainty that an expression will never be an error.
         In this case you can do this:
@@ -6075,7 +6075,7 @@ All 1 tests passed.
       the verbosity and cognitive overhead of trying to make sure every exit path
       is covered. The deallocation code is always directly following the allocation code.
       </p>
-      
+
       <p>
       A couple of other tidbits about error handling:
       </p>
@@ -6165,7 +6165,7 @@ All 1 tests passed.
 Test [1/1] test &quot;merge error sets&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Inferred-Error-Sets"><a href="#toc-Inferred-Error-Sets">Inferred Error Sets</a> <a class="hdr" href="#Inferred-Error-Sets">§</a></h4>
 
       <p>
@@ -6211,8 +6211,8 @@ All 1 tests passed.
       <p>
       These limitations may be overcome in a future version of Zig.
       </p>
-      
-      
+
+
       <h3 id="Error-Return-Traces"><a href="#toc-Error-Return-Traces">Error Return Traces</a> <a class="hdr" href="#Error-Return-Traces">§</a></h3>
 
       <p>
@@ -6432,9 +6432,9 @@ thread 11954 panic: PermissionDenied
       I have <a href="https://github.com/ziglang/zig/issues/690">a plan</a> to make the call to
       <code>__zig_return_error</code> a tail call, which brings the code size cost down to actually zero. What is a return statement in code without error return tracing can become a jump instruction in code with error return tracing.
       </p>
-      
-      
-      
+
+
+
       <h2 id="Optionals"><a href="#toc-Optionals">Optionals</a> <a class="hdr" href="#Optionals">§</a></h2>
 
       <p>
@@ -6549,7 +6549,7 @@ struct Foo *do_a_thing(void) {
 Test [1/1] test &quot;optional type&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h3 id="null"><a href="#toc-null">null</a> <a class="hdr" href="#null">§</a></h3>
 
       <p>
@@ -6557,7 +6557,7 @@ All 1 tests passed.
       cast it to a different type:
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> optional_value: ?<span class="tok-type">i32</span> = <span class="tok-null">null</span>;</code></pre></figure>
-      
+
       <h3 id="Optional-Pointers"><a href="#toc-Optional-Pointers">Optional Pointers</a> <a class="hdr" href="#Optional-Pointers">§</a></h3>
 
       <p>An optional pointer is guaranteed to be the same size as a pointer. The <code><span class="tok-null">null</span></code> of
@@ -6581,8 +6581,8 @@ All 1 tests passed.
 Test [1/1] test &quot;optional pointers&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
       <h2 id="Casting"><a href="#toc-Casting">Casting</a> <a class="hdr" href="#Casting">§</a></h2>
 
       <p>
@@ -6666,7 +6666,7 @@ All 1 tests passed.
 Test [1/1] test &quot;cast *[1][*]const u8 to [*]const ?[*]const u8&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-Integer-and-Float-Widening"><a href="#toc-Type-Coercion-Integer-and-Float-Widening">Type Coercion: Integer and Float Widening</a> <a class="hdr" href="#Type-Coercion-Integer-and-Float-Widening">§</a></h4>
 
       <p>
@@ -6709,7 +6709,7 @@ Test [2/3] test &quot;implicit unsigned integer to signed integer&quot;...
 Test [3/3] test &quot;float widening&quot;...
 All 3 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-Coercion-Float-to-Int"><a href="#toc-Type-Coercion-Coercion-Float-to-Int">Type Coercion: Coercion Float to Int</a> <a class="hdr" href="#Type-Coercion-Coercion-Float-to-Int">§</a></h4>
 
       <p>
@@ -6732,7 +6732,7 @@ All 3 tests passed.
     var f: f32 = 54.0 / 5;
                       <span class="t32_1">^</span>
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-Slices-Arrays-and-Pointers"><a href="#toc-Type-Coercion-Slices-Arrays-and-Pointers">Type Coercion: Slices, Arrays and Pointers</a> <a class="hdr" href="#Type-Coercion-Slices-Arrays-and-Pointers">§</a></h4>
 
       <figure><figcaption class="zig-cap"><cite class="file">coerce__slices_arrays_and_ptrs.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
@@ -6816,7 +6816,7 @@ All 7 tests passed.
 <li><a href="#C-Pointers">C Pointers</a></li>
 </ul>
 
-      
+
       <h4 id="Type-Coercion-Optionals"><a href="#toc-Type-Coercion-Optionals">Type Coercion: Optionals</a> <a class="hdr" href="#Type-Coercion-Optionals">§</a></h4>
 
       <p>
@@ -6849,7 +6849,7 @@ All 1 tests passed.
 Test [1/1] test &quot;coerce to optionals wrapped in error union&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-Error-Unions"><a href="#toc-Type-Coercion-Error-Unions">Type Coercion: Error Unions</a> <a class="hdr" href="#Type-Coercion-Error-Unions">§</a></h4>
 
       <p>The payload type of an <a href="#Error-Union-Type">Error Union Type</a> as well as the <a href="#Error-Set-Type">Error Set Type</a>
@@ -6868,7 +6868,7 @@ All 1 tests passed.
 Test [1/1] test &quot;coercion to error unions&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-Compile-Time-Known-Numbers"><a href="#toc-Type-Coercion-Compile-Time-Known-Numbers">Type Coercion: Compile-Time Known Numbers</a> <a class="hdr" href="#Type-Coercion-Compile-Time-Known-Numbers">§</a></h4>
 
       <p>When a number is <a href="#comptime">comptime</a>-known to be representable in the destination type,
@@ -6885,7 +6885,7 @@ All 1 tests passed.
 Test [1/1] test &quot;coercing large integer type to smaller one when value is comptime known ...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-unions-and-enums"><a href="#toc-Type-Coercion-unions-and-enums">Type Coercion: unions and enums</a> <a class="hdr" href="#Type-Coercion-unions-and-enums">§</a></h4>
 
       <p>Tagged unions can be coerced to enums, and enums can be coerced to tagged unions
@@ -6924,7 +6924,7 @@ All 1 tests passed.
 <li><a href="#enum">enum</a></li>
 </ul>
 
-      
+
       <h4 id="Type-Coercion-Zero-Bit-Types"><a href="#toc-Type-Coercion-Zero-Bit-Types">Type Coercion: Zero Bit Types</a> <a class="hdr" href="#Type-Coercion-Zero-Bit-Types">§</a></h4>
 
       <p><a href="#Zero-Bit-Types">Zero Bit Types</a> may be coerced to single-item <a href="#Pointers">Pointers</a>,
@@ -6939,12 +6939,12 @@ All 1 tests passed.
 Test [1/1] test &quot;coercion of zero bit types&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h4 id="Type-Coercion-undefined"><a href="#toc-Type-Coercion-undefined">Type Coercion: undefined</a> <a class="hdr" href="#Type-Coercion-undefined">§</a></h4>
 
       <p><a href="#undefined">undefined</a> can be cast to any type.</p>
-      
-      
+
+
 
       <h3 id="Explicit-Casts"><a href="#toc-Explicit-Casts">Explicit Casts</a> <a class="hdr" href="#Explicit-Casts">§</a></h3>
 
@@ -6972,7 +6972,7 @@ All 1 tests passed.
           <li><a href="#ptrToInt">@ptrToInt</a> - obtain the address of a pointer</li>
           <li><a href="#truncate">@truncate</a> - convert between integer types, chopping off bits</li>
       </ul>
-      
+
 
       <h3 id="Peer-Type-Resolution"><a href="#toc-Peer-Type-Resolution">Peer Type Resolution</a> <a class="hdr" href="#Peer-Type-Resolution">§</a></h3>
 
@@ -7090,8 +7090,8 @@ Test [6/7] test &quot;peer type resolution: *[0]u8, []const u8, and anyerror![]u
 Test [7/7] test &quot;peer type resolution: *const T and ?*T&quot;...
 All 7 tests passed.
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="Zero-Bit-Types"><a href="#toc-Zero-Bit-Types">Zero Bit Types</a> <a class="hdr" href="#Zero-Bit-Types">§</a></h2>
 
@@ -7195,7 +7195,7 @@ Test [1/2] test &quot;void is ignored&quot;...
 Test [2/2] test &quot;explicitly ignoring expression value&quot;...
 All 2 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="Pointers-to-Zero-Bit-Types"><a href="#toc-Pointers-to-Zero-Bit-Types">Pointers to Zero Bit Types</a> <a class="hdr" href="#Pointers-to-Zero-Bit-Types">§</a></h3>
 
@@ -7239,15 +7239,15 @@ All 1 tests passed.
     _ = @intToPtr(*Empty, 0x1);
         <span class="t32_1">^</span>
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="Result-Location-Semantics"><a href="#toc-Result-Location-Semantics">Result Location Semantics</a> <a class="hdr" href="#Result-Location-Semantics">§</a></h2>
 
       <p>
       <a href="https://github.com/ziglang/zig/issues/2809">TODO add documentation for this</a>
       </p>
-      
+
 
       <h2 id="usingnamespace"><a href="#toc-usingnamespace">usingnamespace</a> <a class="hdr" href="#usingnamespace">§</a></h2>
 
@@ -7283,7 +7283,7 @@ All 1 tests passed.
       <code><span class="tok-kw">pub</span></code>. This can be used to forward declarations, giving precise control
       over what declarations a given file exposes.
       </p>
-      
+
 
 
       <h2 id="comptime"><a href="#toc-comptime">comptime</a> <a class="hdr" href="#comptime">§</a></h2>
@@ -7408,7 +7408,7 @@ All 1 tests passed.
       This works the same way for <code><span class="tok-kw">switch</span></code> expressions - they are implicitly inlined
       when the target expression is compile-time known.
       </p>
-      
+
       <h4 id="Compile-Time-Variables"><a href="#toc-Compile-Time-Variables">Compile-Time Variables</a> <a class="hdr" href="#Compile-Time-Variables">§</a></h4>
 
       <p>
@@ -7493,7 +7493,7 @@ All 1 tests passed.
       later in this article, allows expressiveness that in other languages requires using macros,
       generated code, or a preprocessor to accomplish.
       </p>
-      
+
       <h4 id="Compile-Time-Expressions"><a href="#toc-Compile-Time-Expressions">Compile-Time Expressions</a> <a class="hdr" href="#Compile-Time-Expressions">§</a></h4>
 
       <p>
@@ -7757,8 +7757,8 @@ All 1 tests passed.
       we could call the <code>sum</code> function as is with a slice of numbers whose length and values were
       only known at run-time.
       </p>
-      
-      
+
+
       <h3 id="Generic-Data-Structures"><a href="#toc-Generic-Data-Structures">Generic Data Structures</a> <a class="hdr" href="#Generic-Data-Structures">§</a></h3>
 
       <p>
@@ -7795,7 +7795,7 @@ All 1 tests passed.
       <code>Node</code> refers to itself as a pointer, which is not actually an infinite regression, so
       it works fine.
       </p>
-      
+
       <h3 id="Case-Study-printf-in-Zig"><a href="#toc-Case-Study-printf-in-Zig">Case Study: printf in Zig</a> <a class="hdr" href="#Case-Study-printf-in-Zig">§</a></h3>
 
       <p>
@@ -7989,13 +7989,13 @@ here is a string: 'foobar' here is a number: 1234
       task in userland. It does so without introducing another language on top of Zig, such as
       a macro language or a preprocessor language. It's Zig all the way down.
       </p>
-      
+
       <p>See also:</p><ul>
 <li><a href="#inline-while">inline while</a></li>
 <li><a href="#inline-for">inline for</a></li>
 </ul>
 
-      
+
       <h2 id="Assembly"><a href="#toc-Assembly">Assembly</a> <a class="hdr" href="#Assembly">§</a></h2>
 
       <p>
@@ -8123,7 +8123,7 @@ _ = <span class="tok-kw">asm</span>
       Note that some breaking changes to output constraints are planned with
       <a href="https://github.com/ziglang/zig/issues/215">issue #215</a>.
       </p>
-      
+
 
       <h3 id="Input-Constraints"><a href="#toc-Input-Constraints">Input Constraints</a> <a class="hdr" href="#Input-Constraints">§</a></h3>
 
@@ -8139,7 +8139,7 @@ _ = <span class="tok-kw">asm</span>
       Note that some breaking changes to input constraints are planned with
       <a href="https://github.com/ziglang/zig/issues/215">issue #215</a>.
       </p>
-      
+
 
       <h3 id="Clobbers"><a href="#toc-Clobbers">Clobbers</a> <a class="hdr" href="#Clobbers">§</a></h3>
 
@@ -8154,7 +8154,7 @@ _ = <span class="tok-kw">asm</span>
       Failure to declare the full set of clobbers for a given inline assembly
       expression is unchecked <a href="#Undefined-Behavior">Undefined Behavior</a>.
       </p>
-      
+
 
       <h3 id="Global-Assembly"><a href="#toc-Global-Assembly">Global Assembly</a> <a class="hdr" href="#Global-Assembly">§</a></h3>
 
@@ -8190,15 +8190,15 @@ _ = <span class="tok-kw">asm</span>
 Test [1/1] test &quot;global assembly&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
 
       <h2 id="Atomics"><a href="#toc-Atomics">Atomics</a> <a class="hdr" href="#Atomics">§</a></h2>
 
       <p>TODO: @fence()</p>
       <p>TODO: @atomic rmw</p>
       <p>TODO: builtin atomic memory ordering enum</p>
-      
+
       <h2 id="Async-Functions"><a href="#toc-Async-Functions">Async Functions</a> <a class="hdr" href="#Async-Functions">§</a></h2>
 
       <p>
@@ -8212,10 +8212,10 @@ All 1 tests passed.
       provided explicitly by the caller, and it can be suspended and resumed any number of times.
       </p>
       <p>
-      The code following the <code><span class="tok-kw">async</span></code> callsite runs immediately after the async 
-      function first suspends. When the return value of the async function is needed, 
-      the calling code can <code><span class="tok-kw">await</span></code> on the async function frame. 
-      This will suspend the calling code until the async function completes, at which point 
+      The code following the <code><span class="tok-kw">async</span></code> callsite runs immediately after the async
+      function first suspends. When the return value of the async function is needed,
+      the calling code can <code><span class="tok-kw">await</span></code> on the async function frame.
+      This will suspend the calling code until the async function completes, at which point
       execution resumes just after the <code><span class="tok-kw">await</span></code> callsite.
       </p>
       <p>
@@ -8320,8 +8320,8 @@ All 1 tests passed.
       <p>
       This is guaranteed to tail call, and therefore will not cause a new stack frame.
       </p>
-      
-      
+
+
 
       <h3 id="Async-and-Await"><a href="#toc-Async-and-Await">Async and Await</a> <a class="hdr" href="#Async-and-Await">§</a></h3>
 
@@ -8331,8 +8331,8 @@ All 1 tests passed.
       in standard code.
       </p>
       <p>
-      However, it is possible to have an <code><span class="tok-kw">async</span></code> call 
-      without a matching <code><span class="tok-kw">await</span></code>. Upon completion of the async function, 
+      However, it is possible to have an <code><span class="tok-kw">async</span></code> call
+      without a matching <code><span class="tok-kw">await</span></code>. Upon completion of the async function,
       execution would continue at the most recent <code><span class="tok-kw">async</span></code> callsite or <code><span class="tok-kw">resume</span></code> callsite,
       and the return value of the async function would be lost.
       </p>
@@ -8370,8 +8370,8 @@ All 1 tests passed.
       </p>
       <p>
       <code><span class="tok-kw">await</span></code> is a suspend point, and takes as an operand anything that
-      coerces to <code><span class="tok-kw">anyframe</span>-&gt;T</code>. Calling <code><span class="tok-kw">await</span></code> on 
-      the frame of an async function will cause execution to continue at the 
+      coerces to <code><span class="tok-kw">anyframe</span>-&gt;T</code>. Calling <code><span class="tok-kw">await</span></code> on
+      the frame of an async function will cause execution to continue at the
       <code><span class="tok-kw">await</span></code> callsite once the target function completes.
       </p>
       <p>
@@ -8428,7 +8428,7 @@ All 1 tests passed.
       code will use only <code><span class="tok-kw">async</span></code> and <code><span class="tok-kw">await</span></code>, but event loop
       implementations will make use of <code><span class="tok-kw">suspend</span></code> internally.
       </p>
-      
+
 
       <h3 id="Async-Function-Example"><a href="#toc-Async-Function-Example">Async Function Example</a> <a class="hdr" href="#Async-Function-Example">§</a></h3>
 
@@ -8590,9 +8590,9 @@ file_text: this is the file contents
       since there are no suspend points, the order of the printed "... returning" messages
       is determined by the order of <code><span class="tok-kw">async</span></code> callsites.
       </p>
-      
 
-      
+
+
         <h2 id="Builtin-Functions"><a href="#toc-Builtin-Functions">Builtin Functions</a> <a class="hdr" href="#Builtin-Functions">§</a></h2>
 
       <p>
@@ -8608,7 +8608,7 @@ file_text: this is the file contents
           stores the overflowed bits in <code>result</code> and returns <code><span class="tok-null">true</span></code>.
                   If no overflow or underflow occurs, returns <code><span class="tok-null">false</span></code>.
       </p>
-      
+
       <h3 id="addWithSaturation"><a href="#toc-addWithSaturation">@addWithSaturation</a> <a class="hdr" href="#addWithSaturation">§</a></h3>
 
       <pre><code><span class="tok-builtin">@addWithSaturation</span>(a: T, b: T) T</code></pre>
@@ -8619,7 +8619,7 @@ file_text: this is the file contents
       Once <a href="https://github.com/ziglang/zig/issues/1284">Saturating arithmetic</a>.
       is completed, the syntax <code>a +| b</code> will be equivalent to calling <code><span class="tok-builtin">@addWithSaturation</span>(a, b)</code>.
       </p>
-      
+
       <h3 id="alignCast"><a href="#toc-alignCast">@alignCast</a> <a class="hdr" href="#alignCast">§</a></h3>
 
       <pre><code><span class="tok-builtin">@alignCast</span>(<span class="tok-kw">comptime</span> alignment: <span class="tok-type">u29</span>, ptr: <span class="tok-kw">anytype</span>) <span class="tok-kw">anytype</span></code></pre>
@@ -8631,7 +8631,7 @@ file_text: this is the file contents
       <p>A <a href="#Incorrect-Pointer-Alignment">pointer alignment safety check</a> is added
       to the generated code to make sure the pointer is aligned as promised.</p>
 
-      
+
       <h3 id="alignOf"><a href="#toc-alignOf">@alignOf</a> <a class="hdr" href="#alignOf">§</a></h3>
 
       <pre><code><span class="tok-builtin">@alignOf</span>(<span class="tok-kw">comptime</span> T: <span class="tok-type">type</span>) <span class="tok-type">comptime_int</span></code></pre>
@@ -8652,7 +8652,7 @@ file_text: this is the file contents
 <li><a href="#Alignment">Alignment</a></li>
 </ul>
 
-      
+
 
       <h3 id="as"><a href="#toc-as">@as</a> <a class="hdr" href="#as">§</a></h3>
 
@@ -8661,7 +8661,7 @@ file_text: this is the file contents
       Performs <a href="#Type-Coercion">Type Coercion</a>. This cast is allowed when the conversion is unambiguous and safe,
       and is the preferred way to convert between types, whenever possible.
       </p>
-      
+
 
       <h3 id="asyncCall"><a href="#toc-asyncCall">@asyncCall</a> <a class="hdr" href="#asyncCall">§</a></h3>
 
@@ -8705,7 +8705,7 @@ file_text: this is the file contents
 Test [1/1] test &quot;async fn pointer in a struct field&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="atomicLoad"><a href="#toc-atomicLoad">@atomicLoad</a> <a class="hdr" href="#atomicLoad">§</a></h3>
 
@@ -8717,7 +8717,7 @@ All 1 tests passed.
       <code>T</code> must be a pointer, a <code><span class="tok-type">bool</span></code>, a float,
       an integer or an enum.
       </p>
-      
+
       <h3 id="atomicRmw"><a href="#toc-atomicRmw">@atomicRmw</a> <a class="hdr" href="#atomicRmw">§</a></h3>
 
       <pre><code><span class="tok-builtin">@atomicRmw</span>(<span class="tok-kw">comptime</span> T: <span class="tok-type">type</span>, ptr: *T, <span class="tok-kw">comptime</span> op: builtin.AtomicRmwOp, operand: T, <span class="tok-kw">comptime</span> ordering: builtin.AtomicOrder) T</code></pre>
@@ -8744,7 +8744,7 @@ All 1 tests passed.
         <li><code>.Max</code> - stores the operand if it is larger. Supports integers and floats.</li>
         <li><code>.Min</code> - stores the operand if it is smaller. Supports integers and floats.</li>
       </ul>
-      
+
       <h3 id="atomicStore"><a href="#toc-atomicStore">@atomicStore</a> <a class="hdr" href="#atomicStore">§</a></h3>
 
       <pre><code><span class="tok-builtin">@atomicStore</span>(<span class="tok-kw">comptime</span> T: <span class="tok-type">type</span>, ptr: *T, value: T, <span class="tok-kw">comptime</span> ordering: builtin.AtomicOrder) <span class="tok-type">void</span></code></pre>
@@ -8755,7 +8755,7 @@ All 1 tests passed.
       <code>T</code> must be a pointer, a <code><span class="tok-type">bool</span></code>, a float,
       an integer or an enum.
       </p>
-      
+
 
       <h3 id="bitCast"><a href="#toc-bitCast">@bitCast</a> <a class="hdr" href="#bitCast">§</a></h3>
 
@@ -8779,7 +8779,7 @@ All 1 tests passed.
       <p>
       Works at compile-time if <code>value</code> is known at compile time. It's a compile error to bitcast a struct to a scalar type of the same size since structs have undefined layout. However if the struct is packed then it works.
       </p>
-      
+
 
       <h3 id="bitOffsetOf"><a href="#toc-bitOffsetOf">@bitOffsetOf</a> <a class="hdr" href="#bitOffsetOf">§</a></h3>
 
@@ -8796,7 +8796,7 @@ All 1 tests passed.
 <li><a href="#offsetOf">@offsetOf</a></li>
 </ul>
 
-      
+
 
       <h3 id="boolToInt"><a href="#toc-boolToInt">@boolToInt</a> <a class="hdr" href="#boolToInt">§</a></h3>
 
@@ -8809,7 +8809,7 @@ All 1 tests passed.
       If the value is known at compile-time, the return type is <code><span class="tok-type">comptime_int</span></code>
           instead of <code><span class="tok-type">u1</span></code>.
       </p>
-      
+
 
       <h3 id="bitSizeOf"><a href="#toc-bitSizeOf">@bitSizeOf</a> <a class="hdr" href="#bitSizeOf">§</a></h3>
 
@@ -8828,7 +8828,7 @@ All 1 tests passed.
 <li><a href="#typeInfo">@typeInfo</a></li>
 </ul>
 
-      
+
 
       <h3 id="breakpoint"><a href="#toc-breakpoint">@breakpoint</a> <a class="hdr" href="#breakpoint">§</a></h3>
 
@@ -8841,7 +8841,7 @@ All 1 tests passed.
       This function is only valid within function scope.
       </p>
 
-      
+
       <h3 id="mulAdd"><a href="#toc-mulAdd">@mulAdd</a> <a class="hdr" href="#mulAdd">§</a></h3>
 
       <pre><code><span class="tok-builtin">@mulAdd</span>(<span class="tok-kw">comptime</span> T: <span class="tok-type">type</span>, a: T, b: T, c: T) T</code></pre>
@@ -8852,7 +8852,7 @@ All 1 tests passed.
       <p>
       Supports Floats and Vectors of floats.
       </p>
-      
+
 
       <h3 id="byteSwap"><a href="#toc-byteSwap">@byteSwap</a> <a class="hdr" href="#byteSwap">§</a></h3>
 
@@ -8871,7 +8871,7 @@ All 1 tests passed.
       a little vs big endian system. On the other hand, if <code>T</code> is specified to
       be <code><span class="tok-type">u24</span></code>, then only 3 bytes are reversed.
       </p>
-      
+
 
       <h3 id="bitReverse"><a href="#toc-bitReverse">@bitReverse</a> <a class="hdr" href="#bitReverse">§</a></h3>
 
@@ -8884,7 +8884,7 @@ All 1 tests passed.
       For example 0b10110110 (<code><span class="tok-type">u8</span> = <span class="tok-number">182</span></code>, <code><span class="tok-type">i8</span> = -<span class="tok-number">74</span></code>)
       becomes 0b01101101 (<code><span class="tok-type">u8</span> = <span class="tok-number">109</span></code>, <code><span class="tok-type">i8</span> = <span class="tok-number">109</span></code>).
       </p>
-      
+
 
       <h3 id="offsetOf"><a href="#toc-offsetOf">@offsetOf</a> <a class="hdr" href="#offsetOf">§</a></h3>
 
@@ -8896,7 +8896,7 @@ All 1 tests passed.
 <li><a href="#bitOffsetOf">@bitOffsetOf</a></li>
 </ul>
 
-      
+
 
       <h3 id="call"><a href="#toc-call">@call</a> <a class="hdr" href="#call">§</a></h3>
 
@@ -8958,7 +8958,7 @@ All 1 tests passed.
         compile_time,
     };
 };</code></pre></figure>
-      
+
 
       <h3 id="cDefine"><a href="#toc-cDefine">@cDefine</a> <a class="hdr" href="#cDefine">§</a></h3>
 
@@ -8986,7 +8986,7 @@ All 1 tests passed.
 <li><a href="#void">void</a></li>
 </ul>
 
-      
+
       <h3 id="cImport"><a href="#toc-cImport">@cImport</a> <a class="hdr" href="#cImport">§</a></h3>
 
       <pre><code><span class="tok-builtin">@cImport</span>(expression) <span class="tok-type">type</span></code></pre>
@@ -9018,7 +9018,7 @@ All 1 tests passed.
 <li><a href="#cUndef">@cUndef</a></li>
 </ul>
 
-      
+
       <h3 id="cInclude"><a href="#toc-cInclude">@cInclude</a> <a class="hdr" href="#cInclude">§</a></h3>
 
       <pre><code><span class="tok-builtin">@cInclude</span>(<span class="tok-kw">comptime</span> path: []<span class="tok-type">u8</span>)</code></pre>
@@ -9036,7 +9036,7 @@ All 1 tests passed.
 <li><a href="#cUndef">@cUndef</a></li>
 </ul>
 
-      
+
 
       <h3 id="clz"><a href="#toc-clz">@clz</a> <a class="hdr" href="#clz">§</a></h3>
 
@@ -9061,7 +9061,7 @@ All 1 tests passed.
 <li><a href="#popCount">@popCount</a></li>
 </ul>
 
-      
+
 
       <h3 id="cmpxchgStrong"><a href="#toc-cmpxchgStrong">@cmpxchgStrong</a> <a class="hdr" href="#cmpxchgStrong">§</a></h3>
 
@@ -9093,7 +9093,7 @@ All 1 tests passed.
 <li><a href="#cmpxchgWeak">cmpxchgWeak</a></li>
 </ul>
 
-      
+
       <h3 id="cmpxchgWeak"><a href="#toc-cmpxchgWeak">@cmpxchgWeak</a> <a class="hdr" href="#cmpxchgWeak">§</a></h3>
 
       <pre><code><span class="tok-builtin">@cmpxchgWeak</span>(<span class="tok-kw">comptime</span> T: <span class="tok-type">type</span>, ptr: *T, expected_value: T, new_value: T, success_order: AtomicOrder, fail_order: AtomicOrder) ?T</code></pre>
@@ -9125,7 +9125,7 @@ All 1 tests passed.
 <li><a href="#cmpxchgStrong">cmpxchgStrong</a></li>
 </ul>
 
-      
+
 
       <h3 id="compileError"><a href="#toc-compileError">@compileError</a> <a class="hdr" href="#compileError">§</a></h3>
 
@@ -9139,7 +9139,7 @@ All 1 tests passed.
       using <code><span class="tok-kw">if</span></code> or <code><span class="tok-kw">switch</span></code> with compile time constants,
               and <code><span class="tok-kw">comptime</span></code> functions.
       </p>
-      
+
 
       <h3 id="compileLog"><a href="#toc-compileLog">@compileLog</a> <a class="hdr" href="#compileLog">§</a></h3>
 
@@ -9212,7 +9212,7 @@ Test [1/1] test &quot;main&quot;... Runtime in main, num1 = 100.
 
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="ctz"><a href="#toc-ctz">@ctz</a> <a class="hdr" href="#ctz">§</a></h3>
 
@@ -9237,7 +9237,7 @@ All 1 tests passed.
 <li><a href="#popCount">@popCount</a></li>
 </ul>
 
-      
+
 
       <h3 id="cUndef"><a href="#toc-cUndef">@cUndef</a> <a class="hdr" href="#cUndef">§</a></h3>
 
@@ -9256,7 +9256,7 @@ All 1 tests passed.
 <li><a href="#cInclude">@cInclude</a></li>
 </ul>
 
-      
+
 
       <h3 id="divExact"><a href="#toc-divExact">@divExact</a> <a class="hdr" href="#divExact">§</a></h3>
 
@@ -9275,7 +9275,7 @@ All 1 tests passed.
 <li><a href="#divFloor">@divFloor</a></li>
 </ul>
 
-      
+
       <h3 id="divFloor"><a href="#toc-divFloor">@divFloor</a> <a class="hdr" href="#divFloor">§</a></h3>
 
       <pre><code><span class="tok-builtin">@divFloor</span>(numerator: T, denominator: T) T</code></pre>
@@ -9294,7 +9294,7 @@ All 1 tests passed.
 <li><a href="#divExact">@divExact</a></li>
 </ul>
 
-      
+
       <h3 id="divTrunc"><a href="#toc-divTrunc">@divTrunc</a> <a class="hdr" href="#divTrunc">§</a></h3>
 
       <pre><code><span class="tok-builtin">@divTrunc</span>(numerator: T, denominator: T) T</code></pre>
@@ -9313,7 +9313,7 @@ All 1 tests passed.
 <li><a href="#divExact">@divExact</a></li>
 </ul>
 
-      
+
       <h3 id="embedFile"><a href="#toc-embedFile">@embedFile</a> <a class="hdr" href="#embedFile">§</a></h3>
 
       <pre><code><span class="tok-builtin">@embedFile</span>(<span class="tok-kw">comptime</span> path: []<span class="tok-kw">const</span> <span class="tok-type">u8</span>) *<span class="tok-kw">const</span> [N:<span class="tok-number">0</span>]<span class="tok-type">u8</span></code></pre>
@@ -9331,7 +9331,7 @@ All 1 tests passed.
 <li><a href="#import">@import</a></li>
 </ul>
 
-      
+
 
       <h3 id="enumToInt"><a href="#toc-enumToInt">@enumToInt</a> <a class="hdr" href="#enumToInt">§</a></h3>
 
@@ -9348,7 +9348,7 @@ All 1 tests passed.
 <li><a href="#intToEnum">@intToEnum</a></li>
 </ul>
 
-      
+
 
       <h3 id="errorName"><a href="#toc-errorName">@errorName</a> <a class="hdr" href="#errorName">§</a></h3>
 
@@ -9362,7 +9362,7 @@ All 1 tests passed.
       or all calls have a compile-time known value for <code>err</code>, then no
       error name table will be generated.
       </p>
-      
+
 
       <h3 id="errorReturnTrace"><a href="#toc-errorReturnTrace">@errorReturnTrace</a> <a class="hdr" href="#errorReturnTrace">§</a></h3>
 
@@ -9372,7 +9372,7 @@ All 1 tests passed.
       function that calls a function with an error or error union return type, returns a
       stack trace object. Otherwise returns <a href="#null">null</a>.
       </p>
-      
+
 
       <h3 id="errorToInt"><a href="#toc-errorToInt">@errorToInt</a> <a class="hdr" href="#errorToInt">§</a></h3>
 
@@ -9396,7 +9396,7 @@ All 1 tests passed.
 <li><a href="#intToError">@intToError</a></li>
 </ul>
 
-      
+
 
       <h3 id="errSetCast"><a href="#toc-errSetCast">@errSetCast</a> <a class="hdr" href="#errSetCast">§</a></h3>
 
@@ -9405,7 +9405,7 @@ All 1 tests passed.
       Converts an error value from one error set to another error set. Attempting to convert an error
       which is not in the destination error set results in safety-protected <a href="#Undefined-Behavior">Undefined Behavior</a>.
       </p>
-      
+
 
       <h3 id="export"><a href="#toc-export">@export</a> <a class="hdr" href="#export">§</a></h3>
 
@@ -9449,7 +9449,7 @@ All 1 tests passed.
 <li><a href="#Exporting-a-C-Library">Exporting a C Library</a></li>
 </ul>
 
-      
+
 
       <h3 id="extern"><a href="#toc-extern">@extern</a> <a class="hdr" href="#extern">§</a></h3>
 
@@ -9461,7 +9461,7 @@ All 1 tests passed.
 <li><a href="#export">@export</a></li>
 </ul>
 
-      
+
 
       <h3 id="fence"><a href="#toc-fence">@fence</a> <a class="hdr" href="#fence">§</a></h3>
 
@@ -9476,7 +9476,7 @@ All 1 tests passed.
 <li><a href="#Compile-Variables">Compile Variables</a></li>
 </ul>
 
-      
+
 
       <h3 id="field"><a href="#toc-field">@field</a> <a class="hdr" href="#field">§</a></h3>
 
@@ -9516,7 +9516,7 @@ Test [2/2] test &quot;decl access by string&quot;...
 All 2 tests passed.
 </samp></pre></figure>
 
-      
+
 
       <h3 id="fieldParentPtr"><a href="#toc-fieldParentPtr">@fieldParentPtr</a> <a class="hdr" href="#fieldParentPtr">§</a></h3>
 
@@ -9525,7 +9525,7 @@ All 2 tests passed.
       <p>
       Given a pointer to a field, returns the base pointer of a struct.
       </p>
-      
+
 
       <h3 id="floatCast"><a href="#toc-floatCast">@floatCast</a> <a class="hdr" href="#floatCast">§</a></h3>
 
@@ -9534,7 +9534,7 @@ All 2 tests passed.
       Convert from one float type to another. This cast is safe, but may cause the
       numeric value to lose precision.
       </p>
-      
+
 
       <h3 id="floatToInt"><a href="#toc-floatToInt">@floatToInt</a> <a class="hdr" href="#floatToInt">§</a></h3>
 
@@ -9550,7 +9550,7 @@ All 2 tests passed.
 <li><a href="#intToFloat">@intToFloat</a></li>
 </ul>
 
-      
+
 
       <h3 id="frame"><a href="#toc-frame">@frame</a> <a class="hdr" href="#frame">§</a></h3>
 
@@ -9565,7 +9565,7 @@ All 2 tests passed.
       This function does not mark a suspension point, but it does cause the function in scope
       to become an <a href="#Async-Functions">async function</a>.
       </p>
-      
+
 
       <h3 id="Frame"><a href="#toc-Frame">@Frame</a> <a class="hdr" href="#Frame">§</a></h3>
 
@@ -9591,7 +9591,7 @@ All 2 tests passed.
 Test [1/1] test &quot;heap allocated frame&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="frameAddress"><a href="#toc-frameAddress">@frameAddress</a> <a class="hdr" href="#frameAddress">§</a></h3>
 
@@ -9607,7 +9607,7 @@ All 1 tests passed.
       <p>
       This function is only valid within function scope.
       </p>
-      
+
 
       <h3 id="frameSize"><a href="#toc-frameSize">@frameSize</a> <a class="hdr" href="#frameSize">§</a></h3>
 
@@ -9619,7 +9619,7 @@ All 1 tests passed.
       <p>
       This function is typically used in conjunction with <a href="#asyncCall">@asyncCall</a>.
       </p>
-      
+
 
       <h3 id="hasDecl"><a href="#toc-hasDecl">@hasDecl</a> <a class="hdr" href="#hasDecl">§</a></h3>
 
@@ -9657,7 +9657,7 @@ All 1 tests passed.
 <li><a href="#hasField">@hasField</a></li>
 </ul>
 
-      
+
 
       <h3 id="hasField"><a href="#toc-hasField">@hasField</a> <a class="hdr" href="#hasField">§</a></h3>
 
@@ -9673,7 +9673,7 @@ All 1 tests passed.
 <li><a href="#hasDecl">@hasDecl</a></li>
 </ul>
 
-      
+
 
       <h3 id="import"><a href="#toc-import">@import</a> <a class="hdr" href="#import">§</a></h3>
 
@@ -9709,7 +9709,7 @@ All 1 tests passed.
 <li><a href="#embedFile">@embedFile</a></li>
 </ul>
 
-      
+
 
       <h3 id="intCast"><a href="#toc-intCast">@intCast</a> <a class="hdr" href="#intCast">§</a></h3>
 
@@ -9723,7 +9723,7 @@ All 1 tests passed.
       If <code>T</code> is <code><span class="tok-type">comptime_int</span></code>,
       then this is semantically equivalent to <a href="#Type-Coercion">Type Coercion</a>.
       </p>
-      
+
 
       <h3 id="intToEnum"><a href="#toc-intToEnum">@intToEnum</a> <a class="hdr" href="#intToEnum">§</a></h3>
 
@@ -9739,7 +9739,7 @@ All 1 tests passed.
 <li><a href="#enumToInt">@enumToInt</a></li>
 </ul>
 
-      
+
 
       <h3 id="intToError"><a href="#toc-intToError">@intToError</a> <a class="hdr" href="#intToError">§</a></h3>
 
@@ -9759,7 +9759,7 @@ All 1 tests passed.
 <li><a href="#errorToInt">@errorToInt</a></li>
 </ul>
 
-      
+
 
       <h3 id="intToFloat"><a href="#toc-intToFloat">@intToFloat</a> <a class="hdr" href="#intToFloat">§</a></h3>
 
@@ -9767,7 +9767,7 @@ All 1 tests passed.
       <p>
       Converts an integer to the closest floating point representation. To convert the other way, use <a href="#floatToInt">@floatToInt</a>. This cast is always safe.
       </p>
-      
+
 
       <h3 id="intToPtr"><a href="#toc-intToPtr">@intToPtr</a> <a class="hdr" href="#intToPtr">§</a></h3>
 
@@ -9779,7 +9779,7 @@ All 1 tests passed.
       If the destination pointer type does not allow address zero and <code>address</code>
       is zero, this invokes safety-checked <a href="#Undefined-Behavior">Undefined Behavior</a>.
       </p>
-      
+
 
       <h3 id="maximum"><a href="#toc-maximum">@maximum</a> <a class="hdr" href="#maximum">§</a></h3>
 
@@ -9796,7 +9796,7 @@ All 1 tests passed.
 <li><a href="#Vectors">Vectors</a></li>
 </ul>
 
-      
+
 
       <h3 id="memcpy"><a href="#toc-memcpy">@memcpy</a> <a class="hdr" href="#memcpy">§</a></h3>
 
@@ -9816,7 +9816,7 @@ All 1 tests passed.
       <p>There is also a standard library function for this:</p>
       <pre><code><span class="tok-kw">const</span> mem = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).mem;
 mem.copy(<span class="tok-type">u8</span>, dest[<span class="tok-number">0</span>..byte_count], source[<span class="tok-number">0</span>..byte_count]);</code></pre>
-      
+
 
       <h3 id="memset"><a href="#toc-memset">@memset</a> <a class="hdr" href="#memset">§</a></h3>
 
@@ -9835,7 +9835,7 @@ mem.copy(<span class="tok-type">u8</span>, dest[<span class="tok-number">0</span
       <p>There is also a standard library function for this:</p>
       <pre><code><span class="tok-kw">const</span> mem = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>).mem;
 mem.set(<span class="tok-type">u8</span>, dest, c);</code></pre>
-      
+
 
       <h3 id="minimum"><a href="#toc-minimum">@minimum</a> <a class="hdr" href="#minimum">§</a></h3>
 
@@ -9852,7 +9852,7 @@ mem.set(<span class="tok-type">u8</span>, dest, c);</code></pre>
 <li><a href="#Vectors">Vectors</a></li>
 </ul>
 
-      
+
 
       <h3 id="wasmMemorySize"><a href="#toc-wasmMemorySize">@wasmMemorySize</a> <a class="hdr" href="#wasmMemorySize">§</a></h3>
 
@@ -9870,7 +9870,7 @@ mem.set(<span class="tok-type">u8</span>, dest, c);</code></pre>
 <li><a href="#wasmMemoryGrow">@wasmMemoryGrow</a></li>
 </ul>
 
-      
+
 
       <h3 id="wasmMemoryGrow"><a href="#toc-wasmMemoryGrow">@wasmMemoryGrow</a> <a class="hdr" href="#wasmMemoryGrow">§</a></h3>
 
@@ -9905,7 +9905,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
 <li><a href="#wasmMemorySize">@wasmMemorySize</a></li>
 </ul>
 
-      
+
 
       <h3 id="mod"><a href="#toc-mod">@mod</a> <a class="hdr" href="#mod">§</a></h3>
 
@@ -9923,7 +9923,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
 <li><a href="#rem">@rem</a></li>
 </ul>
 
-      
+
 
       <h3 id="mulWithOverflow"><a href="#toc-mulWithOverflow">@mulWithOverflow</a> <a class="hdr" href="#mulWithOverflow">§</a></h3>
 
@@ -9933,8 +9933,8 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
           stores the overflowed bits in <code>result</code> and returns <code><span class="tok-null">true</span></code>.
                   If no overflow or underflow occurs, returns <code><span class="tok-null">false</span></code>.
       </p>
-      
-      
+
+
       <h3 id="mulWithSaturation"><a href="#toc-mulWithSaturation">@mulWithSaturation</a> <a class="hdr" href="#mulWithSaturation">§</a></h3>
 
       <pre><code><span class="tok-builtin">@mulWithSaturation</span>(a: T, b: T) T</code></pre>
@@ -9946,11 +9946,11 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
       is completed, the syntax <code>a *| b</code> will be equivalent to calling <code><span class="tok-builtin">@mulWithSaturation</span>(a, b)</code>.
       </p>
       <p>
-      NOTE: Currently there is a bug in the llvm.smul.fix.sat intrinsic which affects <code><span class="tok-builtin">@mulWithSaturation</span></code> of signed integers.  
-      This may result in an incorrect sign bit when there is overflow.  This will be fixed in zig's 0.9.0 release.  
+      NOTE: Currently there is a bug in the llvm.smul.fix.sat intrinsic which affects <code><span class="tok-builtin">@mulWithSaturation</span></code> of signed integers.
+      This may result in an incorrect sign bit when there is overflow.  This will be fixed in zig's 0.9.0 release.
       Check <a href="https://github.com/ziglang/zig/issues/9643">this issue</a> for more information.
       </p>
-      
+
 
       <h3 id="panic"><a href="#toc-panic">@panic</a> <a class="hdr" href="#panic">§</a></h3>
 
@@ -9972,7 +9972,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
 <li><a href="#Root-Source-File">Root Source File</a></li>
 </ul>
 
-      
+
 
       <h3 id="popCount"><a href="#toc-popCount">@popCount</a> <a class="hdr" href="#popCount">§</a></h3>
 
@@ -9991,7 +9991,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
 <li><a href="#clz">@clz</a></li>
 </ul>
 
-      
+
 
       <h3 id="ptrCast"><a href="#toc-ptrCast">@ptrCast</a> <a class="hdr" href="#ptrCast">§</a></h3>
 
@@ -10003,7 +10003,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
       <a href="#Optional-Pointers">Optional Pointers</a> are allowed. Casting an optional pointer which is <a href="#null">null</a>
       to a non-optional pointer invokes safety-checked <a href="#Undefined-Behavior">Undefined Behavior</a>.
       </p>
-      
+
 
       <h3 id="ptrToInt"><a href="#toc-ptrToInt">@ptrToInt</a> <a class="hdr" href="#ptrToInt">§</a></h3>
 
@@ -10019,7 +10019,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
       </ul>
       <p>To convert the other way, use <a href="#intToPtr">@intToPtr</a></p>
 
-      
+
 
       <h3 id="rem"><a href="#toc-rem">@rem</a> <a class="hdr" href="#rem">§</a></h3>
 
@@ -10037,7 +10037,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
 <li><a href="#mod">@mod</a></li>
 </ul>
 
-      
+
 
       <h3 id="returnAddress"><a href="#toc-returnAddress">@returnAddress</a> <a class="hdr" href="#returnAddress">§</a></h3>
 
@@ -10054,7 +10054,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
       This function is only valid within function scope. If the function gets inlined into
       a calling function, the returned address will apply to the calling function.
       </p>
-      
+
 
       <h3 id="select"><a href="#toc-select">@select</a> <a class="hdr" href="#select">§</a></h3>
 
@@ -10067,7 +10067,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
 <li><a href="#Vectors">Vectors</a></li>
 </ul>
 
-      
+
 
       <h3 id="setAlignStack"><a href="#toc-setAlignStack">@setAlignStack</a> <a class="hdr" href="#setAlignStack">§</a></h3>
 
@@ -10075,7 +10075,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
       <p>
       Ensures that a function will have a stack alignment of at least <code>alignment</code> bytes.
       </p>
-      
+
 
       <h3 id="setCold"><a href="#toc-setCold">@setCold</a> <a class="hdr" href="#setCold">§</a></h3>
 
@@ -10083,7 +10083,7 @@ Test [2/1] test &quot;@wasmMemoryGrow&quot;... SKIP
       <p>
       Tells the optimizer that a function is rarely called.
       </p>
-      
+
 
       <h3 id="setEvalBranchQuota"><a href="#toc-setEvalBranchQuota">@setEvalBranchQuota</a> <a class="hdr" href="#setEvalBranchQuota">§</a></h3>
 
@@ -10128,7 +10128,7 @@ All 1 tests passed.
 <li><a href="#comptime">comptime</a></li>
 </ul>
 
-      
+
 
       <h3 id="setFloatMode"><a href="#toc-setFloatMode">@setFloatMode</a> <a class="hdr" href="#setFloatMode">§</a></h3>
 
@@ -10165,7 +10165,7 @@ All 1 tests passed.
 <li><a href="#Floating-Point-Operations">Floating Point Operations</a></li>
 </ul>
 
-      
+
 
       <h3 id="setRuntimeSafety"><a href="#toc-setRuntimeSafety">@setRuntimeSafety</a> <a class="hdr" href="#setRuntimeSafety">§</a></h3>
 
@@ -10201,7 +10201,7 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
       <p>Note: it is <a href="https://github.com/ziglang/zig/issues/978">planned</a> to replace
       <code><span class="tok-builtin">@setRuntimeSafety</span></code> with <code>@optimizeFor</code></p>
 
-      
+
 
       <h3 id="shlExact"><a href="#toc-shlExact">@shlExact</a> <a class="hdr" href="#shlExact">§</a></h3>
 
@@ -10220,7 +10220,7 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
 <li><a href="#shlWithSaturation">@shlWithSaturation</a></li>
 </ul>
 
-      
+
 
       <h3 id="shlWithOverflow"><a href="#toc-shlWithOverflow">@shlWithOverflow</a> <a class="hdr" href="#shlWithOverflow">§</a></h3>
 
@@ -10240,20 +10240,20 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
 <li><a href="#shlWithSaturation">@shlWithSaturation</a></li>
 </ul>
 
-      
-      
+
+
       <h3 id="shlWithSaturation"><a href="#toc-shlWithSaturation">@shlWithSaturation</a> <a class="hdr" href="#shlWithSaturation">§</a></h3>
 
       <pre><code><span class="tok-builtin">@shlWithSaturation</span>(a: T, shift_amt: T) T</code></pre>
       <p>
-      Returns <code>a &lt;&lt; b</code>. The result will be clamped between type minimum and maximum.  
+      Returns <code>a &lt;&lt; b</code>. The result will be clamped between type minimum and maximum.
       </p>
       <p>
       Once <a href="https://github.com/ziglang/zig/issues/1284">Saturating arithmetic</a>.
       is completed, the syntax <code>a &lt;&lt;| b</code> will be equivalent to calling <code><span class="tok-builtin">@shlWithSaturation</span>(a, b)</code>.
       </p>
       <p>
-      Unlike other @shl builtins, shift_amt doesn't need to be a Log2T as saturated overshifting is well defined.  
+      Unlike other @shl builtins, shift_amt doesn't need to be a Log2T as saturated overshifting is well defined.
       </p>
       <p>See also:</p><ul>
 <li><a href="#shlExact">@shlExact</a></li>
@@ -10261,7 +10261,7 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
 <li><a href="#shlWithOverflow">@shlWithOverflow</a></li>
 </ul>
 
-      
+
 
       <h3 id="shrExact"><a href="#toc-shrExact">@shrExact</a> <a class="hdr" href="#shrExact">§</a></h3>
 
@@ -10280,7 +10280,7 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
 <li><a href="#shlWithSaturation">@shlWithSaturation</a></li>
 </ul>
 
-      
+
 
       <h3 id="shuffle"><a href="#toc-shuffle">@shuffle</a> <a class="hdr" href="#shuffle">§</a></h3>
 
@@ -10321,7 +10321,7 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
 <li><a href="#SIMD">SIMD</a></li>
 </ul>
 
-      
+
 
       <h3 id="sizeOf"><a href="#toc-sizeOf">@sizeOf</a> <a class="hdr" href="#sizeOf">§</a></h3>
 
@@ -10345,7 +10345,7 @@ docgen_tmp/zig-cache/o/4c538eebc0f9b6ad929266b9037088b9/test /home/paul/Developm
 <li><a href="#typeInfo">@typeInfo</a></li>
 </ul>
 
-      
+
 
       <h3 id="splat"><a href="#toc-splat">@splat</a> <a class="hdr" href="#splat">§</a></h3>
 
@@ -10375,7 +10375,7 @@ All 1 tests passed.
 <li><a href="#shuffle">@shuffle</a></li>
 </ul>
 
-      
+
 
       <h3 id="reduce"><a href="#toc-reduce">@reduce</a> <a class="hdr" href="#reduce">§</a></h3>
 
@@ -10422,7 +10422,7 @@ All 1 tests passed.
 <li><a href="#setFloatMode">@setFloatMode</a></li>
 </ul>
 
-      
+
 
       <h3 id="src"><a href="#toc-src">@src</a> <a class="hdr" href="#src">§</a></h3>
 
@@ -10448,7 +10448,7 @@ All 1 tests passed.
 Test [1/1] test &quot;@src&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
       <h3 id="sqrt"><a href="#toc-sqrt">@sqrt</a> <a class="hdr" href="#sqrt">§</a></h3>
 
       <pre><code><span class="tok-builtin">@sqrt</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10460,7 +10460,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="sin"><a href="#toc-sin">@sin</a> <a class="hdr" href="#sin">§</a></h3>
 
       <pre><code><span class="tok-builtin">@sin</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10472,7 +10472,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="cos"><a href="#toc-cos">@cos</a> <a class="hdr" href="#cos">§</a></h3>
 
       <pre><code><span class="tok-builtin">@cos</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10484,7 +10484,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="exp"><a href="#toc-exp">@exp</a> <a class="hdr" href="#exp">§</a></h3>
 
       <pre><code><span class="tok-builtin">@exp</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10496,7 +10496,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="exp2"><a href="#toc-exp2">@exp2</a> <a class="hdr" href="#exp2">§</a></h3>
 
       <pre><code><span class="tok-builtin">@exp2</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10508,7 +10508,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="log"><a href="#toc-log">@log</a> <a class="hdr" href="#log">§</a></h3>
 
       <pre><code><span class="tok-builtin">@log</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10520,7 +10520,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="log2"><a href="#toc-log2">@log2</a> <a class="hdr" href="#log2">§</a></h3>
 
       <pre><code><span class="tok-builtin">@log2</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10532,7 +10532,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="log10"><a href="#toc-log10">@log10</a> <a class="hdr" href="#log10">§</a></h3>
 
       <pre><code><span class="tok-builtin">@log10</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10544,7 +10544,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="fabs"><a href="#toc-fabs">@fabs</a> <a class="hdr" href="#fabs">§</a></h3>
 
       <pre><code><span class="tok-builtin">@fabs</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10556,7 +10556,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="floor"><a href="#toc-floor">@floor</a> <a class="hdr" href="#floor">§</a></h3>
 
       <pre><code><span class="tok-builtin">@floor</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10568,7 +10568,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="ceil"><a href="#toc-ceil">@ceil</a> <a class="hdr" href="#ceil">§</a></h3>
 
       <pre><code><span class="tok-builtin">@ceil</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10580,7 +10580,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="trunc"><a href="#toc-trunc">@trunc</a> <a class="hdr" href="#trunc">§</a></h3>
 
       <pre><code><span class="tok-builtin">@trunc</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10592,7 +10592,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
       <h3 id="round"><a href="#toc-round">@round</a> <a class="hdr" href="#round">§</a></h3>
 
       <pre><code><span class="tok-builtin">@round</span>(value: <span class="tok-kw">anytype</span>) <span class="tok-builtin">@TypeOf</span>(value)</code></pre>
@@ -10604,7 +10604,7 @@ All 1 tests passed.
       Supports <a href="#Floats">Floats</a> and <a href="#Vectors">Vectors</a> of floats, with the caveat that
       <a href="https://github.com/ziglang/zig/issues/4026">some float operations are not yet implemented for all float types</a>.
       </p>
-      
+
 
       <h3 id="subWithOverflow"><a href="#toc-subWithOverflow">@subWithOverflow</a> <a class="hdr" href="#subWithOverflow">§</a></h3>
 
@@ -10614,19 +10614,19 @@ All 1 tests passed.
           stores the overflowed bits in <code>result</code> and returns <code><span class="tok-null">true</span></code>.
                   If no overflow or underflow occurs, returns <code><span class="tok-null">false</span></code>.
       </p>
-      
-      
+
+
       <h3 id="subWithSaturation"><a href="#toc-subWithSaturation">@subWithSaturation</a> <a class="hdr" href="#subWithSaturation">§</a></h3>
 
       <pre><code><span class="tok-builtin">@subWithSaturation</span>(a: T, b: T) T</code></pre>
       <p>
-      Returns <code>a - b</code>. The result will be clamped between the type maximum and minimum.  
+      Returns <code>a - b</code>. The result will be clamped between the type maximum and minimum.
       </p>
       <p>
       Once <a href="https://github.com/ziglang/zig/issues/1284">Saturating arithmetic</a>.
       is completed, the syntax <code>a -| b</code> will be equivalent to calling <code><span class="tok-builtin">@subWithSaturation</span>(a, b)</code>.
       </p>
-      
+
 
       <h3 id="tagName"><a href="#toc-tagName">@tagName</a> <a class="hdr" href="#tagName">§</a></h3>
 
@@ -10634,7 +10634,7 @@ All 1 tests passed.
       <p>
       Converts an enum value or union value to a string literal representing the name.</p><p>If the enum is non-exhaustive and the tag value does not map to a name, it invokes safety-checked <a href="#Undefined-Behavior">Undefined Behavior</a>.
       </p>
-      
+
 
       <h3 id="This"><a href="#toc-This">@This</a> <a class="hdr" href="#This">§</a></h3>
 
@@ -10670,7 +10670,7 @@ All 1 tests passed.
       When <code><span class="tok-builtin">@This</span>()</code> is used at file scope, it returns a reference to the
       struct that corresponds to the current file.
       </p>
-      
+
 
       <h3 id="truncate"><a href="#toc-truncate">@truncate</a> <a class="hdr" href="#truncate">§</a></h3>
 
@@ -10727,7 +10727,7 @@ All 1 tests passed.
       This function always truncates the significant bits of the integer, regardless
       of endianness on the target platform.
       </p>
-      
+
 
       <h3 id="Type"><a href="#toc-Type">@Type</a> <a class="hdr" href="#Type">§</a></h3>
 
@@ -10771,7 +10771,7 @@ All 1 tests passed.
           <li><a href="#Functions">Functions</a></li>
           <li>BoundFn</li>
       </ul>
-      
+
       <h3 id="typeInfo"><a href="#toc-typeInfo">@typeInfo</a> <a class="hdr" href="#typeInfo">§</a></h3>
 
       <pre><code><span class="tok-builtin">@typeInfo</span>(<span class="tok-kw">comptime</span> T: <span class="tok-type">type</span>) std.builtin.TypeInfo</code></pre>
@@ -10783,7 +10783,7 @@ All 1 tests passed.
       <a href="#Error-Set-Type">error sets</a>, the fields are guaranteed to be in the same
       order as declared. For declarations, the order is unspecified.
       </p>
-      
+
 
       <h3 id="typeName"><a href="#toc-typeName">@typeName</a> <a class="hdr" href="#typeName">§</a></h3>
 
@@ -10793,7 +10793,7 @@ All 1 tests passed.
       an array. It is equivalent to a string literal of the type name.
       </p>
 
-      
+
 
       <h3 id="TypeOf"><a href="#toc-TypeOf">@TypeOf</a> <a class="hdr" href="#TypeOf">§</a></h3>
 
@@ -10822,7 +10822,7 @@ All 1 tests passed.
 Test [1/1] test &quot;no runtime side effects&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
+
 
       <h3 id="unionInit"><a href="#toc-unionInit">@unionInit</a> <a class="hdr" href="#unionInit">§</a></h3>
 
@@ -10834,8 +10834,8 @@ All 1 tests passed.
       <p>
       <code><span class="tok-builtin">@unionInit</span></code> forwards its <a href="#Result-Location-Semantics">result location</a> to <code>init_expr</code>.
       </p>
-      
-      
+
+
 
       <h2 id="Build-Mode"><a href="#toc-Build-Mode">Build Mode</a> <a class="hdr" href="#Build-Mode">§</a></h2>
 
@@ -10877,7 +10877,7 @@ All 1 tests passed.
         <li>Large binary size</li>
         <li>No reproducible build requirement</li>
       </ul>
-      
+
       <h3 id="ReleaseFast"><a href="#toc-ReleaseFast">ReleaseFast</a> <a class="hdr" href="#ReleaseFast">§</a></h3>
 
       <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseFast</kbd>
@@ -10889,7 +10889,7 @@ All 1 tests passed.
         <li>Large binary size</li>
         <li>Reproducible build</li>
       </ul>
-      
+
       <h3 id="ReleaseSafe"><a href="#toc-ReleaseSafe">ReleaseSafe</a> <a class="hdr" href="#ReleaseSafe">§</a></h3>
 
       <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseSafe</kbd>
@@ -10901,7 +10901,7 @@ All 1 tests passed.
         <li>Large binary size</li>
         <li>Reproducible build</li>
       </ul>
-      
+
       <h3 id="ReleaseSmall"><a href="#toc-ReleaseSmall">ReleaseSmall</a> <a class="hdr" href="#ReleaseSmall">§</a></h3>
 
       <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe example.zig -O ReleaseSmall</kbd>
@@ -10913,14 +10913,14 @@ All 1 tests passed.
         <li>Small binary size</li>
         <li>Reproducible build</li>
       </ul>
-      
+
       <p>See also:</p><ul>
 <li><a href="#Compile-Variables">Compile Variables</a></li>
 <li><a href="#Zig-Build-System">Zig Build System</a></li>
 <li><a href="#Undefined-Behavior">Undefined Behavior</a></li>
 </ul>
 
-      
+
 
       <h2 id="Single-Threaded-Builds"><a href="#toc-Single-Threaded-Builds">Single Threaded Builds</a> <a class="hdr" href="#Single-Threaded-Builds">§</a></h2>
 
@@ -10933,7 +10933,7 @@ All 1 tests passed.
           For example <code>std.Mutex</code> becomes
           an empty data structure and all of its functions become no-ops.</li>
       </ul>
-      
+
 
       <h2 id="Undefined-Behavior"><a href="#toc-Undefined-Behavior">Undefined Behavior</a> <a class="hdr" href="#Undefined-Behavior">§</a></h2>
 
@@ -11025,7 +11025,7 @@ thread 13323 panic: reached unreachable code
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Index-out-of-Bounds"><a href="#toc-Index-out-of-Bounds">Index out of Bounds</a> <a class="hdr" href="#Index-out-of-Bounds">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11070,7 +11070,7 @@ thread 13352 panic: index out of bounds
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Cast-Negative-Number-to-Unsigned-Integer"><a href="#toc-Cast-Negative-Number-to-Unsigned-Integer">Cast Negative Number to Unsigned Integer</a> <a class="hdr" href="#Cast-Negative-Number-to-Unsigned-Integer">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11114,7 +11114,7 @@ thread 13389 panic: attempt to cast negative value to unsigned integer
       <p>
       To obtain the maximum value of an unsigned integer, use <code>std.math.maxInt</code>.
       </p>
-      
+
       <h3 id="Cast-Truncates-Data"><a href="#toc-Cast-Truncates-Data">Cast Truncates Data</a> <a class="hdr" href="#Cast-Truncates-Data">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11158,7 +11158,7 @@ thread 13418 panic: integer cast truncated bits
       <p>
       To truncate bits, use <a href="#truncate">@truncate</a>.
       </p>
-      
+
       <h3 id="Integer-Overflow"><a href="#toc-Integer-Overflow">Integer Overflow</a> <a class="hdr" href="#Integer-Overflow">§</a></h3>
 
       <h4 id="Default-Operations"><a href="#toc-Default-Operations">Default Operations</a> <a class="hdr" href="#Default-Operations">§</a></h4>
@@ -11211,7 +11211,7 @@ thread 13447 panic: integer overflow
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h4 id="Standard-Library-Math-Functions"><a href="#toc-Standard-Library-Math-Functions">Standard Library Math Functions</a> <a class="hdr" href="#Standard-Library-Math-Functions">§</a></h4>
 
       <p>These functions provided by the standard library return possible errors.</p>
@@ -11248,7 +11248,7 @@ error: Overflow
         return err;
         <span class="t32_1">^</span>
 </samp></pre></figure>
-      
+
       <h4 id="Builtin-Overflow-Functions"><a href="#toc-Builtin-Overflow-Functions">Builtin Overflow Functions</a> <a class="hdr" href="#Builtin-Overflow-Functions">§</a></h4>
 
       <p>
@@ -11279,7 +11279,7 @@ error: Overflow
 $ <kbd>./test</kbd>
 overflowed result: 9
 </samp></pre></figure>
-      
+
       <h4 id="Wrapping-Operations"><a href="#toc-Wrapping-Operations">Wrapping Operations</a> <a class="hdr" href="#Wrapping-Operations">§</a></h4>
 
       <p>
@@ -11306,8 +11306,8 @@ overflowed result: 9
 Test [1/1] test &quot;wraparound addition and subtraction&quot;...
 All 1 tests passed.
 </samp></pre></figure>
-      
-      
+
+
       <h3 id="Exact-Left-Shift-Overflow"><a href="#toc-Exact-Left-Shift-Overflow">Exact Left Shift Overflow</a> <a class="hdr" href="#Exact-Left-Shift-Overflow">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11347,7 +11347,7 @@ thread 13546 panic: left shift overflowed bits
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Exact-Right-Shift-Overflow"><a href="#toc-Exact-Right-Shift-Overflow">Exact Right Shift Overflow</a> <a class="hdr" href="#Exact-Right-Shift-Overflow">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11387,7 +11387,7 @@ thread 13595 panic: right shift overflowed bits
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Division-by-Zero"><a href="#toc-Division-by-Zero">Division by Zero</a> <a class="hdr" href="#Division-by-Zero">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11430,7 +11430,7 @@ thread 13632 panic: division by zero
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Remainder-Division-by-Zero"><a href="#toc-Remainder-Division-by-Zero">Remainder Division by Zero</a> <a class="hdr" href="#Remainder-Division-by-Zero">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11473,7 +11473,7 @@ thread 13663 panic: remainder division by zero or negative value
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Exact-Division-Remainder"><a href="#toc-Exact-Division-Remainder">Exact Division Remainder</a> <a class="hdr" href="#Exact-Division-Remainder">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11516,7 +11516,7 @@ thread 13693 panic: exact division produced remainder
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Attempt-to-Unwrap-Null"><a href="#toc-Attempt-to-Unwrap-Null">Attempt to Unwrap Null</a> <a class="hdr" href="#Attempt-to-Unwrap-Null">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11577,7 +11577,7 @@ it's null
 <li><a href="#Optionals">Optionals</a></li>
 </ul>
 
-      
+
       <h3 id="Attempt-to-Unwrap-Error"><a href="#toc-Attempt-to-Unwrap-Error">Attempt to Unwrap Error</a> <a class="hdr" href="#Attempt-to-Unwrap-Error">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11653,7 +11653,7 @@ got error: UnableToReturnNumber
 <li><a href="#Errors">Errors</a></li>
 </ul>
 
-      
+
       <h3 id="Invalid-Error-Code"><a href="#toc-Invalid-Error-Code">Invalid Error Code</a> <a class="hdr" href="#Invalid-Error-Code">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11696,7 +11696,7 @@ thread 13828 panic: invalid error code
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Invalid-Enum-Cast"><a href="#toc-Invalid-Enum-Cast">Invalid Enum Cast</a> <a class="hdr" href="#Invalid-Enum-Cast">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11751,7 +11751,7 @@ thread 13865 panic: invalid enum value
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
 
       <h3 id="Invalid-Error-Set-Cast"><a href="#toc-Invalid-Error-Set-Cast">Invalid Error Set Cast</a> <a class="hdr" href="#Invalid-Error-Set-Cast">§</a></h3>
 
@@ -11812,7 +11812,7 @@ thread 13894 panic: invalid error code
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
 
       <h3 id="Incorrect-Pointer-Alignment"><a href="#toc-Incorrect-Pointer-Alignment">Incorrect Pointer Alignment</a> <a class="hdr" href="#Incorrect-Pointer-Alignment">§</a></h3>
 
@@ -11864,7 +11864,7 @@ thread 13923 panic: incorrect alignment
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
+
       <h3 id="Wrong-Union-Field-Access"><a href="#toc-Wrong-Union-Field-Access">Wrong Union Field Access</a> <a class="hdr" href="#Wrong-Union-Field-Access">§</a></h3>
 
       <p>At compile-time:</p>
@@ -11977,12 +11977,12 @@ value: 1.23400001e+01
 <li><a href="#extern-union">extern union</a></li>
 </ul>
 
-      
+
 
       <h3 id="Out-of-Bounds-Float-to-Integer-Cast"><a href="#toc-Out-of-Bounds-Float-to-Integer-Cast">Out of Bounds Float to Integer Cast</a> <a class="hdr" href="#Out-of-Bounds-Float-to-Integer-Cast">§</a></h3>
 
       <p>TODO</p>
-      
+
 
       <h3 id="Pointer-Cast-Invalid-Null"><a href="#toc-Pointer-Cast-Invalid-Null">Pointer Cast Invalid Null</a> <a class="hdr" href="#Pointer-Cast-Invalid-Null">§</a></h3>
 
@@ -12027,9 +12027,9 @@ thread 14032 panic: cast causes pointer to be null
     <span class="t32_1">^</span>
 (process terminated by signal)
 </samp></pre></figure>
-      
 
-      
+
+
       <h2 id="Memory"><a href="#toc-Memory">Memory</a> <a class="hdr" href="#Memory">§</a></h2>
 
       <p>
@@ -12150,7 +12150,7 @@ ptr=i32@7f9a446db018
               You can also consider <a href="#Implementing-an-Allocator">Implementing an Allocator</a>.
           </li>
       </ol>
-      
+
 
       <h3 id="Where-are-the-bytes"><a href="#toc-Where-are-the-bytes">Where are the bytes?</a> <a class="hdr" href="#Where-are-the-bytes">§</a></h3>
 
@@ -12198,7 +12198,7 @@ All 1 tests passed.
       <code>allocator.create</code> is determined by the allocator's implementation.
       </p>
       <p>TODO: thread local variables</p>
-      
+
 
       <h3 id="Implementing-an-Allocator"><a href="#toc-Implementing-an-Allocator">Implementing an Allocator</a> <a class="hdr" href="#Implementing-an-Allocator">§</a></h3>
 
@@ -12210,7 +12210,7 @@ All 1 tests passed.
       There are many example allocators to look at for inspiration. Look at std/heap.zig and
       <code>std.heap.GeneralPurposeAllocator</code>.
       </p>
-      
+
 
       <h3 id="Heap-Allocation-Failure"><a href="#toc-Heap-Allocation-Failure">Heap Allocation Failure</a> <a class="hdr" href="#Heap-Allocation-Failure">§</a></h3>
 
@@ -12252,7 +12252,7 @@ All 1 tests passed.
               being killed, and often fails to return the system back to working order.
           </li>
       </ul>
-      
+
 
       <h3 id="Recursion"><a href="#toc-Recursion">Recursion</a> <a class="hdr" href="#Recursion">§</a></h3>
 
@@ -12270,7 +12270,7 @@ All 1 tests passed.
       is not yet protected from stack overflow, it is planned that a future version of Zig will provide
       such protection, with some degree of cooperation from Zig code required.
       </p>
-      
+
 
       <h3 id="Lifetime-and-Ownership"><a href="#toc-Lifetime-and-Ownership">Lifetime and Ownership</a> <a class="hdr" href="#Lifetime-and-Ownership">§</a></h3>
 
@@ -12301,9 +12301,9 @@ All 1 tests passed.
       is to free the memory referenced by the pointer, and lifetime determines the point at which
       the memory becomes inaccessible (lest <a href="#Undefined-Behavior">Undefined Behavior</a> occur).
       </p>
-      
 
-      
+
+
       <h2 id="Compile-Variables"><a href="#toc-Compile-Variables">Compile Variables</a> <a class="hdr" href="#Compile-Variables">§</a></h2>
 
       <p>
@@ -12429,7 +12429,7 @@ All 1 tests passed.
 <li><a href="#Build-Mode">Build Mode</a></li>
 </ul>
 
-      
+
       <h2 id="Root-Source-File"><a href="#toc-Root-Source-File">Root Source File</a> <a class="hdr" href="#Root-Source-File">§</a></h2>
 
       <p>TODO: explain how root source file finds other files</p>
@@ -12439,7 +12439,7 @@ All 1 tests passed.
       <p>TODO: order independent top level declarations</p>
       <p>TODO: lazy analysis</p>
       <p>TODO: using comptime { _ = @import() }</p>
-      
+
       <h2 id="Zig-Build-System"><a href="#toc-Zig-Build-System">Zig Build System</a> <a class="hdr" href="#Zig-Build-System">§</a></h2>
 
       <p>
@@ -12502,7 +12502,7 @@ All 1 tests passed.
     <span class="tok-kw">const</span> run_step = b.step(<span class="tok-str">&quot;run&quot;</span>, <span class="tok-str">&quot;Run the app&quot;</span>);
     run_step.dependOn(&amp;run_cmd.step);
 }</code></pre></figure>
-      
+
 
       <h3 id="Building-a-Library"><a href="#toc-Building-a-Library">Building a Library</a> <a class="hdr" href="#Building-a-Library">§</a></h3>
 
@@ -12522,7 +12522,7 @@ All 1 tests passed.
     <span class="tok-kw">const</span> test_step = b.step(<span class="tok-str">&quot;test&quot;</span>, <span class="tok-str">&quot;Run library tests&quot;</span>);
     test_step.dependOn(&amp;main_tests.step);
 }</code></pre></figure>
-      
+
 
       <h3 id="Compiling-C-Source-Code"><a href="#toc-Compiling-C-Source-Code">Compiling C Source Code</a> <a class="hdr" href="#Compiling-C-Source-Code">§</a></h3>
 
@@ -12531,9 +12531,9 @@ All 1 tests passed.
     <span class="tok-str">&quot;-Wextra&quot;</span>,
     <span class="tok-str">&quot;-Werror&quot;</span>,
 });</code></pre>
-      
 
-      
+
+
       <h2 id="C"><a href="#toc-C">C</a> <a class="hdr" href="#C">§</a></h2>
 
       <p>
@@ -12564,7 +12564,7 @@ All 1 tests passed.
 <li><a href="#Primitive-Types">Primitive Types</a></li>
 </ul>
 
-      
+
       <h3 id="Import-from-C-Header-File"><a href="#toc-Import-from-C-Header-File">Import from C Header File</a> <a class="hdr" href="#Import-from-C-Header-File">§</a></h3>
 
       <p>
@@ -12609,7 +12609,7 @@ hello
 <li><a href="#import">@import</a></li>
 </ul>
 
-      
+
 
       <h3 id="C-Translation-CLI"><a href="#toc-C-Translation-CLI">C Translation CLI</a> <a class="hdr" href="#C-Translation-CLI">§</a></h3>
 
@@ -12641,7 +12641,7 @@ hello
           If no target is specified, the current host target will be used.
         </li>
       </ul>
-      
+
       <h4 id="Using--target-and--cflags"><a href="#toc-Using--target-and--cflags">Using -target and -cflags</a> <a class="hdr" href="#Using--target-and--cflags">§</a></h4>
 
       <p>
@@ -12667,7 +12667,7 @@ $ <kbd>zig translate-c <em>-cflags -fshort-enums --</em> varycflags.h|grep -B1 d
 pub const enum_FOO = <em>u8</em>;
 pub extern fn do_something(foo: enum_FOO) c_int;
 </samp></pre></figure>
-      
+
       <h4 id="cImport-vs-translate-c"><a href="#toc-cImport-vs-translate-c">@cImport vs translate-c</a> <a class="hdr" href="#cImport-vs-translate-c">§</a></h4>
 
       <p><code><span class="tok-builtin">@cImport</span></code> and <kbd>zig translate-c</kbd> use the same underlying
@@ -12681,7 +12681,7 @@ pub extern fn do_something(foo: enum_FOO) c_int;
       <code>*T</code> pointers for improved type safety; and
       <a href="#setRuntimeSafety">enabling or disabling runtime safety</a> within specific functions.
       </p>
-      
+
       <p>See also:</p><ul>
 <li><a href="#Targets">Targets</a></li>
 <li><a href="#C-Type-Primitives">C Type Primitives</a></li>
@@ -12693,7 +12693,7 @@ pub extern fn do_something(foo: enum_FOO) c_int;
 <li><a href="#setRuntimeSafety">@setRuntimeSafety</a></li>
 </ul>
 
-      
+
       <h3 id="C-Translation-Caching"><a href="#toc-C-Translation-Caching">C Translation Caching</a> <a class="hdr" href="#C-Translation-Caching">§</a></h3>
 
       <p>
@@ -12732,7 +12732,7 @@ $ <kbd>./verbose</kbd>
 <li><a href="#cImport">@cImport</a></li>
 </ul>
 
-      
+
       <h3 id="Translation-failures"><a href="#toc-Translation-failures">Translation failures</a> <a class="hdr" href="#Translation-failures">§</a></h3>
 
       <p>
@@ -12762,7 +12762,7 @@ $ <kbd>./verbose</kbd>
 <li><a href="#compileError">@compileError</a></li>
 </ul>
 
-      
+
       <h3 id="C-Macros"><a href="#toc-C-Macros">C Macros</a> <a class="hdr" href="#C-Macros">§</a></h3>
 
       <p>
@@ -12798,7 +12798,7 @@ int foo(void) {
 <li><a href="#compileError">@compileError</a></li>
 </ul>
 
-      
+
 
       <h3 id="C-Pointers"><a href="#toc-C-Pointers">C Pointers</a> <a class="hdr" href="#C-Pointers">§</a></h3>
 
@@ -12835,7 +12835,7 @@ int foo(void) {
         <p>This is comparable to doing <code>-&gt;</code> in C.</p>
         <p> When a C pointer is pointing to an array of structs, the syntax reverts to this:</p>
         <p><code>ptr_to_struct_array[index].struct_member</code></p>
-      
+
 
       <h3 id="Exporting-a-C-Library"><a href="#toc-Exporting-a-C-Library">Exporting a C Library</a> <a class="hdr" href="#Exporting-a-C-Library">§</a></h3>
 
@@ -12887,7 +12887,7 @@ int main(int argc, char **argv) {
 <li><a href="#export">export</a></li>
 </ul>
 
-      
+
       <h3 id="Mixing-Object-Files"><a href="#toc-Mixing-Object-Files">Mixing Object Files</a> <a class="hdr" href="#Mixing-Object-Files">§</a></h3>
 
       <p>
@@ -12944,8 +12944,8 @@ all your base are belong to us
 <li><a href="#Zig-Build-System">Zig Build System</a></li>
 </ul>
 
-      
-      
+
+
       <h2 id="WebAssembly"><a href="#toc-WebAssembly">WebAssembly</a> <a class="hdr" href="#WebAssembly">§</a></h2>
 
       <p>Zig supports building for WebAssembly out of the box.</p>
@@ -12973,7 +12973,7 @@ WebAssembly.instantiate(typedArray, {
     <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>node test.js</kbd>
 The result is 3
 </samp></pre></figure>
-      
+
       <h3 id="WASI"><a href="#toc-WASI">WASI</a> <a class="hdr" href="#WASI">§</a></h3>
 
       <p>Zig's support for WebAssembly System Interface (WASI) is under active development.
@@ -13018,8 +13018,8 @@ The result is 3
       <figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>wasmtime --dir=. preopens.wasm</kbd>
 0: Preopen{ .fd = 3, .type = PreopenType{ .Dir = '.' } }
 </samp></pre></figure>
-      
-      
+
+
       <h2 id="Targets"><a href="#toc-Targets">Targets</a> <a class="hdr" href="#Targets">§</a></h2>
 
       <p>
@@ -13278,7 +13278,7 @@ Available libcs:
       <li>Windows x86_64</li>
       <li>macOS x86_64</li>
       </ul>
-      
+
       <h2 id="Style-Guide"><a href="#toc-Style-Guide">Style Guide</a> <a class="hdr" href="#Style-Guide">§</a></h2>
 
       <p>
@@ -13303,7 +13303,7 @@ coding style.
           Line length: aim for 100; use common sense.
         </li>
       </ul>
-      
+
       <h3 id="Names"><a href="#toc-Names">Names</a> <a class="hdr" href="#Names">§</a></h3>
 
       <p>
@@ -13347,7 +13347,7 @@ coding style.
       do what makes sense. For example, if there is an established convention such as
       <code>ENOENT</code>, follow the established convention.
       </p>
-      
+
       <h3 id="Examples"><a href="#toc-Examples">Examples</a> <a class="hdr" href="#Examples">§</a></h3>
 
       <figure><figcaption class="zig-cap"><cite class="file">style_example.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> namespace_name = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;dir_name/file_name.zig&quot;</span>);
@@ -13396,7 +13396,7 @@ coding style.
       <p>
       See the <a href="#Zig-Standard-Library">Zig Standard Library</a> for more examples.
       </p>
-      
+
       <h3 id="Doc-Comment-Guidance"><a href="#toc-Doc-Comment-Guidance">Doc Comment Guidance</a> <a class="hdr" href="#Doc-Comment-Guidance">§</a></h3>
 
       <ul>
@@ -13405,8 +13405,8 @@ coding style.
         <li>Use the word <strong>assume</strong> to indicate invariants that cause <a href="#Undefined-Behavior">Undefined Behavior</a> when violated.</li>
         <li>Use the word <strong>assert</strong> to indicate invariants that cause <em>safety-checked</em> <a href="#Undefined-Behavior">Undefined Behavior</a> when violated.</li>
       </ul>
-      
-      
+
+
       <h2 id="Source-Encoding"><a href="#toc-Source-Encoding">Source Encoding</a> <a class="hdr" href="#Source-Encoding">§</a></h2>
 
       <p>Zig source code is encoded in UTF-8. An invalid UTF-8 byte sequence results in a compile error.</p>
@@ -13444,7 +13444,7 @@ coding style.
       or an <a href="https://tc39.es/ecma262/#sec-characterclassescape">advanced</a> search such as <code>/\s/</code>,
       and in either case whitespace will be correctly identified.
       </p>
-      
+
 
       <h2 id="Keyword-Reference"><a href="#toc-Keyword-Reference">Keyword Reference</a> <a class="hdr" href="#Keyword-Reference">§</a></h2>
 
@@ -14036,7 +14036,7 @@ coding style.
         </tbody>
       </table>
       </div>
-      
+
 
       <h2 id="Grammar"><a href="#toc-Grammar">Grammar</a> <a class="hdr" href="#Grammar">§</a></h2>
 
@@ -14587,7 +14587,7 @@ keyword &lt;- KEYWORD_align / KEYWORD_allowzero / KEYWORD_and / KEYWORD_anyframe
          / KEYWORD_union / KEYWORD_unreachable
          / KEYWORD_usingnamespace / KEYWORD_var / KEYWORD_volatile / KEYWORD_while
 </code></pre>
-      
+
       <h2 id="Zen"><a href="#toc-Zen">Zen</a> <a class="hdr" href="#Zen">§</a></h2>
 
       <ul>
@@ -14605,7 +14605,7 @@ keyword &lt;- KEYWORD_align / KEYWORD_allowzero / KEYWORD_and / KEYWORD_anyframe
         <li>Memory is a resource.</li>
         <li>Together we serve the users.</li>
       </ul>
-      
+
       </main></div>
     </div>
   </body>
