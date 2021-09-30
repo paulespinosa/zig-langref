@@ -899,7 +899,7 @@ $ <kbd>./comments</kbd>
 Hello, world!
 </samp></pre></figure>
       <p>
-      There are no multiline comments in Zig (e.g. like <code>/* */</code>
+      There are no multiline comments in Zig (e.g. like <code class="c">/* */</code>
       comments in C).  This helps allow Zig to have the property that each line
       of code can be tokenized out of context.
       </p>
@@ -1472,7 +1472,7 @@ $ <kbd>./assign_undefined</kbd>
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">introducing_zig_test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
 
-<span class="tok-kw">test</span> <span class="tok-str">&quot;expect addOne adds one to 41 correctly&quot;</span> {
+<span class="tok-kw">test</span> <span class="tok-str">&quot;expect addOne adds one to 41&quot;</span> {
 
     <span class="tok-comment">// The Standard Library contains useful functions to help create tests.</span>
     <span class="tok-comment">// `expect` is a function that verifies its argument is true.</span>
@@ -1485,9 +1485,15 @@ $ <kbd>./assign_undefined</kbd>
 <span class="tok-kw">fn</span> <span class="tok-fn">addOne</span>(number: <span class="tok-type">i32</span>) <span class="tok-type">i32</span> {
     <span class="tok-kw">return</span> number + <span class="tok-number">1</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test introducing_zig_test.zig</kbd>
-Test [1/1] test &quot;expect addOne adds one to 41 correctly&quot;...
+Test [1/1] test &quot;expect addOne adds one to 41&quot;...
 All 1 tests passed.
 </samp></pre></figure>
+      <p>
+        The <code class="file">introducing_zig_test.zig</code> code sample tests the <a href="#Functions">function</a>
+        <code>addOne</code> to ensure that it returns <code><span class="tok-number">42</span></code> given the input
+        <code><span class="tok-number">41</span></code>. From this test's perspective, the <code>addOne</code> function is
+        said to be <em>code under test</em>.
+      </p>
       <p>
         <kbd>zig test</kbd> is a tool that creates and runs a test build. By default, it builds and runs an
         executable program using the <em>default test runner</em> provided by the <a href="#Zig-Standard-Library">Zig Standard Library</a>
@@ -1500,19 +1506,19 @@ All 1 tests passed.
         Its source code is located in <code class="file">lib/std/special/test_runner.zig</code>.
       </aside>
       <p>
-        The shell output shown above displays the line <samp>Test [1/1] test "expect addOne adds one to 41 correctly"...</samp>.
-        This line was printed to standard error by the test runner program. (When the test runner program's
-        standard error is output to the terminal, these lines are cleared when a test succeeds.)
-        Lines like this indicate which test, out of the total number of tests, is being run. In this case, <samp>[1/1]</samp>
-        indicates that the first test, out of a total of one test, is being run. The next line, <samp>All 1 tests passed.</samp>,
-        is also printed to standard error. It indicates the total number of tests that have passed.
+        The shell output shown above displays two lines after the <kbd>zig test</kbd> command. These lines are
+        printed to standard error by the default test runner:
       </p>
-      <p>
-        The code sample in <code class="file">introducing_zig_test.zig</code> tests the <a href="#Functions">function</a>
-        <code>addOne</code> to ensure that it correctly adds one to <code><span class="tok-number">41</span></code>.
-        From this test's perspective, the <code>addOne</code> function is said to be
-        <em>code under test</em>.
-      </p>
+      <dl>
+        <dt><samp>Test [1/1] test "expect addOne adds one to 41"...</samp></dt>
+        <dd>Lines like this indicate which test, out of the total number of tests, is being run.
+          In this case, <samp>[1/1]</samp> indicates that the first test, out of a total of
+          one test, is being run. Note that, when the test runner program's standard error is output
+          to the terminal, these lines are cleared when a test succeeds.
+        </dd>
+        <dt><samp>All 1 tests passed.</samp></dt>
+        <dd>This line indicates the total number of tests that have passed.</dd>
+      </dl>
       <h3 id="Test-Declarations"><a href="#toc-Test-Declarations">Test Declarations</a> <a class="hdr" href="#Test-Declarations">§</a></h3>
 
       <p>
@@ -1521,8 +1527,8 @@ All 1 tests passed.
         by a <a href="#blocks">block</a> containing any valid Zig code that is allowed in a <a href="#Functions">function</a>.
       </p>
       <aside>
-        By convention, non-named tests should be used when referencing other tests. Non-named tests are run regardless
-        of the <kbd><a href="#Skip-Tests">--test-filter</a></kbd> command-line parameter.
+        By convention, non-named tests should only be used to <a href="#Nested-Container-Tests">make other tests run</a>.
+        Non-named tests cannot be <a href="#Skip-Tests">filtered</a>.
       </aside>
       <p>
         Test declarations are similar to <a href="#Functions">Functions</a>: they have a return type and a block of code. The implicit
@@ -1531,7 +1537,7 @@ All 1 tests passed.
         declarations are omitted from the build.
       </p>
       <p>
-        Test declarations can be written in the same file where code under test is written or in a separate Zig source file.
+        Test declarations can be written in the same file, where code under test is written, or in a separate Zig source file.
         Since test declarations are top-level declarations, they are order-independent and can
         be written before or after the code under test.
       </p>
@@ -1560,7 +1566,7 @@ All 1 tests passed.
 <span class="tok-kw">const</span> expect = std.testing.expect;
 
 <span class="tok-comment">// Imported source file tests will run when referenced from a top-level test declaration.</span>
-<span class="tok-comment">// This line alone does not cause &quot;introducing_zig_test.zig&quot; tests to run.</span>
+<span class="tok-comment">// The next line alone does not cause &quot;introducing_zig_test.zig&quot; tests to run.</span>
 <span class="tok-kw">const</span> imported_file = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;introducing_zig_test.zig&quot;</span>);
 
 <span class="tok-kw">test</span> {
@@ -1573,12 +1579,7 @@ All 1 tests passed.
     <span class="tok-comment">// or, reference each container individually from a top-level test declaration.</span>
     <span class="tok-comment">// The `_ = C;` syntax is a no-op reference to the identifier `C`.</span>
     _ = S;
-    _ = E;
     _ = U;
-    _ = O;
-
-    <span class="tok-comment">// Alternative to `refAllDecls`, imported source files containing tests can</span>
-    <span class="tok-comment">// also be referenced like this:</span>
     _ = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;introducing_zig_test.zig&quot;</span>);
 }
 
@@ -1588,21 +1589,13 @@ All 1 tests passed.
     }
 
     <span class="tok-kw">const</span> SE = <span class="tok-kw">enum</span> {
-      V,
+        V,
 
-      <span class="tok-comment">// This test won't run because its container (SE) is not referenced.</span>
-      <span class="tok-kw">test</span> <span class="tok-str">&quot;This Test Won't Run&quot;</span> {
-          <span class="tok-kw">try</span> expect(<span class="tok-null">false</span>);
-      }
+        <span class="tok-comment">// This test won't run because its container (SE) is not referenced.</span>
+        <span class="tok-kw">test</span> <span class="tok-str">&quot;This Test Won't Run&quot;</span> {
+            <span class="tok-kw">try</span> expect(<span class="tok-null">false</span>);
+        }
     };
-};
-
-<span class="tok-kw">const</span> E = <span class="tok-kw">enum</span> {
-    V,
-
-    <span class="tok-kw">test</span> <span class="tok-str">&quot;E demo test&quot;</span> {
-        <span class="tok-kw">try</span> expect(<span class="tok-null">true</span>);
-    }
 };
 
 <span class="tok-kw">const</span> U = <span class="tok-kw">union</span> { <span class="tok-comment">// U is referenced by the file's top-level test declaration</span>
@@ -1619,21 +1612,13 @@ All 1 tests passed.
     <span class="tok-kw">test</span> <span class="tok-str">&quot;U demo test&quot;</span> {
         <span class="tok-kw">try</span> expect(<span class="tok-null">true</span>);
     }
-};
-
-<span class="tok-kw">const</span> O = <span class="tok-kw">opaque</span> {
-    <span class="tok-kw">test</span> <span class="tok-str">&quot;O demo test&quot;</span> {
-        <span class="tok-kw">try</span> expect(<span class="tok-null">true</span>);
-    }
 };</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test testdecl_container_top_level.zig</kbd>
-Test [1/7] test &quot;&quot;...
-Test [2/7] S.test &quot;S demo test&quot;...
-Test [3/7] E.test &quot;E demo test&quot;...
-Test [4/7] U.test &quot;U demo test&quot;...
-Test [5/7] O.test &quot;O demo test&quot;...
-Test [6/7] introducing_zig_test.test &quot;expect addOne adds one to 41 correctly&quot;...
-Test [7/7] US.test &quot;U.US demo test&quot;...
-All 7 tests passed.
+Test [1/5] test &quot;&quot;...
+Test [2/5] S.test &quot;S demo test&quot;...
+Test [3/5] U.test &quot;U demo test&quot;...
+Test [4/5] introducing_zig_test.test &quot;expect addOne adds one to 41&quot;...
+Test [5/5] US.test &quot;U.US demo test&quot;...
+All 5 tests passed.
 </samp></pre></figure>
       
       <h3 id="Test-Failure"><a href="#toc-Test-Failure">Test Failure</a> <a class="hdr" href="#Test-Failure">§</a></h3>
@@ -1669,9 +1654,15 @@ docgen_tmp/zig-cache/o/718bcd9cad8e86fc7c35abef33cfb944/test /home/paul/Developm
       <h3 id="Skip-Tests"><a href="#toc-Skip-Tests">Skip Tests</a> <a class="hdr" href="#Skip-Tests">§</a></h3>
 
       <p>
-        If a <code><span class="tok-kw">test</span></code> returns the error <code><span class="tok-kw">error</span>.SkipZigTest</code>, the
-        default test runner will consider the test as being skipped. The total number of skipped tests
-        will be reported after all tests have run.
+        One way to skip tests is to filter them out by using the <kbd>zig test</kbd> command line parameter
+        <kbd>--test-filter [text]</kbd>. This makes the test build only include tests whose name contains the
+        supplied filter text. Note that non-named tests are run even when using the <kbd>--test-filter [text]</kbd>
+        command line parameter.
+      </p>
+      <p>
+        To programmatically skip a test, make a <code><span class="tok-kw">test</span></code> return the error
+        <code><span class="tok-kw">error</span>.SkipZigTest</code> and the default test runner will consider the test as being skipped.
+        The total number of skipped tests will be reported after all tests have run.
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">test</span> <span class="tok-str">&quot;this will be skipped&quot;</span> {
     <span class="tok-kw">return</span> <span class="tok-kw">error</span>.SkipZigTest;
@@ -1681,14 +1672,12 @@ Test [2/1] test &quot;this will be skipped&quot;... SKIP
 0 passed; 1 skipped; 0 failed.
 </samp></pre></figure>
       <p>
-        The default test runner also skips tests containing a <a href="#Async-Functions">suspend point</a> and the
+        The default test runner skips tests containing a <a href="#Async-Functions">suspend point</a> while the
         test is running using the default, blocking IO mode.
         (The evented IO mode is enabled using the <kbd>--test-evented-io</kbd> command line parameter.)
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">async_skip.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
 
-<span class="tok-comment">// This test is skipped because a suspend point exists</span>
-<span class="tok-comment">// and the `io_mode`` is set to blocking (the default).</span>
 <span class="tok-kw">test</span> <span class="tok-str">&quot;async skip test&quot;</span> {
     <span class="tok-kw">var</span> frame = <span class="tok-kw">async</span> func();
     <span class="tok-kw">const</span> result = <span class="tok-kw">await</span> frame;
@@ -1709,19 +1698,13 @@ Test [2/1] test &quot;async skip test&quot;... SKIP (async test)
         In the code sample above, the test would not be skipped in blocking IO mode if the <code><span class="tok-kw">nosuspend</span></code>
         keyword was used (see <a href="#Async-and-Await">Async and Await</a>).
       </p>
-      <p>
-        Another way to skip tests is to filter them out by using the <kbd>zig test</kbd> command line parameter
-        <kbd>--test-filter [text]</kbd>. This makes the test build only include tests whose name contains the
-        supplied filter text. Note, non-named tests are run even when using the <kbd>--test-filter [text]</kbd>
-        command line parameter.
-      </p>
       
       <h3 id="Report-Memory-Leaks"><a href="#toc-Report-Memory-Leaks">Report Memory Leaks</a> <a class="hdr" href="#Report-Memory-Leaks">§</a></h3>
 
       <p>
         When code allocates <a href="#Memory">Memory</a> using the <a href="#Zig-Standard-Library">Zig Standard Library</a>'s testing allocator,
         <code>std.testing.allocator</code>, the default test runner will report any leaks that are
-        found from using this allocator:
+        found from using the testing allocator:
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
 
@@ -1734,7 +1717,7 @@ Test [2/1] test &quot;async skip test&quot;... SKIP (async test)
 
     <span class="tok-kw">try</span> std.testing.expect(list.items.len == <span class="tok-number">3</span>);
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;detect leak&quot;... [gpa] (err): memory address 0x7fd980ad1000 leaked:
+Test [1/1] test &quot;detect leak&quot;... [gpa] (err): memory address 0x7f4be6398000 leaked:
 <span class="t1_0">/home/paul/Development/Zig/zig-linux-x86_64-0.9.0-dev.1172+42aa1ea11/lib/std/array_list.zig:334:69</span>: <span class="t2_0">0x20a8f0 in std.array_list.ArrayListAligned(u8,null).ensureTotalCapacity (test)</span>
                 const new_memory = try self.allocator.reallocAtLeast(self.allocatedSlice(), better_capacity);
                                                                     <span class="t32_1">^</span>
@@ -1778,14 +1761,13 @@ docgen_tmp/zig-cache/o/718bcd9cad8e86fc7c35abef33cfb944/test /home/paul/Developm
 
       <p>
         Use the <a href="#Compile-Variables">compile variable</a> <code><span class="tok-builtin">@import</span>(<span class="tok-str">&quot;builtin&quot;</span>).is_test</code>
-        to detect when the code was built by the <kbd>zig test</kbd> tool:
+        to detect a test build:
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">detect_test.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
 <span class="tok-kw">const</span> builtin = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;builtin&quot;</span>);
 <span class="tok-kw">const</span> expect = std.testing.expect;
 
 <span class="tok-kw">test</span> <span class="tok-str">&quot;builtin.is_test&quot;</span> {
-    <span class="tok-kw">try</span> expect(builtin.is_test);
     <span class="tok-kw">try</span> expect(isATest());
 }
 
@@ -1806,13 +1788,10 @@ All 1 tests passed.
 
       <p>
         The Zig Standard Library's <code>testing</code> namespace contains useful functions to help
-        you build tests. A few are listed here:
+        you create tests. In addition to the <code>expect</code> function, this document uses a couple of more functions
+        as exemplified here:
       </p>
       <figure><figcaption class="zig-cap"><cite class="file">testing_functions.zig</cite></figcaption><pre><code><span class="tok-kw">const</span> std = <span class="tok-builtin">@import</span>(<span class="tok-str">&quot;std&quot;</span>);
-
-<span class="tok-kw">test</span> <span class="tok-str">&quot;expect demo&quot;</span> {
-    <span class="tok-kw">try</span> std.testing.expect(<span class="tok-null">true</span>);
-}
 
 <span class="tok-kw">test</span> <span class="tok-str">&quot;expectEqual demo&quot;</span> {
     <span class="tok-kw">const</span> expected: <span class="tok-type">i32</span> = <span class="tok-number">42</span>;
@@ -1832,10 +1811,9 @@ All 1 tests passed.
     <span class="tok-comment">// the expected error.</span>
     <span class="tok-kw">try</span> std.testing.expectError(expected_error, actual_error_union);
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test testing_functions.zig</kbd>
-Test [1/3] test &quot;expect demo&quot;...
-Test [2/3] test &quot;expectEqual demo&quot;...
-Test [3/3] test &quot;expectError demo&quot;...
-All 3 tests passed.
+Test [1/2] test &quot;expectEqual demo&quot;...
+Test [2/2] test &quot;expectError demo&quot;...
+All 2 tests passed.
 </samp></pre></figure>
       <p>The Zig Standard Library also contains functions to compare <a href="#Slices">Slices</a>, strings, and more. See the rest of the
         <code>std.testing</code> namespace in the <a href="#Zig-Standard-Library">Zig Standard Library</a> for more available functions.</p>
@@ -3399,7 +3377,7 @@ All 2 tests passed.
     <span class="tok-kw">const</span> int_slice = std.mem.bytesAsSlice(<span class="tok-type">u32</span>, <span class="tok-builtin">@alignCast</span>(<span class="tok-number">4</span>, slice4));
     <span class="tok-kw">return</span> int_slice[<span class="tok-number">0</span>];
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;pointer alignment safety&quot;... thread 19697 panic: incorrect alignment
+Test [1/1] test &quot;pointer alignment safety&quot;... thread 11390 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:10:63</span>: <span class="t2_0">0x20826c in foo (test)</span>
     const int_slice = std.mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                               <span class="t32_1">^</span>
@@ -3511,7 +3489,7 @@ All 1 tests passed.
     <span class="tok-comment">// Note that `slice.ptr` does not invoke safety checking, while `&amp;slice[0]`</span>
     <span class="tok-comment">// asserts that the slice has len &gt;= 1.</span>
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;basic slices&quot;... thread 19748 panic: index out of bounds
+Test [1/1] test &quot;basic slices&quot;... thread 11439 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:22:10</span>: <span class="t2_0">0x206bf3 in test &quot;basic slices&quot; (test)</span>
     slice[10] += 1;
          <span class="t32_1">^</span>
@@ -4378,7 +4356,7 @@ All 1 tests passed.
     <span class="tok-kw">var</span> payload = Payload{ .int = <span class="tok-number">1234</span> };
     payload.float = <span class="tok-number">12.34</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;simple union&quot;... thread 20161 panic: access of inactive union field
+Test [1/1] test &quot;simple union&quot;... thread 11852 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:8:12</span>: <span class="t2_0">0x20699b in test &quot;simple union&quot; (test)</span>
     payload.float = 12.34;
            <span class="t32_1">^</span>
@@ -5606,7 +5584,7 @@ All 1 tests passed.
 <span class="tok-kw">test</span> <span class="tok-str">&quot;this will fail&quot;</span> {
     assert(<span class="tok-null">false</span>);
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;this will fail&quot;... thread 20815 panic: reached unreachable code
+Test [1/1] test &quot;this will fail&quot;... thread 12496 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:3:14</span>: <span class="t2_0">0x2080bb in assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -6382,7 +6360,7 @@ error: PermissionDenied
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 21231 panic: PermissionDenied
+thread 12929 panic: PermissionDenied
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:38:5</span>: <span class="t2_0">0x232236 in bang2 (test)</span>
     @panic(&quot;PermissionDenied&quot;);
     <span class="t32_1">^</span>
@@ -10289,7 +10267,7 @@ All 1 tests passed.
         }
     }
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig -OReleaseFast</kbd>
-Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 22627 panic: integer overflow
+Test [1/1] test &quot;@setRuntimeSafety&quot;... thread 14271 panic: integer overflow
 error: the following test command crashed:
 docgen_tmp/zig-cache/o/34b499bdf3c68fdff68d020e67f94411/test /home/paul/Development/Zig/zig-linux-x86_64-0.9.0-dev.1172+42aa1ea11/zig
 </samp></pre></figure>
@@ -10748,7 +10726,7 @@ All 1 tests passed.
     <span class="tok-kw">var</span> b: <span class="tok-type">u8</span> = <span class="tok-builtin">@intCast</span>(<span class="tok-type">u8</span>, a);
     _ = b;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;integer cast panic&quot;... thread 22733 panic: integer cast truncated bits
+Test [1/1] test &quot;integer cast panic&quot;... thread 14376 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:3:17</span>: <span class="t2_0">0x206955 in test &quot;integer cast panic&quot; (test)</span>
     var b: u8 = @intCast(u8, a);
                 <span class="t32_1">^</span>
@@ -11013,7 +10991,7 @@ All 1 tests passed.
       <figure><figcaption class="zig-cap"><cite class="file">test.zig</cite></figcaption><pre><code><span class="tok-kw">test</span> <span class="tok-str">&quot;safety check&quot;</span> {
     <span class="tok-kw">unreachable</span>;
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig test test.zig</kbd>
-Test [1/1] test &quot;safety check&quot;... thread 22817 panic: reached unreachable code
+Test [1/1] test &quot;safety check&quot;... thread 14460 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:2:5</span>: <span class="t2_0">0x20692a in test &quot;safety check&quot; (test)</span>
     unreachable;
     <span class="t32_1">^</span>
@@ -11065,7 +11043,7 @@ comptime {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 22846 panic: reached unreachable code
+thread 14489 panic: reached unreachable code
 <span class="t1_0">/home/paul/Development/Zig/zig-linux-x86_64-0.9.0-dev.1172+42aa1ea11/lib/std/debug.zig:226:14</span>: <span class="t2_0">0x20447b in std.debug.assert (test)</span>
     if (!ok) unreachable; // assertion failure
              <span class="t32_1">^</span>
@@ -11110,7 +11088,7 @@ thread 22846 panic: reached unreachable code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 22883 panic: index out of bounds
+thread 14526 panic: index out of bounds
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:7:13</span>: <span class="t2_0">0x2309d9 in foo (test)</span>
     return x[5];
             <span class="t32_1">^</span>
@@ -11154,7 +11132,7 @@ thread 22883 panic: index out of bounds
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 22912 panic: attempt to cast negative value to unsigned integer
+thread 14555 panic: attempt to cast negative value to unsigned integer
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:5:20</span>: <span class="t2_0">0x229ac7 in main (test)</span>
     var unsigned = @intCast(u32, value);
                    <span class="t32_1">^</span>
@@ -11198,7 +11176,7 @@ thread 22912 panic: attempt to cast negative value to unsigned integer
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 22943 panic: integer cast truncated bits
+thread 14584 panic: integer cast truncated bits
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:5:18</span>: <span class="t2_0">0x229acc in main (test)</span>
     const byte = @intCast(u8, spartan_count);
                  <span class="t32_1">^</span>
@@ -11254,7 +11232,7 @@ thread 22943 panic: integer cast truncated bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 22979 panic: integer overflow
+thread 14623 panic: integer overflow
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:5:10</span>: <span class="t2_0">0x229aaf in main (test)</span>
     byte += 1;
          <span class="t32_1">^</span>
@@ -11390,7 +11368,7 @@ All 1 tests passed.
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23068 panic: left shift overflowed bits
+thread 14711 panic: left shift overflowed bits
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b0b in main (test)</span>
     var y = @shlExact(x, 2);
             <span class="t32_1">^</span>
@@ -11430,7 +11408,7 @@ thread 23068 panic: left shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23105 panic: right shift overflowed bits
+thread 14748 panic: right shift overflowed bits
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:5:13</span>: <span class="t2_0">0x229b0b in main (test)</span>
     var y = @shrExact(x, 2);
             <span class="t32_1">^</span>
@@ -11473,7 +11451,7 @@ thread 23105 panic: right shift overflowed bits
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23134 panic: division by zero
+thread 14777 panic: division by zero
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229ab9 in main (test)</span>
     var c = a / b;
               <span class="t32_1">^</span>
@@ -11516,7 +11494,7 @@ thread 23134 panic: division by zero
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23163 panic: remainder division by zero or negative value
+thread 14806 panic: remainder division by zero or negative value
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:6:15</span>: <span class="t2_0">0x229adb in main (test)</span>
     var c = a % b;
               <span class="t32_1">^</span>
@@ -11559,7 +11537,7 @@ thread 23163 panic: remainder division by zero or negative value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23200 panic: exact division produced remainder
+thread 14843 panic: exact division produced remainder
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:6:13</span>: <span class="t2_0">0x229afd in main (test)</span>
     var c = @divExact(a, b);
             <span class="t32_1">^</span>
@@ -11600,7 +11578,7 @@ thread 23200 panic: exact division produced remainder
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23229 panic: attempt to use null value
+thread 14873 panic: attempt to use null value
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:5:33</span>: <span class="t2_0">0x229abc in main (test)</span>
     var number = optional_number.?;
                                 <span class="t32_1">^</span>
@@ -11667,7 +11645,7 @@ it's null
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23278 panic: attempt to unwrap error: UnableToReturnNumber
+thread 14922 panic: attempt to unwrap error: UnableToReturnNumber
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:9:5</span>: <span class="t2_0">0x230a94 in getNumberOrFail (test)</span>
     return error.UnableToReturnNumber;
     <span class="t32_1">^</span>
@@ -11739,7 +11717,7 @@ got error: UnableToReturnNumber
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23335 panic: invalid error code
+thread 14979 panic: invalid error code
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:6:23</span>: <span class="t2_0">0x229b43 in main (test)</span>
     var invalid_err = @intToError(number);
                       <span class="t32_1">^</span>
@@ -11794,7 +11772,7 @@ const Foo = enum {
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23364 panic: invalid enum value
+thread 15008 panic: invalid enum value
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:11:13</span>: <span class="t2_0">0x229b69 in main (test)</span>
     var b = @intToEnum(Foo, a);
             <span class="t32_1">^</span>
@@ -11852,7 +11830,7 @@ thread 23364 panic: invalid enum value
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23393 panic: invalid error code
+thread 15037 panic: invalid error code
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:15:15</span>: <span class="t2_0">0x230a96 in foo (test)</span>
     const x = @errSetCast(Set2, set1);
               <span class="t32_1">^</span>
@@ -11904,7 +11882,7 @@ thread 23393 panic: invalid error code
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23431 panic: incorrect alignment
+thread 15074 panic: incorrect alignment
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:9:59</span>: <span class="t2_0">0x230d1c in foo (test)</span>
     const int_slice = mem.bytesAsSlice(u32, @alignCast(4, slice4));
                                                           <span class="t32_1">^</span>
@@ -11961,7 +11939,7 @@ thread 23431 panic: incorrect alignment
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23460 panic: access of inactive union field
+thread 15103 panic: access of inactive union field
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:14:6</span>: <span class="t2_0">0x23e24a in bar (test)</span>
     f.float = 12.34;
      <span class="t32_1">^</span>
@@ -12070,7 +12048,7 @@ value: 1.23400001e+01
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe test.zig</kbd>
 
 $ <kbd>./test</kbd>
-thread 23537 panic: cast causes pointer to be null
+thread 15180 panic: cast causes pointer to be null
 <span class="t1_0">/home/paul/Development/Zig/zig/doc/docgen_tmp/test.zig:3:15</span>: <span class="t2_0">0x229a60 in main (test)</span>
     var ptr = @ptrCast(*i32, opt_ptr);
               <span class="t32_1">^</span>
@@ -12178,7 +12156,7 @@ All 1 tests passed.
 }</code></pre></figure><figure><figcaption class="shell-cap">Shell</figcaption><pre><samp>$ <kbd>zig build-exe cli_allocation.zig</kbd>
 
 $ <kbd>./cli_allocation</kbd>
-ptr=i32@7f1d3b691018
+ptr=i32@7fac1b89a018
 </samp></pre></figure>
               When using this kind of allocator, there is no need to free anything manually. Everything
               gets freed at once with the call to <code>arena.deinit()</code>.
